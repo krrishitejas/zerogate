@@ -81,13 +81,13 @@ return env_manager
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 4, (
-        f"Expected at least 4 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 4
+    ), f"Expected at least 4 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 2, (
-        f"Expected at least 2 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 2
+    ), f"Expected at least 2 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_environment_manipulation(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -179,13 +179,13 @@ return env_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 5, (
-        f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 5
+    ), f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 2, (
-        f"Expected at least 2 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 2
+    ), f"Expected at least 2 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_module_environment_patterns(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -267,13 +267,13 @@ return M
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 5, (
-        f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 5
+    ), f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 2, (
-        f"Expected at least 2 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 2
+    ), f"Expected at least 2 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_dynamic_code_execution(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -356,13 +356,13 @@ return code_executor
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 5, (
-        f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 5
+    ), f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 3, (
-        f"Expected at least 3 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 3
+    ), f"Expected at least 3 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_global_variable_management(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -456,10 +456,10 @@ return global_manager
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 7, (
-        f"Expected at least 7 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 7
+    ), f"Expected at least 7 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 3, (
-        f"Expected at least 3 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 3
+    ), f"Expected at least 3 CALLS relationships, got {len(calls_rels)}"

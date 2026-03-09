@@ -195,9 +195,9 @@ const result = processor.processData([
     created_methods = get_node_names(mock_ingestor, "Method")
 
     found_methods = [method for method in expected_methods if method in created_methods]
-    assert len(found_methods) >= 8, (
-        f"Expected at least 8 methods, found {len(found_methods)}: {found_methods}"
-    )
+    assert (
+        len(found_methods) >= 8
+    ), f"Expected at least 8 methods, found {len(found_methods)}: {found_methods}"
 
 
 def test_class_inheritance(
@@ -406,9 +406,9 @@ const eagleHunt = eagle.hunt(); // Eagle specific
         or "fly" in call.args[0][2]
     ]
 
-    assert len(super_calls) >= 3, (
-        f"Expected at least 3 super() calls, found {len(super_calls)}"
-    )
+    assert (
+        len(super_calls) >= 3
+    ), f"Expected at least 3 super() calls, found {len(super_calls)}"
 
 
 def test_static_methods_and_properties(
@@ -566,9 +566,9 @@ const customPowerUser = PowerUser.createWithPermissions('Dave', 'dave@example.co
     found_static_methods = [
         method for method in expected_static_methods if method in created_methods
     ]
-    assert len(found_static_methods) >= 6, (
-        f"Expected at least 6 static methods, found {len(found_static_methods)}: {found_static_methods}"
-    )
+    assert (
+        len(found_static_methods) >= 6
+    ), f"Expected at least 6 static methods, found {len(found_static_methods)}: {found_static_methods}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -582,9 +582,9 @@ const customPowerUser = PowerUser.createWithPermissions('Dave', 'dave@example.co
         )
     ]
 
-    assert len(static_method_calls) >= 3, (
-        f"Expected at least 3 static method calls, found {len(static_method_calls)}"
-    )
+    assert (
+        len(static_method_calls) >= 3
+    ), f"Expected at least 3 static method calls, found {len(static_method_calls)}"
 
 
 def test_private_fields_and_methods(
@@ -758,9 +758,9 @@ const instanceCount = Counter.getInstanceCount();
     created_classes = get_node_names(mock_ingestor, "Class")
 
     for expected_qn in expected_classes:
-        assert expected_qn in created_classes, (
-            f"Missing class with private features: {expected_qn}"
-        )
+        assert (
+            expected_qn in created_classes
+        ), f"Missing class with private features: {expected_qn}"
 
     expected_methods = [
         f"{project_name}.private_features.BankAccount.deposit",
@@ -774,9 +774,9 @@ const instanceCount = Counter.getInstanceCount();
     created_methods = get_node_names(mock_ingestor, "Method")
 
     found_methods = [method for method in expected_methods if method in created_methods]
-    assert len(found_methods) >= 4, (
-        f"Expected at least 4 methods in classes with private features, found {len(found_methods)}"
-    )
+    assert (
+        len(found_methods) >= 4
+    ), f"Expected at least 4 methods in classes with private features, found {len(found_methods)}"
 
 
 def test_class_expressions_and_mixins(
@@ -944,9 +944,9 @@ const userInfo = user.toString();
         if "class_expressions" in call[0][1]["qualified_name"]
     ]
 
-    assert len(class_expression_classes) >= 3, (
-        f"Expected at least 3 class expressions, found {len(class_expression_classes)}"
-    )
+    assert (
+        len(class_expression_classes) >= 3
+    ), f"Expected at least 3 class expressions, found {len(class_expression_classes)}"
 
     relationship_calls = [
         call
@@ -958,9 +958,9 @@ const userInfo = user.toString();
         call for call in relationship_calls if "class_expressions" in call[0][0][2]
     ]
 
-    assert len(inheritance_relationships) >= 2, (
-        f"Expected at least 2 inheritance relationships from mixins, found {len(inheritance_relationships)}"
-    )
+    assert (
+        len(inheritance_relationships) >= 2
+    ), f"Expected at least 2 inheritance relationships from mixins, found {len(inheritance_relationships)}"
 
 
 def test_class_comprehensive(
@@ -1073,9 +1073,9 @@ const testResult = testClasses();
         if "comprehensive_classes" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive class calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive class calls, found {len(comprehensive_calls)}"
 
     class_inheritance = [
         call
@@ -1083,9 +1083,9 @@ const testResult = testClasses();
         if "comprehensive_classes" in call.args[0][2]
     ]
 
-    assert len(class_inheritance) >= 1, (
-        f"Expected at least 1 inheritance relationship, found {len(class_inheritance)}"
-    )
+    assert (
+        len(class_inheritance) >= 1
+    ), f"Expected at least 1 inheritance relationship, found {len(class_inheritance)}"
 
     for relationship in comprehensive_calls:
         assert len(relationship.args) == 3, "Call relationship should have 3 args"
@@ -1094,12 +1094,12 @@ const testResult = testClasses();
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_classes" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_classes" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

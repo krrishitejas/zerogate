@@ -341,9 +341,9 @@ console.log(secureObject[Symbol.for('public')]); // shared
     ]
 
     for expected in expected_functions:
-        assert expected in created_functions, (
-            f"Missing object literal function: {expected}"
-        )
+        assert (
+            expected in created_functions
+        ), f"Missing object literal function: {expected}"
 
     all_nodes = mock_ingestor.ensure_node_batch.call_args_list
 
@@ -357,9 +357,9 @@ console.log(secureObject[Symbol.for('public')]); // shared
         )
     ]
 
-    assert len(object_like_nodes) >= 2, (
-        f"Expected at least 2 object-like nodes, found {len(object_like_nodes)}"
-    )
+    assert (
+        len(object_like_nodes) >= 2
+    ), f"Expected at least 2 object-like nodes, found {len(object_like_nodes)}"
 
 
 def test_factory_functions(
@@ -774,9 +774,9 @@ console.log(users.map(u => u.getProfile()));
 
     found_factories = [func for func in expected_factories if func in created_functions]
 
-    assert len(found_factories) >= 6, (
-        f"Expected at least 6 factory functions, found {len(found_factories)}"
-    )
+    assert (
+        len(found_factories) >= 6
+    ), f"Expected at least 6 factory functions, found {len(found_factories)}"
 
     all_nodes = mock_ingestor.ensure_node_batch.call_args_list
 
@@ -787,9 +787,9 @@ console.log(users.map(u => u.getProfile()));
         and "userFactory" in call[0][1].get("qualified_name", "")
     ]
 
-    assert len(factory_object_nodes) >= 1, (
-        f"Expected userFactory object methods, found {len(factory_object_nodes)}"
-    )
+    assert (
+        len(factory_object_nodes) >= 1
+    ), f"Expected userFactory object methods, found {len(factory_object_nodes)}"
 
 
 def test_constructor_patterns(
@@ -1155,9 +1155,9 @@ console.log(Email.isValid('test@example.com')); // true
         func for func in expected_constructors if func in created_functions
     ]
 
-    assert len(found_constructors) >= 5, (
-        f"Expected at least 5 constructor functions, found {len(found_constructors)}"
-    )
+    assert (
+        len(found_constructors) >= 5
+    ), f"Expected at least 5 constructor functions, found {len(found_constructors)}"
 
     inheritance_relationships = get_relationships(mock_ingestor, "INHERITS")
 
@@ -1167,9 +1167,9 @@ console.log(Email.isValid('test@example.com')); // true
         if "constructor_patterns" in call.args[0][2]
     ]
 
-    assert len(constructor_inheritance) >= 1, (
-        f"Expected constructor inheritance relationships, found {len(constructor_inheritance)}"
-    )
+    assert (
+        len(constructor_inheritance) >= 1
+    ), f"Expected constructor inheritance relationships, found {len(constructor_inheritance)}"
 
 
 def test_object_composition(
@@ -1577,9 +1577,9 @@ console.log('Cloned:', cloned.toJSON());
         func for func in expected_composition_functions if func in created_functions
     ]
 
-    assert len(found_composition_functions) >= 5, (
-        f"Expected at least 5 composition functions, found {len(found_composition_functions)}"
-    )
+    assert (
+        len(found_composition_functions) >= 5
+    ), f"Expected at least 5 composition functions, found {len(found_composition_functions)}"
 
     all_nodes = mock_ingestor.ensure_node_batch.call_args_list
 
@@ -1593,9 +1593,9 @@ console.log('Cloned:', cloned.toJSON());
         )
     ]
 
-    assert len(mixin_nodes) >= 2, (
-        f"Expected at least 2 mixin-related nodes, found {len(mixin_nodes)}"
-    )
+    assert (
+        len(mixin_nodes) >= 2
+    ), f"Expected at least 2 mixin-related nodes, found {len(mixin_nodes)}"
 
 
 def test_object_patterns_comprehensive(
@@ -1700,9 +1700,9 @@ console.log(advanced.process());
         if "comprehensive_objects" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 3, (
-        f"Expected at least 3 comprehensive object calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 3
+    ), f"Expected at least 3 comprehensive object calls, found {len(comprehensive_calls)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -1712,6 +1712,6 @@ console.log(advanced.process());
         if "comprehensive_objects" in call[0][1]["qualified_name"]
     ]
 
-    assert len(comprehensive_functions) >= 3, (
-        f"Expected at least 3 functions in comprehensive test, found {len(comprehensive_functions)}"
-    )
+    assert (
+        len(comprehensive_functions) >= 3
+    ), f"Expected at least 3 functions in comprehensive test, found {len(comprehensive_functions)}"

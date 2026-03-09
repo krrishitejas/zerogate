@@ -36,9 +36,9 @@ import xml.etree.ElementTree
     stdlib_imports = [
         call for call in import_relationships if "stdlib_imports" in call.args[0][2]
     ]
-    assert len(stdlib_imports) >= 10, (
-        f"Expected at least 10 Python stdlib imports, found {len(stdlib_imports)}"
-    )
+    assert (
+        len(stdlib_imports) >= 10
+    ), f"Expected at least 10 Python stdlib imports, found {len(stdlib_imports)}"
 
     imported_modules = [call.args[2][2] for call in stdlib_imports]
     expected_modules = [
@@ -57,9 +57,9 @@ import xml.etree.ElementTree
     ]
 
     for expected in expected_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing Python module: {expected}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing Python module: {expected}"
 
 
 def test_javascript_stdlib_introspection(
@@ -112,9 +112,9 @@ http.createServer();
     js_imports = [
         call for call in import_relationships if "stdlib_imports" in call.args[0][2]
     ]
-    assert len(js_imports) >= 8, (
-        f"Expected at least 8 JavaScript stdlib imports, found {len(js_imports)}"
-    )
+    assert (
+        len(js_imports) >= 8
+    ), f"Expected at least 8 JavaScript stdlib imports, found {len(js_imports)}"
 
     imported_modules = [call.args[2][2] for call in js_imports]
     expected_modules = [
@@ -131,9 +131,9 @@ http.createServer();
     ]
 
     for expected in expected_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing JavaScript module: {expected}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing JavaScript module: {expected}"
 
 
 def test_typescript_stdlib_introspection(
@@ -193,9 +193,9 @@ const hasher = crypto.createHash('sha256');
     ts_imports = [
         call for call in import_relationships if "stdlib_imports" in call.args[0][2]
     ]
-    assert len(ts_imports) >= 10, (
-        f"Expected at least 10 TypeScript stdlib imports, found {len(ts_imports)}"
-    )
+    assert (
+        len(ts_imports) >= 10
+    ), f"Expected at least 10 TypeScript stdlib imports, found {len(ts_imports)}"
 
     imported_modules = [call.args[2][2] for call in ts_imports]
     expected_modules = [
@@ -213,9 +213,9 @@ const hasher = crypto.createHash('sha256');
     ]
 
     for expected in expected_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing TypeScript module: {expected}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing TypeScript module: {expected}"
 
 
 def test_go_stdlib_introspection(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -295,9 +295,9 @@ func main() {
     go_imports = [
         call for call in import_relationships if "stdlib_imports" in call.args[0][2]
     ]
-    assert len(go_imports) >= 15, (
-        f"Expected at least 15 Go stdlib imports, found {len(go_imports)}"
-    )
+    assert (
+        len(go_imports) >= 15
+    ), f"Expected at least 15 Go stdlib imports, found {len(go_imports)}"
 
     imported_modules = [call.args[2][2] for call in go_imports]
     expected_packages = [
@@ -326,9 +326,9 @@ func main() {
     ]
 
     for expected in expected_packages:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing Go package: {expected}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing Go package: {expected}"
 
 
 def test_rust_stdlib_introspection(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -406,9 +406,9 @@ fn main() {
     rust_imports = [
         call for call in import_relationships if "stdlib_imports" in call.args[0][2]
     ]
-    assert len(rust_imports) >= 15, (
-        f"Expected at least 15 Rust stdlib imports, found {len(rust_imports)}"
-    )
+    assert (
+        len(rust_imports) >= 15
+    ), f"Expected at least 15 Rust stdlib imports, found {len(rust_imports)}"
 
     imported_modules = [call.args[2][2] for call in rust_imports]
     expected_modules = [
@@ -439,9 +439,9 @@ fn main() {
     ]
 
     for expected in expected_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing Rust module: {expected}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing Rust module: {expected}"
 
 
 def test_cpp_stdlib_introspection(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -512,9 +512,9 @@ int main() {
     cpp_imports = [
         call for call in import_relationships if "stdlib_imports" in call.args[0][2]
     ]
-    assert len(cpp_imports) >= 10, (
-        f"Expected at least 10 C++ stdlib imports, found {len(cpp_imports)}"
-    )
+    assert (
+        len(cpp_imports) >= 10
+    ), f"Expected at least 10 C++ stdlib imports, found {len(cpp_imports)}"
 
     imported_modules = [call.args[2][2] for call in cpp_imports]
     expected_headers = [
@@ -615,9 +615,9 @@ public class StdlibImports {
     java_imports = [
         call for call in import_relationships if "StdlibImports" in call.args[0][2]
     ]
-    assert len(java_imports) >= 15, (
-        f"Expected at least 15 Java stdlib imports, found {len(java_imports)}"
-    )
+    assert (
+        len(java_imports) >= 15
+    ), f"Expected at least 15 Java stdlib imports, found {len(java_imports)}"
 
     imported_modules = [call.args[2][2] for call in java_imports]
     expected_packages = [
@@ -637,9 +637,9 @@ public class StdlibImports {
     ]
 
     for expected in expected_packages:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing Java package: {expected}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing Java package: {expected}"
 
 
 def test_lua_stdlib_introspection(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -715,18 +715,18 @@ return {
     lua_imports = [
         call for call in import_relationships if "stdlib_usage" in call.args[0][2]
     ]
-    assert len(lua_imports) >= 2, (
-        f"Expected at least 2 Lua imports, found {len(lua_imports)}"
-    )
+    assert (
+        len(lua_imports) >= 2
+    ), f"Expected at least 2 Lua imports, found {len(lua_imports)}"
 
     imported_modules = [call.args[2][2] for call in lua_imports]
 
-    assert any("my_custom_module" in module for module in imported_modules), (
-        "Expected custom module import"
-    )
-    assert any("utils.helper" in module for module in imported_modules), (
-        "Expected utils.helper import"
-    )
+    assert any(
+        "my_custom_module" in module for module in imported_modules
+    ), "Expected custom module import"
+    assert any(
+        "utils.helper" in module for module in imported_modules
+    ), "Expected utils.helper import"
 
     expected_stdlib_modules = {
         "string",
@@ -746,12 +746,12 @@ return {
         f"found: {found_stdlib_modules}"
     )
 
-    assert "string" in found_stdlib_modules, (
-        f"Expected 'string' module import for string.upper/lower calls, found: {found_stdlib_modules}"
-    )
-    assert "math" in found_stdlib_modules, (
-        f"Expected 'math' module import for math.floor/ceil calls, found: {found_stdlib_modules}"
-    )
+    assert (
+        "string" in found_stdlib_modules
+    ), f"Expected 'string' module import for string.upper/lower calls, found: {found_stdlib_modules}"
+    assert (
+        "math" in found_stdlib_modules
+    ), f"Expected 'math' module import for math.floor/ceil calls, found: {found_stdlib_modules}"
 
     bad_imports = [
         module
@@ -767,9 +767,9 @@ return {
             ]
         )
     ]
-    assert not bad_imports, (
-        f"Found unresolved qualified names that should be modules: {bad_imports}"
-    )
+    assert (
+        not bad_imports
+    ), f"Found unresolved qualified names that should be modules: {bad_imports}"
 
 
 def test_all_languages_stdlib_consistency(
@@ -797,9 +797,9 @@ def test_all_languages_stdlib_consistency(
 
     import_relationships = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(import_relationships) >= 8, (
-        f"Expected imports from all languages, found {len(import_relationships)}"
-    )
+    assert (
+        len(import_relationships) >= 8
+    ), f"Expected imports from all languages, found {len(import_relationships)}"
 
     forbidden_entity_endings = [
         ".defaultdict",

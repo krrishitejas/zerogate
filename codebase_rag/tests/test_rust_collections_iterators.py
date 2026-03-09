@@ -978,6 +978,6 @@ fn monad_like_operations() {
         for call in calls
         if "higher_order_functions" in str(call) or "monadic_operations" in str(call)
     ]
-    assert len(functional_calls) > 0, (
-        "Functional programming functions should be detected"
-    )
+    assert (
+        len(functional_calls) > 0
+    ), "Functional programming functions should be detected"

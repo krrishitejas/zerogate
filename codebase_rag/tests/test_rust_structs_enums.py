@@ -785,6 +785,6 @@ pub fn classify_expression(expr: &Expr) -> &'static str {
             for name in ["evaluate", "process_complex_event", "classify_expression"]
         )
     ]
-    assert len(method_calls) > 0, (
-        "Enum methods and pattern matching functions should be detected"
-    )
+    assert (
+        len(method_calls) > 0
+    ), "Enum methods and pattern matching functions should be detected"

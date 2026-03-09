@@ -443,7 +443,10 @@ NODE_SCHEMAS: tuple[NodeSchema, ...] = (
         NodeLabel.PACKAGE, "{qualified_name: string, name: string, path: string}"
     ),
     NodeSchema(NodeLabel.FOLDER, "{path: string, name: string}"),
-    NodeSchema(NodeLabel.FILE, "{path: string, name: string, extension: string, source_code: string}"),
+    NodeSchema(
+        NodeLabel.FILE,
+        "{path: string, name: string, extension: string, source_code: string}",
+    ),
     NodeSchema(
         NodeLabel.MODULE, "{qualified_name: string, name: string, path: string}"
     ),

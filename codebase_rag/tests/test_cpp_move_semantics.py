@@ -339,9 +339,9 @@ void demonstrateStringMoveSemantics() {
     found_entities = [
         entity for entity in expected_entities if entity in created_entities
     ]
-    assert len(found_entities) >= 4, (
-        f"Expected at least 4 move semantics entities, found {len(found_entities)}: {found_entities}"
-    )
+    assert (
+        len(found_entities) >= 4
+    ), f"Expected at least 4 move semantics entities, found {len(found_entities)}: {found_entities}"
 
 
 def test_perfect_forwarding(
@@ -603,9 +603,9 @@ void testReferenceCollapsing() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 3, (
-        f"Expected at least 3 perfect forwarding classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 3
+    ), f"Expected at least 3 perfect forwarding classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_move_optimization_patterns(
@@ -1005,9 +1005,9 @@ void demonstrateAlgorithmOptimizations() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 3, (
-        f"Expected at least 3 move optimization classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 3
+    ), f"Expected at least 3 move optimization classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_cpp_move_semantics_comprehensive(
@@ -1411,8 +1411,8 @@ void comprehensiveMoveDemo() {
         if "comprehensive_move_semantics" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 8, (
-        f"Expected at least 8 comprehensive move semantics calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 8
+    ), f"Expected at least 8 comprehensive move semantics calls, found {len(comprehensive_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

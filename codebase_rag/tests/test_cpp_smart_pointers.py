@@ -383,9 +383,9 @@ void demonstratePolymorphicUniquePtr() {
     found_entities = [
         entity for entity in expected_entities if entity in created_entities
     ]
-    assert len(found_entities) >= 4, (
-        f"Expected at least 4 unique_ptr entities, found {len(found_entities)}: {found_entities}"
-    )
+    assert (
+        len(found_entities) >= 4
+    ), f"Expected at least 4 unique_ptr entities, found {len(found_entities)}: {found_entities}"
 
 
 def test_shared_ptr_patterns(
@@ -788,9 +788,9 @@ void demonstrateAllocators() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 4, (
-        f"Expected at least 4 shared_ptr classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 4
+    ), f"Expected at least 4 shared_ptr classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_weak_ptr_and_advanced_patterns(
@@ -1228,9 +1228,9 @@ void demonstrateWeakPtrCache() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 4, (
-        f"Expected at least 4 weak_ptr classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 4
+    ), f"Expected at least 4 weak_ptr classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_cpp_smart_pointers_comprehensive(
@@ -1587,8 +1587,8 @@ void comprehensiveDemonstration() {
         if "comprehensive_smart_pointers" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 8, (
-        f"Expected at least 8 comprehensive smart pointer calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 8
+    ), f"Expected at least 8 comprehensive smart pointer calls, found {len(comprehensive_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

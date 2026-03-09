@@ -74,12 +74,12 @@ def test_comprehensive_pipeline_produces_valid_artifact_joint(tmp_path: Path) ->
             f"The output file is not a valid Protobuf message. Deserialization failed with: {e}"
         )
 
-    assert len(deserialized_index.nodes) > 5, (
-        "The serialized graph contains too few nodes."
-    )
-    assert len(deserialized_index.relationships) > 5, (
-        "The serialized graph contains too few relationships."
-    )
+    assert (
+        len(deserialized_index.nodes) > 5
+    ), "The serialized graph contains too few nodes."
+    assert (
+        len(deserialized_index.relationships) > 5
+    ), "The serialized graph contains too few relationships."
 
     for rel in deserialized_index.relationships:
         assert rel.source_label != ""
@@ -117,9 +117,9 @@ def test_comprehensive_pipeline_produces_valid_artifacts_split_index(
     assert nodes_path.exists(), "nodes.bin was not created."
     assert rels_path.exists(), "relationships.bin was not created."
     assert nodes_path.stat().st_size > 100, "nodes.bin is suspiciously small or empty."
-    assert rels_path.stat().st_size > 100, (
-        "relationships.bin is suspiciously small or empty."
-    )
+    assert (
+        rels_path.stat().st_size > 100
+    ), "relationships.bin is suspiciously small or empty."
 
     nodes_index = pb.GraphCodeIndex()
     with open(nodes_path, "rb") as f:

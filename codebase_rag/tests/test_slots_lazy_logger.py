@@ -182,9 +182,9 @@ class TestLazyLoggerFormat:
         file_path = REPO_ROOT / rel_path
         source = file_path.read_text(encoding="utf-8")
         eager_calls = _find_eager_debug_calls(source)
-        assert len(eager_calls) == 0, (
-            f"Found {len(eager_calls)} eager logger.debug(.format()) calls in {rel_path}: {eager_calls}"
-        )
+        assert (
+            len(eager_calls) == 0
+        ), f"Found {len(eager_calls)} eager logger.debug(.format()) calls in {rel_path}: {eager_calls}"
 
 
 class TestProviderSlotsInheritance:

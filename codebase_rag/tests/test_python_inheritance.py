@@ -372,9 +372,9 @@ def test_method_overrides_are_detected(
             call[0][0][2] == child_method and call[0][2][2] == parent_method
             for call in override_relationships
         )
-        assert found, (
-            f"Missing OVERRIDES relationship: {child_method} OVERRIDES {parent_method}"
-        )
+        assert (
+            found
+        ), f"Missing OVERRIDES relationship: {child_method} OVERRIDES {parent_method}"
 
 
 def test_multiple_inheritance_is_handled(
@@ -697,9 +697,9 @@ def test_diamond_inheritance_mro_basic(
         if call[0][0][2] == f"{project_name}.diamond_mro.D.method"
     ]
 
-    assert len(d_method_overrides) == 0, (
-        f"D class should not have method() overrides, but found: {d_method_overrides}"
-    )
+    assert (
+        len(d_method_overrides) == 0
+    ), f"D class should not have method() overrides, but found: {d_method_overrides}"
 
     expected_overrides = [
         (
@@ -721,9 +721,9 @@ def test_diamond_inheritance_mro_basic(
             call[0][0][2] == child_method and call[0][2][2] == parent_method
             for call in override_relationships
         )
-        assert found, (
-            f"Missing OVERRIDES relationship: {child_method} OVERRIDES {parent_method}"
-        )
+        assert (
+            found
+        ), f"Missing OVERRIDES relationship: {child_method} OVERRIDES {parent_method}"
 
 
 def test_diamond_inheritance_mro_override_at_point(
@@ -790,9 +790,9 @@ def test_complex_multiple_inheritance_mro(
         if call[0][0][2] == f"{project_name}.diamond_mro.I.shared_method"
     ]
 
-    assert len(i_shared_overrides) == 0, (
-        f"I class should not have shared_method overrides, but found: {i_shared_overrides}"
-    )
+    assert (
+        len(i_shared_overrides) == 0
+    ), f"I class should not have shared_method overrides, but found: {i_shared_overrides}"
 
     expected_complex_overrides = [
         (
@@ -810,9 +810,9 @@ def test_complex_multiple_inheritance_mro(
             call[0][0][2] == child_method and call[0][2][2] == parent_method
             for call in override_relationships
         )
-        assert found, (
-            f"Missing complex MRO override: {child_method} OVERRIDES {parent_method}"
-        )
+        assert (
+            found
+        ), f"Missing complex MRO override: {child_method} OVERRIDES {parent_method}"
 
 
 def test_deep_diamond_chain_mro(
@@ -857,9 +857,9 @@ def test_deep_diamond_chain_mro(
             call[0][0][2] == child_method and call[0][2][2] == parent_method
             for call in override_relationships
         )
-        assert found, (
-            f"Missing deep chain override: {child_method} OVERRIDES {parent_method}"
-        )
+        assert (
+            found
+        ), f"Missing deep chain override: {child_method} OVERRIDES {parent_method}"
 
     m_deep_overrides = [
         call
@@ -867,9 +867,9 @@ def test_deep_diamond_chain_mro(
         if call[0][0][2] == f"{project_name}.diamond_mro.M.deep_method"
     ]
 
-    assert len(m_deep_overrides) == 0, (
-        f"M class should not have deep_method overrides, but found: {m_deep_overrides}"
-    )
+    assert (
+        len(m_deep_overrides) == 0
+    ), f"M class should not have deep_method overrides, but found: {m_deep_overrides}"
 
 
 def test_asymmetric_diamond_mro(
@@ -910,9 +910,9 @@ def test_asymmetric_diamond_mro(
             call[0][0][2] == child_method and call[0][2][2] == parent_method
             for call in override_relationships
         )
-        assert found, (
-            f"Missing asymmetric override: {child_method} OVERRIDES {parent_method}"
-        )
+        assert (
+            found
+        ), f"Missing asymmetric override: {child_method} OVERRIDES {parent_method}"
 
     p_asym_overrides = [
         call
@@ -920,9 +920,9 @@ def test_asymmetric_diamond_mro(
         if call[0][0][2] == f"{project_name}.diamond_mro.P.asym_method"
     ]
 
-    assert len(p_asym_overrides) == 0, (
-        f"P class should not have asym_method overrides, but found: {p_asym_overrides}"
-    )
+    assert (
+        len(p_asym_overrides) == 0
+    ), f"P class should not have asym_method overrides, but found: {p_asym_overrides}"
 
 
 def test_mro_nearest_override_selection(
@@ -953,14 +953,14 @@ def test_mro_nearest_override_selection(
         if call[0][0][2] == f"{project_name}.diamond_mro.E.method"
     ]
 
-    assert len(e_method_overrides) == 1, (
-        f"E.method should have exactly one override, but found: {e_method_overrides}"
-    )
+    assert (
+        len(e_method_overrides) == 1
+    ), f"E.method should have exactly one override, but found: {e_method_overrides}"
 
     _, parent_method = e_method_overrides[0]
-    assert parent_method == f"{project_name}.diamond_mro.B.method", (
-        f"E.method should override B.method (nearest parent), but overrides {parent_method}"
-    )
+    assert (
+        parent_method == f"{project_name}.diamond_mro.B.method"
+    ), f"E.method should override B.method (nearest parent), but overrides {parent_method}"
 
     e_to_a_override = any(
         (
@@ -970,6 +970,6 @@ def test_mro_nearest_override_selection(
         for call in override_relationships
     )
 
-    assert not e_to_a_override, (
-        "E.method should not directly override A.method since B.method is closer"
-    )
+    assert (
+        not e_to_a_override
+    ), "E.method should not directly override A.method since B.method is closer"

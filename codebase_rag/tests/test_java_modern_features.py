@@ -128,9 +128,9 @@ public record Employee(
     }
 
     missing_records = expected_records - created_classes
-    assert not missing_records, (
-        f"Missing expected records: {sorted(list(missing_records))}"
-    )
+    assert (
+        not missing_records
+    ), f"Missing expected records: {sorted(list(missing_records))}"
 
 
 def test_java_sealed_classes(
@@ -275,12 +275,12 @@ public record Multiplication(Expression left, Expression right) implements Expre
     missing_classes = expected_classes - created_classes
     missing_interfaces = expected_interfaces - created_interfaces
 
-    assert not missing_classes, (
-        f"Missing expected sealed classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_interfaces, (
-        f"Missing expected sealed interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected sealed classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_interfaces
+    ), f"Missing expected sealed interfaces: {sorted(list(missing_interfaces))}"
 
 
 def test_java_switch_expressions(
@@ -426,9 +426,9 @@ enum CustomerType {
     missing_classes = expected_classes - created_classes
     missing_enums = expected_enums - created_enums
 
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
     assert not missing_enums, f"Missing expected enums: {sorted(list(missing_enums))}"
 
 
@@ -573,9 +573,9 @@ public class TextBlocks {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_java_var_keyword(
@@ -703,9 +703,9 @@ public class VarKeyword {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_java_instanceof_patterns(
@@ -840,6 +840,6 @@ public class InstanceofPatterns {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"

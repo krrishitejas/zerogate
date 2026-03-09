@@ -403,9 +403,9 @@ def test_context_manager_in_control_structures(
         call for call in calls_relationships if call[0][0][2] == function_qn
     ]
 
-    assert function_calls_found, (
-        "No calls tracked from function with context managers in control structures"
-    )
+    assert (
+        function_calls_found
+    ), "No calls tracked from function with context managers in control structures"
 
 
 def test_async_context_manager_parsing(
@@ -432,9 +432,9 @@ def test_async_context_manager_parsing(
     created_functions = get_node_names(mock_ingestor, "Function")
 
     for expected_qn in expected_functions:
-        assert expected_qn in created_functions, (
-            f"Missing async function: {expected_qn}"
-        )
+        assert (
+            expected_qn in created_functions
+        ), f"Missing async function: {expected_qn}"
 
 
 def test_decorated_context_manager_function(
@@ -457,13 +457,13 @@ def test_decorated_context_manager_function(
 
     function_calls = get_nodes(mock_ingestor, "Function")
     created_functions = get_qualified_names(function_calls)
-    assert expected_function in created_functions, (
-        f"Missing decorated context manager function: {expected_function}"
-    )
+    assert (
+        expected_function in created_functions
+    ), f"Missing decorated context manager function: {expected_function}"
 
     for call in function_calls:
         if call[0][1]["qualified_name"] == expected_function:
-            assert "decorators" in call[0][1], (
-                "Function should have decorators property"
-            )
+            assert (
+                "decorators" in call[0][1]
+            ), "Function should have decorators property"
             break

@@ -129,9 +129,9 @@ class TestImportParsing:
         ]
 
         for method_name in expected_methods:
-            assert hasattr(graph_updater.factory.import_processor, method_name), (
-                f"Missing method: {method_name}"
-            )
+            assert hasattr(
+                graph_updater.factory.import_processor, method_name
+            ), f"Missing method: {method_name}"
             method = getattr(graph_updater.factory.import_processor, method_name)
             assert callable(method), f"Method {method_name} is not callable"
 
@@ -225,9 +225,9 @@ class TestImportParsing:
                 ]
 
                 for local_name, expected_full_name in expected_mappings.items():
-                    assert local_name in actual_mappings, (
-                        f"Missing alias '{local_name}' for statement: {import_statement}"
-                    )
+                    assert (
+                        local_name in actual_mappings
+                    ), f"Missing alias '{local_name}' for statement: {import_statement}"
                     assert actual_mappings[local_name] == expected_full_name, (
                         f"Incorrect mapping for '{local_name}' in '{import_statement}': "
                         f"expected {expected_full_name}, got {actual_mappings[local_name]}"
@@ -295,9 +295,9 @@ class TestExternalModuleNodeCreation:
         label, props = mock_ingestor.nodes_created[0]
         assert label == cs.NodeLabel.MODULE
         assert props[cs.KEY_QUALIFIED_NAME] == "java.util"
-        assert props[cs.KEY_NAME] == "util", (
-            f"Expected name='util' (last part of module_path), got name='{props[cs.KEY_NAME]}'"
-        )
+        assert (
+            props[cs.KEY_NAME] == "util"
+        ), f"Expected name='util' (last part of module_path), got name='{props[cs.KEY_NAME]}'"
 
     def test_rust_external_module_node_created(self, mock_ingestor: MagicMock) -> None:
         from codebase_rag import constants as cs

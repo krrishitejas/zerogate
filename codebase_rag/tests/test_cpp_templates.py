@@ -243,9 +243,9 @@ void demonstrateTemplateMetaprogramming() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
     expected_classes = [
         f"{project_name}.function_templates.FixedArray",
@@ -256,9 +256,9 @@ void demonstrateTemplateMetaprogramming() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_class_templates(
@@ -649,9 +649,9 @@ void demonstrateTemplateTemplateParameters() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
     relationship_calls = [
         call
@@ -999,9 +999,9 @@ void demonstrateConcepts() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
     relationship_calls = [
         call
@@ -1016,9 +1016,9 @@ void demonstrateConcepts() {
         or ("AnotherClass" in call[0][0][2] and "Counter" in call[0][2][2])
     ]
 
-    assert len(crtp_inheritance) >= 1, (
-        f"Expected CRTP inheritance relationships, found {len(crtp_inheritance)}"
-    )
+    assert (
+        len(crtp_inheritance) >= 1
+    ), f"Expected CRTP inheritance relationships, found {len(crtp_inheritance)}"
 
 
 def test_cpp_templates_comprehensive(
@@ -1220,9 +1220,9 @@ void demonstrateComprehensiveTemplates() {
         if "comprehensive_templates" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 10, (
-        f"Expected at least 10 comprehensive template calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 10
+    ), f"Expected at least 10 comprehensive template calls, found {len(comprehensive_calls)}"
 
     template_inheritance = [
         call
@@ -1230,8 +1230,8 @@ void demonstrateComprehensiveTemplates() {
         if "comprehensive_templates" in call.args[0][2]
     ]
 
-    assert len(template_inheritance) >= 2, (
-        f"Expected at least 2 template inheritance relationships, found {len(template_inheritance)}"
-    )
+    assert (
+        len(template_inheritance) >= 2
+    ), f"Expected at least 2 template inheritance relationships, found {len(template_inheritance)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

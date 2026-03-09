@@ -35,9 +35,9 @@ class TestJavaScriptPathResolution:
             result = graph_updater.factory.import_processor._resolve_js_module_path(
                 import_path, "test.src.components.Button"
             )
-            assert result == expected, (
-                f"Failed for {import_path}: got {result}, expected {expected}"
-            )
+            assert (
+                result == expected
+            ), f"Failed for {import_path}: got {result}, expected {expected}"
 
     def test_same_directory_imports(self, graph_updater: GraphUpdater) -> None:
         """Test resolution of same directory (./) imports."""
@@ -53,9 +53,9 @@ class TestJavaScriptPathResolution:
             result = graph_updater.factory.import_processor._resolve_js_module_path(
                 import_path, current_module
             )
-            assert result == expected, (
-                f"Failed for {import_path}: got {result}, expected {expected}"
-            )
+            assert (
+                result == expected
+            ), f"Failed for {import_path}: got {result}, expected {expected}"
 
     def test_parent_directory_imports(self, graph_updater: GraphUpdater) -> None:
         """Test resolution of parent directory (../) imports."""
@@ -72,9 +72,9 @@ class TestJavaScriptPathResolution:
             result = graph_updater.factory.import_processor._resolve_js_module_path(
                 import_path, current_module
             )
-            assert result == expected, (
-                f"Failed for {import_path}: got {result}, expected {expected}"
-            )
+            assert (
+                result == expected
+            ), f"Failed for {import_path}: got {result}, expected {expected}"
 
     def test_complex_relative_paths(self, graph_updater: GraphUpdater) -> None:
         """Test resolution of complex relative paths with mixed components."""
@@ -90,9 +90,9 @@ class TestJavaScriptPathResolution:
             result = graph_updater.factory.import_processor._resolve_js_module_path(
                 import_path, current_module
             )
-            assert result == expected, (
-                f"Failed for {import_path}: got {result}, expected {expected}"
-            )
+            assert (
+                result == expected
+            ), f"Failed for {import_path}: got {result}, expected {expected}"
 
     def test_edge_cases(self, graph_updater: GraphUpdater) -> None:
         """Test edge cases and boundary conditions."""
@@ -109,9 +109,9 @@ class TestJavaScriptPathResolution:
             result = graph_updater.factory.import_processor._resolve_js_module_path(
                 import_path, current_module
             )
-            assert result == expected, (
-                f"Failed for {import_path}: got {result}, expected {expected}"
-            )
+            assert (
+                result == expected
+            ), f"Failed for {import_path}: got {result}, expected {expected}"
 
     def test_deeply_nested_modules(self, graph_updater: GraphUpdater) -> None:
         """Test resolution from deeply nested modules."""
@@ -129,6 +129,6 @@ class TestJavaScriptPathResolution:
             result = graph_updater.factory.import_processor._resolve_js_module_path(
                 import_path, current_module
             )
-            assert result == expected, (
-                f"Failed for {import_path}: got {result}, expected {expected}"
-            )
+            assert (
+                result == expected
+            ), f"Failed for {import_path}: got {result}, expected {expected}"

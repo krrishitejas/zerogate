@@ -169,9 +169,9 @@ try {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -179,9 +179,9 @@ try {
         call for call in call_relationships if "object_destructuring" in call.args[0][2]
     ]
 
-    assert len(destructuring_calls) >= 4, (
-        f"Expected at least 4 function calls in destructuring code, found {len(destructuring_calls)}"
-    )
+    assert (
+        len(destructuring_calls) >= 4
+    ), f"Expected at least 4 function calls in destructuring code, found {len(destructuring_calls)}"
 
 
 def test_array_destructuring(
@@ -322,9 +322,9 @@ const result = processArray([10, 20, 30, 40]);
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -332,9 +332,9 @@ const result = processArray([10, 20, 30, 40]);
         call for call in call_relationships if "array_destructuring" in call.args[0][2]
     ]
 
-    assert len(array_destructuring_calls) >= 5, (
-        f"Expected at least 5 function calls in array destructuring code, found {len(array_destructuring_calls)}"
-    )
+    assert (
+        len(array_destructuring_calls) >= 5
+    ), f"Expected at least 5 function calls in array destructuring code, found {len(array_destructuring_calls)}"
 
 
 def test_parameter_destructuring(
@@ -529,9 +529,9 @@ async function updateUser(id, data) { return { id, ...data }; }
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
     expected_classes = [
         f"{project_name}.parameter_destructuring.DataProcessor",
@@ -540,9 +540,9 @@ async function updateUser(id, data) { return { id, ...data }; }
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 class with destructuring methods, found {len(found_classes)}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 class with destructuring methods, found {len(found_classes)}"
 
 
 def test_destructuring_with_imports(
@@ -665,9 +665,9 @@ const response = processApiResponse({
         if "destructuring_imports" in call.args[0][2]
     ]
 
-    assert len(destructuring_imports) >= 5, (
-        f"Expected at least 5 destructuring imports, found {len(destructuring_imports)}"
-    )
+    assert (
+        len(destructuring_imports) >= 5
+    ), f"Expected at least 5 destructuring imports, found {len(destructuring_imports)}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -677,9 +677,9 @@ const response = processApiResponse({
         if "destructuring_imports" in call.args[0][2]
     ]
 
-    assert len(destructuring_calls) >= 3, (
-        f"Expected at least 3 function calls in destructuring import code, found {len(destructuring_calls)}"
-    )
+    assert (
+        len(destructuring_calls) >= 3
+    ), f"Expected at least 3 function calls in destructuring import code, found {len(destructuring_calls)}"
 
 
 def test_destructuring_comprehensive(
@@ -774,9 +774,9 @@ const formatted = formatData({
         if "comprehensive_destructuring" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 3, (
-        f"Expected at least 3 comprehensive destructuring calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 3
+    ), f"Expected at least 3 comprehensive destructuring calls, found {len(comprehensive_calls)}"
 
     for relationship in comprehensive_calls:
         assert len(relationship.args) == 3, "Call relationship should have 3 args"
@@ -785,12 +785,12 @@ const formatted = formatData({
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_destructuring" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_destructuring" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

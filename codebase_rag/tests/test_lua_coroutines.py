@@ -72,13 +72,13 @@ end
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 3, (
-        f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 3
+    ), f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 3, (
-        f"Expected at least 3 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 3
+    ), f"Expected at least 3 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_lua_coroutine_scheduler(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -210,17 +210,17 @@ sched:run()
 
     imports_rels = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(defines_rels) >= 8, (
-        f"Expected at least 8 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 8
+    ), f"Expected at least 8 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
-    assert len(imports_rels) >= 2, (
-        f"Expected at least 2 IMPORTS relationships, got {len(imports_rels)}"
-    )
+    assert (
+        len(imports_rels) >= 2
+    ), f"Expected at least 2 IMPORTS relationships, got {len(imports_rels)}"
 
 
 def test_lua_async_patterns(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -344,13 +344,13 @@ end
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 4, (
-        f"Expected at least 4 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 4
+    ), f"Expected at least 4 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
 
 def test_lua_generator_patterns(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -462,13 +462,13 @@ print("First 10 squares of even numbers:", table.concat(results, ", "))
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 5, (
-        f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 5
+    ), f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
 
 def test_lua_state_machines(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -594,14 +594,14 @@ end
 
     imports_rels = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(defines_rels) >= 7, (
-        f"Expected at least 7 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 7
+    ), f"Expected at least 7 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
-    assert len(imports_rels) >= 1, (
-        f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
-    )
+    assert (
+        len(imports_rels) >= 1
+    ), f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"

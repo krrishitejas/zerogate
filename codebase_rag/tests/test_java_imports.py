@@ -80,9 +80,9 @@ public class BasicImports {
     project_name = java_imports_project.name
     module_qn = f"{project_name}.src.main.java.com.example.BasicImports"
 
-    assert module_qn in updater.factory.import_processor.import_mapping, (
-        f"No import mapping for {module_qn}"
-    )
+    assert (
+        module_qn in updater.factory.import_processor.import_mapping
+    ), f"No import mapping for {module_qn}"
 
     imports = updater.factory.import_processor.import_mapping[module_qn]
 
@@ -97,9 +97,9 @@ public class BasicImports {
 
     for name, path in expected_imports.items():
         assert name in imports, f"Missing import: {name}"
-        assert imports[name] == path, (
-            f"Wrong path for {name}: expected {path}, got {imports[name]}"
-        )
+        assert (
+            imports[name] == path
+        ), f"Wrong path for {name}: expected {path}, got {imports[name]}"
 
 
 def test_static_imports(
@@ -161,9 +161,9 @@ public class StaticImports {
     project_name = java_imports_project.name
     module_qn = f"{project_name}.src.main.java.com.example.StaticImports"
 
-    assert module_qn in updater.factory.import_processor.import_mapping, (
-        f"No import mapping for {module_qn}"
-    )
+    assert (
+        module_qn in updater.factory.import_processor.import_mapping
+    ), f"No import mapping for {module_qn}"
 
     imports = updater.factory.import_processor.import_mapping[module_qn]
 
@@ -178,9 +178,9 @@ public class StaticImports {
 
     for name, path in expected_static_imports.items():
         assert name in imports, f"Missing static import: {name}"
-        assert imports[name] == path, (
-            f"Wrong path for static import {name}: expected {path}, got {imports[name]}"
-        )
+        assert (
+            imports[name] == path
+        ), f"Wrong path for static import {name}: expected {path}, got {imports[name]}"
 
 
 def test_wildcard_imports(
@@ -250,9 +250,9 @@ public class WildcardImports {
     project_name = java_imports_project.name
     module_qn = f"{project_name}.src.main.java.com.example.WildcardImports"
 
-    assert module_qn in updater.factory.import_processor.import_mapping, (
-        f"No import mapping for {module_qn}"
-    )
+    assert (
+        module_qn in updater.factory.import_processor.import_mapping
+    ), f"No import mapping for {module_qn}"
 
     imports = updater.factory.import_processor.import_mapping[module_qn]
 
@@ -266,9 +266,9 @@ public class WildcardImports {
 
     for name, path in expected_wildcard_imports.items():
         assert name in imports, f"Missing wildcard import: {name}"
-        assert imports[name] == path, (
-            f"Wrong path for wildcard import {name}: expected {path}, got {imports[name]}"
-        )
+        assert (
+            imports[name] == path
+        ), f"Wrong path for wildcard import {name}: expected {path}, got {imports[name]}"
 
 
 def test_package_local_imports(
@@ -380,9 +380,9 @@ public class LocalImports {
     project_name = java_imports_project.name
     module_qn = f"{project_name}.src.main.java.com.example.LocalImports"
 
-    assert module_qn in updater.factory.import_processor.import_mapping, (
-        f"No import mapping for {module_qn}"
-    )
+    assert (
+        module_qn in updater.factory.import_processor.import_mapping
+    ), f"No import mapping for {module_qn}"
 
     imports = updater.factory.import_processor.import_mapping[module_qn]
 
@@ -392,9 +392,9 @@ public class LocalImports {
 
     for name, path in expected_imports.items():
         assert name in imports, f"Missing local import: {name}"
-        assert imports[name] == path, (
-            f"Wrong path for local import {name}: expected {path}, got {imports[name]}"
-        )
+        assert (
+            imports[name] == path
+        ), f"Wrong path for local import {name}: expected {path}, got {imports[name]}"
 
 
 def test_qualified_names_without_imports(
@@ -464,6 +464,6 @@ public class QualifiedNames {
     expected_class = (
         f"{project_name}.src.main.java.com.example.QualifiedNames.QualifiedNames"
     )
-    assert expected_class in created_classes, (
-        f"QualifiedNames class not found in: {created_classes}"
-    )
+    assert (
+        expected_class in created_classes
+    ), f"QualifiedNames class not found in: {created_classes}"

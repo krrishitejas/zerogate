@@ -21,7 +21,7 @@ if TYPE_CHECKING:
     from pydantic_ai.models import Model
 
 
-def _create_provider_model(config: ModelConfig) -> Model:
+def create_model(config: ModelConfig) -> Model:
     provider = get_provider_from_config(config)
     return provider.create_model(config.model_id)
 
@@ -66,7 +66,7 @@ class CypherGenerator:
     def __init__(self) -> None:
         try:
             config = settings.active_cypher_config
-            llm = _create_provider_model(config)
+            llm = create_model(config)
 
             system_prompt = (
                 LOCAL_CYPHER_SYSTEM_PROMPT
@@ -107,7 +107,7 @@ class CypherGenerator:
 def create_rag_orchestrator(tools: list[Tool]) -> Agent:
     try:
         config = settings.active_orchestrator_config
-        llm = _create_provider_model(config)
+        llm = create_model(config)
 
         return Agent(
             model=llm,

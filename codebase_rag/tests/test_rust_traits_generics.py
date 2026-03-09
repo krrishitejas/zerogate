@@ -179,9 +179,9 @@ impl Printable for Rectangle {
             for trait_method in ["draw", "print", "area", "perimeter"]
         )
     ]
-    assert len(trait_impl_calls) > 0, (
-        "Trait implementations should be detected (concrete types should have trait methods)"
-    )
+    assert (
+        len(trait_impl_calls) > 0
+    ), "Trait implementations should be detected (concrete types should have trait methods)"
 
 
 def test_generic_types_and_constraints(
@@ -564,9 +564,9 @@ impl Factory for StringFactory {
     calls = mock_ingestor.method_calls
 
     parser_calls = [call for call in calls if "Parser" in str(call)]
-    assert len(parser_calls) > 0, (
-        "Parser trait with associated types should be detected"
-    )
+    assert (
+        len(parser_calls) > 0
+    ), "Parser trait with associated types should be detected"
 
     database_calls = [call for call in calls if "Database" in str(call)]
     assert len(database_calls) > 0, "Database trait should be detected"

@@ -137,9 +137,9 @@ impl<'a> ImportantExcerpt<'a> {
         for call in calls
         if "longest" in str(call) or "ImportantExcerpt" in str(call)
     ]
-    assert len(lifetime_calls) > 0, (
-        "Lifetime-annotated functions and structs should be detected"
-    )
+    assert (
+        len(lifetime_calls) > 0
+    ), "Lifetime-annotated functions and structs should be detected"
 
 
 def test_smart_pointers(

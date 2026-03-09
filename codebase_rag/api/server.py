@@ -49,8 +49,8 @@ def create_app() -> FastAPI:
     )
 
     # ── Routes ────────────────────────────────────────────────────────
-    from .routes.projects import router as projects_router
     from .routes.findings import router as findings_router
+    from .routes.projects import router as projects_router
     from .routes.websocket import router as ws_router
 
     app.include_router(projects_router, prefix="/api")

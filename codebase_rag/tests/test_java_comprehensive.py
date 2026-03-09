@@ -138,12 +138,12 @@ public abstract class Shape {
     missing_classes = expected_classes - created_classes
     missing_interfaces = expected_interfaces - created_interfaces
 
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_interfaces, (
-        f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_interfaces
+    ), f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
 
     created_methods = get_node_names(mock_ingestor, "Method")
 
@@ -162,9 +162,9 @@ public abstract class Shape {
     }
 
     missing_methods = expected_methods - created_methods
-    assert not missing_methods, (
-        f"Missing expected methods: {sorted(list(missing_methods))}"
-    )
+    assert (
+        not missing_methods
+    ), f"Missing expected methods: {sorted(list(missing_methods))}"
 
 
 def test_java_enums_and_annotations(
@@ -268,9 +268,9 @@ public class AnnotatedClass {
 
     assert not missing_classes, f"Missing classes: {sorted(list(missing_classes))}"
     assert not missing_enums, f"Missing enums: {sorted(list(missing_enums))}"
-    assert not missing_interfaces, (
-        f"Missing interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_interfaces
+    ), f"Missing interfaces: {sorted(list(missing_interfaces))}"
 
 
 def test_java_generics_and_collections(
@@ -376,12 +376,12 @@ public class WildcardExample {
     missing_classes = expected_classes - created_classes
     missing_interfaces = expected_interfaces - created_interfaces
 
-    assert not missing_classes, (
-        f"Missing expected generic classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_interfaces, (
-        f"Missing expected generic interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected generic classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_interfaces
+    ), f"Missing expected generic interfaces: {sorted(list(missing_interfaces))}"
 
 
 def test_java_static_and_final(
@@ -465,9 +465,9 @@ public abstract class AbstractService {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_java_inner_classes(
@@ -680,12 +680,12 @@ public class LambdaExamples {
     missing_classes = expected_classes - created_classes
     missing_interfaces = expected_interfaces - created_interfaces
 
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_interfaces, (
-        f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_interfaces
+    ), f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
 
 
 def test_java_exception_handling(
@@ -803,6 +803,6 @@ public class ExceptionHandler {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected exception classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected exception classes: {sorted(list(missing_classes))}"

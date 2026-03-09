@@ -67,16 +67,12 @@ class AutoScanner:
         findings: list[VulnerabilityFinding] = []
 
         # Run all queries in parallel with semaphore
-        tasks = [
-            self._execute_security_query(query) for query in QUERY_BANK
-        ]
+        tasks = [self._execute_security_query(query) for query in QUERY_BANK]
         results = await asyncio.gather(*tasks, return_exceptions=True)
 
         for i, result in enumerate(results):
             if isinstance(result, Exception):
-                logger.warning(
-                    f"Security query '{QUERY_BANK[i].id}' failed: {result}"
-                )
+                logger.warning(f"Security query '{QUERY_BANK[i].id}' failed: {result}")
                 continue
             if isinstance(result, list):
                 findings.extend(result)
@@ -109,13 +105,9 @@ class AutoScanner:
     ) -> list[VulnerabilityFinding]:
         """Execute a single security query against Memgraph."""
         async with self._semaphore:
-            return await asyncio.to_thread(
-                self._run_query_sync, query
-            )
+            return await asyncio.to_thread(self._run_query_sync, query)
 
-    def _run_query_sync(
-        self, query: SecurityQuery
-    ) -> list[VulnerabilityFinding]:
+    def _run_query_sync(self, query: SecurityQuery) -> list[VulnerabilityFinding]:
         """Synchronous query execution in a thread."""
         findings: list[VulnerabilityFinding] = []
 
@@ -123,17 +115,17 @@ class AutoScanner:
             conn = self._get_connection()
             cursor = conn.cursor()
             cursor.execute(query.cypher)
-            
+
             # Extract column names properly, handling both tuples and mgclient.Column objects
             columns = []
-            for desc in (cursor.description or []):
+            for desc in cursor.description or []:
                 if isinstance(desc, tuple):
                     columns.append(desc[0])
                 elif hasattr(desc, "name"):
                     columns.append(desc.name)
                 else:
                     columns.append(str(desc))
-                    
+
             rows = cursor.fetchall()
             conn.close()
 
@@ -163,15 +155,11 @@ class AutoScanner:
 
                 # For call-chain queries, add the callee too
                 if "callee" in row_dict:
-                    callee_path = self._resolve_file_path(
-                        row_dict.get("callee", "")
-                    )
+                    callee_path = self._resolve_file_path(row_dict.get("callee", ""))
                     blast_radius.append(
                         AffectedNode(
                             file_path=callee_path,
-                            function_name=str(
-                                row_dict.get("callee_name", "unknown")
-                            ),
+                            function_name=str(row_dict.get("callee_name", "unknown")),
                             qualified_name=str(row_dict.get("callee", "")),
                         )
                     )
@@ -204,9 +192,7 @@ class AutoScanner:
                 return candidate
         return parts[0] + ".py" if parts else "unknown"
 
-    async def generate_fix(
-        self, finding: VulnerabilityFinding
-    ) -> FixProposal:
+    async def generate_fix(self, finding: VulnerabilityFinding) -> FixProposal:
         """Generate an AI-powered fix for a vulnerability finding."""
         if not finding.blast_radius:
             raise ValueError("Finding has no blast radius — cannot generate fix.")
@@ -219,9 +205,7 @@ class AutoScanner:
         if not full_path.exists():
             raise FileNotFoundError(f"Source file not found: {full_path}")
 
-        source_lines = full_path.read_text(encoding="utf-8").splitlines(
-            keepends=True
-        )
+        source_lines = full_path.read_text(encoding="utf-8").splitlines(keepends=True)
 
         # Extract the relevant code block
         start = (target.start_line or 1) - 1
@@ -229,9 +213,7 @@ class AutoScanner:
         original_code = "".join(source_lines[start:end])
 
         # Generate fix using LLM
-        patched_code = await self._generate_fix_with_llm(
-            original_code, finding
-        )
+        patched_code = await self._generate_fix_with_llm(original_code, finding)
 
         # Create unified diff
         diff = difflib.unified_diff(

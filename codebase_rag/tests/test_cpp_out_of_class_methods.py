@@ -129,9 +129,9 @@ void useNestedClass() {
 
     method_names = _get_method_names(mock_ingestor, "MyClass")
 
-    assert "method1" in method_names, (
-        f"Expected 'method1' in method names, got: {method_names}"
-    )
+    assert (
+        "method1" in method_names
+    ), f"Expected 'method1' in method names, got: {method_names}"
     assert "method2" in method_names, "Expected 'method2' in method names"
     assert "staticMethod" in method_names, "Expected 'staticMethod' in method names"
 
@@ -195,9 +195,9 @@ void useVector() {
     method_names = _get_method_names(mock_ingestor, "Vector2D")
     operator_methods = [m for m in method_names if "operator" in m]
 
-    assert len(operator_methods) >= 4, (
-        f"Expected at least 4 operator definitions, got {len(operator_methods)}: {operator_methods}"
-    )
+    assert (
+        len(operator_methods) >= 4
+    ), f"Expected at least 4 operator definitions, got {len(operator_methods)}: {operator_methods}"
 
 
 def test_out_of_class_constructor_destructor(
@@ -266,12 +266,12 @@ void useResource() {
 
     method_names = _get_method_names(mock_ingestor, "Resource")
 
-    assert "Resource" in method_names, (
-        f"Expected constructor 'Resource', got: {method_names}"
-    )
-    assert "~Resource" in method_names, (
-        f"Expected destructor '~Resource', got: {method_names}"
-    )
+    assert (
+        "Resource" in method_names
+    ), f"Expected constructor 'Resource', got: {method_names}"
+    assert (
+        "~Resource" in method_names
+    ), f"Expected destructor '~Resource', got: {method_names}"
     assert "allocate" in method_names, "Expected 'allocate' in method names"
     assert "deallocate" in method_names, "Expected 'deallocate' in method names"
 
@@ -425,9 +425,9 @@ void useMixedClass() {
 
     method_names = _get_method_names(mock_ingestor, "MixedClass")
 
-    assert "inlineMethod1" in method_names, (
-        f"Expected inline methods, got: {method_names}"
-    )
+    assert (
+        "inlineMethod1" in method_names
+    ), f"Expected inline methods, got: {method_names}"
     assert "inlineMethod2" in method_names
     assert "outOfClassMethod1" in method_names, "Expected out-of-class methods"
     assert "outOfClassMethod2" in method_names

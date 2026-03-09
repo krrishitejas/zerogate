@@ -97,13 +97,13 @@ return pattern_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 9, (
-        f"Expected at least 9 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 9
+    ), f"Expected at least 9 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 6, (
-        f"Expected at least 6 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 6
+    ), f"Expected at least 6 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_string_manipulation_functions(
@@ -221,13 +221,13 @@ return string_manip
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 13, (
-        f"Expected at least 13 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 13
+    ), f"Expected at least 13 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 10, (
-        f"Expected at least 10 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 10
+    ), f"Expected at least 10 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_complex_pattern_operations(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -329,13 +329,13 @@ return complex_patterns
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 9, (
-        f"Expected at least 9 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 9
+    ), f"Expected at least 9 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 6, (
-        f"Expected at least 6 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 6
+    ), f"Expected at least 6 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_unicode_and_encoding(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -420,14 +420,14 @@ return unicode_utils
 
     imports_rels = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(defines_rels) >= 7, (
-        f"Expected at least 7 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 7
+    ), f"Expected at least 7 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 5, (
-        f"Expected at least 5 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 5
+    ), f"Expected at least 5 CALLS relationships, got {len(calls_rels)}"
 
-    assert len(imports_rels) >= 1, (
-        f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
-    )
+    assert (
+        len(imports_rels) >= 1
+    ), f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"

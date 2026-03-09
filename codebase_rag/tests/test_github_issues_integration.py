@@ -28,16 +28,16 @@ class TestGitHubIssuesIntegration:
             config = AppConfig()
 
             orchestrator = config.active_orchestrator_config
-            assert orchestrator.provider == "ollama", (
-                "Should use Ollama from .env, not default to Gemini"
-            )
+            assert (
+                orchestrator.provider == "ollama"
+            ), "Should use Ollama from .env, not default to Gemini"
             assert orchestrator.model_id == "llama3.2"
             assert orchestrator.endpoint == "http://localhost:11434/v1"
 
             cypher = config.active_cypher_config
-            assert cypher.provider == "ollama", (
-                "Should use Ollama from .env, not default to Gemini"
-            )
+            assert (
+                cypher.provider == "ollama"
+            ), "Should use Ollama from .env, not default to Gemini"
             assert cypher.model_id == "codellama"
             assert cypher.endpoint == "http://localhost:11434/v1"
 

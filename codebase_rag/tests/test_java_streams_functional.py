@@ -385,9 +385,9 @@ public class StreamOperations {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_functional_interfaces(
@@ -723,12 +723,12 @@ public class FunctionalInterfaces {
     missing_classes = expected_classes - created_classes
     missing_interfaces = expected_interfaces - created_interfaces
 
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_interfaces, (
-        f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_interfaces
+    ), f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
 
 
 def test_optional_patterns(
@@ -1042,9 +1042,9 @@ public class OptionalPatterns {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_method_references_patterns(
@@ -1404,6 +1404,6 @@ public class MethodReferences {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"

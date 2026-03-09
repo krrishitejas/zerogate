@@ -11,8 +11,9 @@ Usage:
 
 import os
 import re
-import sys
 from pathlib import Path
+
+from loguru import logger
 
 # ----------------------------------------------------------------------
 # 1. Patterns to look for (case‑sensitive)
@@ -30,15 +31,34 @@ PATTERN = re.compile("|".join(OLD_TOKENS))
 # 2. Exclusion rules
 # ----------------------------------------------------------------------
 IGNORE_DIRS = {".git", ".idea", "__pycache__", "node_modules"}
-IGNORE_FILES = {"check_zerogate.py", "rebrand_zerogate.py",
-"rebrand_zerogate.sh"}
+IGNORE_FILES = {"check_zerogate.py", "rebrand_zerogate.py", "rebrand_zerogate.sh"}
 BINARY_EXTS = {
-    ".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff",
-    ".ico", ".svg", ".eot", ".ttf", ".otf",
-    ".woff", ".woff2", ".mp4", ".mp3", ".wav",
-    ".exe", ".dll", ".so", ".dylib", ".pyc", ".pyo",
-    ".class", ".jar",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".gif",
+    ".bmp",
+    ".tiff",
+    ".ico",
+    ".svg",
+    ".eot",
+    ".ttf",
+    ".otf",
+    ".woff",
+    ".woff2",
+    ".mp4",
+    ".mp3",
+    ".wav",
+    ".exe",
+    ".dll",
+    ".so",
+    ".dylib",
+    ".pyc",
+    ".pyo",
+    ".class",
+    ".jar",
 }
+
 
 def is_text_file(path: Path) -> bool:
     """Heuristic – try to decode a small chunk as UTF‑8."""
@@ -51,6 +71,7 @@ def is_text_file(path: Path) -> bool:
         return True
     except Exception:
         return False
+
 
 def scan_for_tokens(root: Path):
     remaining = []
@@ -72,18 +93,18 @@ def scan_for_tokens(root: Path):
                 remaining.append(fpath.relative_to(root))
     return remaining
 
+
 def main():
     root = Path.cwd()
     leftovers = scan_for_tokens(root)
 
     if leftovers:
-        print("Legacy identifiers still present in the following files:")
+        logger.warning(f"Found {len(leftovers)} old tokens in:")
         for f in leftovers:
-            print(f"  - {f}")
-        print("\nTotal left: ", len(leftovers))
+            logger.info(f"  - {f}")
     else:
-        print("✅ No legacy identifiers found – the repo is fully rebranded!")
+        logger.success("No old tokens found! Rebrand looks solid.")
+
 
 if __name__ == "__main__":
     main()
-

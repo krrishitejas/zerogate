@@ -1147,9 +1147,9 @@ fn test_arc_trait_objects() {
         or "WorkQueue" in str(call)
         or "ThreadSafeData" in str(call)
     ]
-    assert len(arc_calls) > 0, (
-        "Arc atomic reference counting patterns should be detected"
-    )
+    assert (
+        len(arc_calls) > 0
+    ), "Arc atomic reference counting patterns should be detected"
 
 
 def test_refcell_interior_mutability(
@@ -1566,9 +1566,9 @@ fn test_advanced_refcell() {
         for call in calls
         if "MockDatabase" in str(call) or "Cache" in str(call) or "Subject" in str(call)
     ]
-    assert len(refcell_calls) > 0, (
-        "RefCell interior mutability patterns should be detected"
-    )
+    assert (
+        len(refcell_calls) > 0
+    ), "RefCell interior mutability patterns should be detected"
 
 
 def test_custom_smart_pointers(

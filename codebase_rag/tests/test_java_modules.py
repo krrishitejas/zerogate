@@ -500,12 +500,12 @@ public class ConsoleLoggingProvider implements LoggingProvider {
     missing_interfaces = expected_interfaces - created_interfaces
     missing_classes = expected_classes - created_classes
 
-    assert not missing_interfaces, (
-        f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
-    )
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_interfaces
+    ), f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_module_layer_and_configuration(
@@ -770,9 +770,9 @@ public class ModuleConfiguration {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_modular_application_structure(

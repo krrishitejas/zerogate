@@ -392,16 +392,16 @@ void demonstrateFriendFunctions() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_friend_templates(
@@ -736,9 +736,9 @@ void demonstrateTemplateFriends() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     found_functions = [func for func in expected_functions if func in created_functions]
-    assert len(found_functions) >= 1, (
-        f"Expected at least 1 friend template function, found {len(found_functions)}: {found_functions}"
-    )
+    assert (
+        len(found_functions) >= 1
+    ), f"Expected at least 1 friend template function, found {len(found_functions)}: {found_functions}"
 
 
 def test_cpp_friend_comprehensive(
@@ -958,8 +958,8 @@ void demonstrateComprehensiveFriends() {
         if "comprehensive_friends" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 3, (
-        f"Expected at least 3 comprehensive friend calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 3
+    ), f"Expected at least 3 comprehensive friend calls, found {len(comprehensive_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

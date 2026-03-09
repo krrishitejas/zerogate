@@ -111,17 +111,17 @@ app:start()
 
     imports_rels = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(defines_rels) >= 5, (
-        f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 5
+    ), f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
-    assert len(imports_rels) >= 1, (
-        f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
-    )
+    assert (
+        len(imports_rels) >= 1
+    ), f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
 
 
 def test_database_orm_scenario(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -239,17 +239,17 @@ db:close()
 
     imports_rels = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(defines_rels) >= 4, (
-        f"Expected at least 4 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 4
+    ), f"Expected at least 4 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
-    assert len(imports_rels) >= 1, (
-        f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
-    )
+    assert (
+        len(imports_rels) >= 1
+    ), f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
 
 
 def test_game_engine_scenario(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -367,13 +367,13 @@ Game:init()
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 5, (
-        f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 5
+    ), f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
 
 def test_configuration_management_scenario(
@@ -541,17 +541,17 @@ local api_key = config_mgr:get("api", "key")
 
     imports_rels = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(defines_rels) >= 6, (
-        f"Expected at least 6 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 6
+    ), f"Expected at least 6 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
-    assert len(imports_rels) >= 1, (
-        f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
-    )
+    assert (
+        len(imports_rels) >= 1
+    ), f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
 
 
 def test_data_processing_pipeline(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -718,17 +718,17 @@ pipeline:export_results(csv_data)
 
     imports_rels = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(defines_rels) >= 8, (
-        f"Expected at least 8 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 8
+    ), f"Expected at least 8 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
-    assert len(imports_rels) >= 1, (
-        f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
-    )
+    assert (
+        len(imports_rels) >= 1
+    ), f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
 
 
 def test_microservice_architecture(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -909,14 +909,14 @@ local user_data = mesh:call_service("user-service", "/users/123", "GET")
 
     imports_rels = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(defines_rels) >= 6, (
-        f"Expected at least 6 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 6
+    ), f"Expected at least 6 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
-    assert len(imports_rels) >= 1, (
-        f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
-    )
+    assert (
+        len(imports_rels) >= 1
+    ), f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"

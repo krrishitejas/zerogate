@@ -126,9 +126,9 @@ return use_stdlib
     stdlib_modules = {"string", "table", "math", "os", "io"}
     found_stdlib = stdlib_modules & set(import_mapping.keys())
 
-    assert len(found_stdlib) >= 3, (
-        f"Expected at least 3 stdlib modules detected, found {len(found_stdlib)}: {found_stdlib}"
-    )
+    assert (
+        len(found_stdlib) >= 3
+    ), f"Expected at least 3 stdlib modules detected, found {len(found_stdlib)}: {found_stdlib}"
 
 
 def test_lua_pcall_require_pattern(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -183,6 +183,6 @@ return safe_load
 
     import_mapping = updater.factory.import_processor.import_mapping.get(module_qn, {})
 
-    assert "json" in import_mapping or "optional" in import_mapping, (
-        f"Expected pcall require patterns to be captured, got: {import_mapping}"
-    )
+    assert (
+        "json" in import_mapping or "optional" in import_mapping
+    ), f"Expected pcall require patterns to be captured, got: {import_mapping}"

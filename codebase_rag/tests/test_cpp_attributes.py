@@ -318,9 +318,9 @@ void testTemplateAttributes() {
         )
     ]
 
-    assert len(attributed_functions) >= 7, (
-        f"Expected at least 7 attributed functions, found {len(attributed_functions)}"
-    )
+    assert (
+        len(attributed_functions) >= 7
+    ), f"Expected at least 7 attributed functions, found {len(attributed_functions)}"
 
     attribute_function_calls = [
         call
@@ -336,9 +336,9 @@ void testTemplateAttributes() {
         )
     ]
 
-    assert len(attribute_function_calls) >= 3, (
-        f"Expected at least 3 attributed function calls, found {len(attribute_function_calls)}"
-    )
+    assert (
+        len(attribute_function_calls) >= 3
+    ), f"Expected at least 3 attributed function calls, found {len(attribute_function_calls)}"
 
 
 def test_compiler_specific_attributes(
@@ -698,9 +698,9 @@ void testAttributeInheritance() {
         )
     ]
 
-    assert len(compiler_attributed_functions) >= 6, (
-        f"Expected at least 6 compiler-attributed functions, found {len(compiler_attributed_functions)}"
-    )
+    assert (
+        len(compiler_attributed_functions) >= 6
+    ), f"Expected at least 6 compiler-attributed functions, found {len(compiler_attributed_functions)}"
 
     attributed_classes = [
         call
@@ -712,9 +712,9 @@ void testAttributeInheritance() {
         )
     ]
 
-    assert len(attributed_classes) >= 3, (
-        f"Expected at least 3 attributed classes, found {len(attributed_classes)}"
-    )
+    assert (
+        len(attributed_classes) >= 3
+    ), f"Expected at least 3 attributed classes, found {len(attributed_classes)}"
 
 
 def test_attribute_combinations_and_edge_cases(
@@ -1045,17 +1045,17 @@ void testUltimateAttributes() {
         )
     ]
 
-    assert len(edge_case_functions) >= 5, (
-        f"Expected at least 5 edge case attributed functions, found {len(edge_case_functions)}"
-    )
+    assert (
+        len(edge_case_functions) >= 5
+    ), f"Expected at least 5 edge case attributed functions, found {len(edge_case_functions)}"
 
     complex_calls = [
         call for call in call_relationships if "attribute_edge_cases" in call.args[0][2]
     ]
 
-    assert len(complex_calls) >= 8, (
-        f"Expected at least 8 complex attribute-related calls, found {len(complex_calls)}"
-    )
+    assert (
+        len(complex_calls) >= 8
+    ), f"Expected at least 8 complex attribute-related calls, found {len(complex_calls)}"
 
 
 def test_cpp_attributes_comprehensive(
@@ -1225,13 +1225,13 @@ void testAttributePolymorphism() {
         if "comprehensive_attributes" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 10, (
-        f"Expected at least 10 comprehensive attribute calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 10
+    ), f"Expected at least 10 comprehensive attribute calls, found {len(comprehensive_calls)}"
 
-    assert len(comprehensive_defines) >= 8, (
-        f"Expected at least 8 comprehensive attribute definitions, found {len(comprehensive_defines)}"
-    )
+    assert (
+        len(comprehensive_defines) >= 8
+    ), f"Expected at least 8 comprehensive attribute definitions, found {len(comprehensive_defines)}"
 
     attribute_inherits = [
         call
@@ -1239,6 +1239,6 @@ void testAttributePolymorphism() {
         if "comprehensive_attributes" in call.args[0][2]
     ]
 
-    assert len(attribute_inherits) >= 1, (
-        f"Expected at least 1 inheritance with attributes, found {len(attribute_inherits)}"
-    )
+    assert (
+        len(attribute_inherits) >= 1
+    ), f"Expected at least 1 inheritance with attributes, found {len(attribute_inherits)}"

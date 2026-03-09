@@ -51,9 +51,9 @@ nested.level1.level2.new_value = "added"
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 1, (
-        f"Expected at least 1 DEFINES relationship, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 1
+    ), f"Expected at least 1 DEFINES relationship, got {len(defines_rels)}"
 
 
 def test_table_iteration_patterns(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -109,9 +109,9 @@ end
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 2, (
-        f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 2
+    ), f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
 
 
 def test_table_modification_functions(
@@ -169,9 +169,9 @@ local text = table.concat(data, "-")
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 2, (
-        f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 2
+    ), f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
 
 
 def test_table_utility_functions(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -225,9 +225,9 @@ local max_numeric = table.maxn(test_table)
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 2, (
-        f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 2
+    ), f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
 
 
 def test_table_metatable_operations(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -292,9 +292,9 @@ proxy.name = "test"
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 2, (
-        f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 2
+    ), f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
 
 
 def test_table_serialization(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -345,6 +345,6 @@ local deserialized = deserialize_from_string(serialized)
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 2, (
-        f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 2
+    ), f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"

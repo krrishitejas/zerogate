@@ -33,9 +33,9 @@ def _make_mock_queries(
 
 
 @pytest.fixture
-def mock_language_queries() -> dict[
-    SupportedLanguage, dict[str, MagicMock | LanguageSpec | None]
-]:
+def mock_language_queries() -> (
+    dict[SupportedLanguage, dict[str, MagicMock | LanguageSpec | None]]
+):
     return {SupportedLanguage.PYTHON: _make_mock_queries(("__init__.py",))}
 
 

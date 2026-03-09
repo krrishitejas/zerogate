@@ -392,9 +392,9 @@ function cleanup() {
         if any(expected in func for expected in expected_functions)
     ]
 
-    assert len(error_handling_functions) >= 4, (
-        f"Expected at least 4 error handling functions, found {len(error_handling_functions)}"
-    )
+    assert (
+        len(error_handling_functions) >= 4
+    ), f"Expected at least 4 error handling functions, found {len(error_handling_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -402,9 +402,9 @@ function cleanup() {
         call for call in class_calls if "DataProcessor" in call[0][1]["qualified_name"]
     ]
 
-    assert len(data_processor_class) >= 1, (
-        f"Expected DataProcessor class with error handling, found {len(data_processor_class)}"
-    )
+    assert (
+        len(data_processor_class) >= 1
+    ), f"Expected DataProcessor class with error handling, found {len(data_processor_class)}"
 
 
 def test_custom_error_classes(
@@ -800,9 +800,9 @@ console.log('Recent errors:', aggregator.getRecent(1).length);
         if any(expected in cls for expected in expected_error_classes)
     ]
 
-    assert len(custom_error_classes) >= 5, (
-        f"Expected at least 5 custom error classes, found {len(custom_error_classes)}"
-    )
+    assert (
+        len(custom_error_classes) >= 5
+    ), f"Expected at least 5 custom error classes, found {len(custom_error_classes)}"
 
     inheritance_relationships = get_relationships(mock_ingestor, "INHERITS")
 
@@ -815,9 +815,9 @@ console.log('Recent errors:', aggregator.getRecent(1).length);
         )
     ]
 
-    assert len(error_inheritance) >= 2, (
-        f"Expected at least 2 error inheritance relationships, found {len(error_inheritance)}"
-    )
+    assert (
+        len(error_inheritance) >= 2
+    ), f"Expected at least 2 error inheritance relationships, found {len(error_inheritance)}"
 
 
 def test_async_error_handling(
@@ -1276,9 +1276,9 @@ testGracefulDegradation();
         )
     ]
 
-    assert len(async_error_functions) >= 4, (
-        f"Expected at least 4 async error handling functions, found {len(async_error_functions)}"
-    )
+    assert (
+        len(async_error_functions) >= 4
+    ), f"Expected at least 4 async error handling functions, found {len(async_error_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -1292,9 +1292,9 @@ testGracefulDegradation();
         )
     ]
 
-    assert len(async_error_classes) >= 3, (
-        f"Expected at least 3 async error handling classes, found {len(async_error_classes)}"
-    )
+    assert (
+        len(async_error_classes) >= 3
+    ), f"Expected at least 3 async error handling classes, found {len(async_error_classes)}"
 
 
 def test_error_handling_comprehensive(
@@ -1443,9 +1443,9 @@ async function performAsyncOperation(data) {
         if "comprehensive_errors" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 3, (
-        f"Expected at least 3 comprehensive error calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 3
+    ), f"Expected at least 3 comprehensive error calls, found {len(comprehensive_calls)}"
 
     all_nodes = mock_ingestor.ensure_node_batch.call_args_list
 
@@ -1455,6 +1455,6 @@ async function performAsyncOperation(data) {
         if "comprehensive_errors" in call[0][1].get("qualified_name", "")
     ]
 
-    assert len(comprehensive_nodes) >= 5, (
-        f"Expected at least 5 error handling nodes, found {len(comprehensive_nodes)}"
-    )
+    assert (
+        len(comprehensive_nodes) >= 5
+    ), f"Expected at least 5 error handling nodes, found {len(comprehensive_nodes)}"

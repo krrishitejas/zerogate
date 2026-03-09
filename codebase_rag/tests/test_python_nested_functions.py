@@ -229,9 +229,9 @@ def test_nested_function_parent_child_relationships(
 
     for parent, child in expected_relationships:
         relationship = (parent, child)
-        assert relationship in actual_relationships, (
-            f"Missing relationship: {parent[0]} {parent[1]} DEFINES {child[0]} {child[1]}"
-        )
+        assert (
+            relationship in actual_relationships
+        ), f"Missing relationship: {parent[0]} {parent[1]} DEFINES {child[0]} {child[1]}"
 
 
 def test_function_calls_are_tracked(
@@ -337,9 +337,9 @@ def test_function_in_class_method(
     )
 
     nested_qn = f"{project_name}.nested_functions.OuterClass.nested_in_method"
-    assert nested_qn not in created_methods, (
-        f"Nested function inside method should not be ingested as class method: {nested_qn}"
-    )
+    assert (
+        nested_qn not in created_methods
+    ), f"Nested function inside method should not be ingested as class method: {nested_qn}"
 
 
 def test_nested_function_in_staticmethod_not_ingested_as_method(
@@ -374,6 +374,6 @@ def test_nested_function_in_staticmethod_not_ingested_as_method(
     assert f"{project_name}.api.Api.say_hello" in created_methods
 
     bad_qn = f"{project_name}.api.Api.test_func"
-    assert bad_qn not in created_methods, (
-        f"Nested function inside staticmethod should not be ingested as class method: {bad_qn}"
-    )
+    assert (
+        bad_qn not in created_methods
+    ), f"Nested function inside staticmethod should not be ingested as class method: {bad_qn}"

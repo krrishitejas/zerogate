@@ -204,9 +204,9 @@ void demonstrateBasicNamespaces() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
     expected_functions = [
         f"{project_name}.basic_namespaces.globalFunction",
@@ -219,9 +219,9 @@ void demonstrateBasicNamespaces() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_using_directives(
@@ -418,9 +418,9 @@ void demonstrateTemplateUsing() {
     found_nested_classes = [
         cls for cls in expected_nested_classes if cls in created_classes
     ]
-    assert len(found_nested_classes) >= 2, (
-        f"Expected at least 2 nested namespace classes, found {len(found_nested_classes)}: {found_nested_classes}"
-    )
+    assert (
+        len(found_nested_classes) >= 2
+    ), f"Expected at least 2 nested namespace classes, found {len(found_nested_classes)}: {found_nested_classes}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -434,9 +434,9 @@ void demonstrateTemplateUsing() {
         )
     ]
 
-    assert len(namespace_calls) >= 4, (
-        f"Expected at least 4 namespace-related calls, found {len(namespace_calls)}"
-    )
+    assert (
+        len(namespace_calls) >= 4
+    ), f"Expected at least 4 namespace-related calls, found {len(namespace_calls)}"
 
 
 def test_anonymous_namespaces(
@@ -608,9 +608,9 @@ void compareLinkageStyles() {
         if any(internal_name in cls for internal_name in expected_internal_classes)
     ]
 
-    assert len(found_internal_classes) >= 2, (
-        f"Expected at least 2 anonymous namespace classes, found {len(found_internal_classes)}: {found_internal_classes}"
-    )
+    assert (
+        len(found_internal_classes) >= 2
+    ), f"Expected at least 2 anonymous namespace classes, found {len(found_internal_classes)}: {found_internal_classes}"
 
     expected_internal_functions = [
         "internal_function",
@@ -629,9 +629,9 @@ void compareLinkageStyles() {
         if any(internal_name in func for internal_name in expected_internal_functions)
     ]
 
-    assert len(found_internal_functions) >= 4, (
-        f"Expected at least 4 internal functions, found {len(found_internal_functions)}: {found_internal_functions}"
-    )
+    assert (
+        len(found_internal_functions) >= 4
+    ), f"Expected at least 4 internal functions, found {len(found_internal_functions)}: {found_internal_functions}"
 
 
 def test_cpp_namespaces_comprehensive(
@@ -803,9 +803,9 @@ void testNamespaceFeatures() {
         if "comprehensive_namespaces" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 12, (
-        f"Expected at least 12 comprehensive namespace calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 12
+    ), f"Expected at least 12 comprehensive namespace calls, found {len(comprehensive_calls)}"
 
     cross_namespace_calls = [
         call
@@ -821,8 +821,8 @@ void testNamespaceFeatures() {
         )
     ]
 
-    assert len(cross_namespace_calls) >= 4, (
-        f"Expected at least 4 cross-namespace calls, found {len(cross_namespace_calls)}"
-    )
+    assert (
+        len(cross_namespace_calls) >= 4
+    ), f"Expected at least 4 cross-namespace calls, found {len(cross_namespace_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

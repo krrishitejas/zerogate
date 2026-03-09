@@ -1076,13 +1076,13 @@ def test_cross_language_api_structure(
         )
     ]
 
-    assert python_files, (
-        f"Expected multiple Python file relationships, found {len(python_files)}"
-    )
+    assert (
+        python_files
+    ), f"Expected multiple Python file relationships, found {len(python_files)}"
 
-    assert typescript_files, (
-        f"Expected multiple TypeScript file relationships, found {len(typescript_files)}"
-    )
+    assert (
+        typescript_files
+    ), f"Expected multiple TypeScript file relationships, found {len(typescript_files)}"
 
 
 def test_schema_inheritance_detection(

@@ -153,9 +153,9 @@ public class SynchronizedExample {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_volatile_fields(
@@ -313,9 +313,9 @@ public class VolatileExample {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_concurrent_collections(
@@ -526,9 +526,9 @@ class Task {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_executor_service_patterns(
@@ -762,9 +762,9 @@ public class ExecutorExample {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_completable_future_patterns(
@@ -1002,9 +1002,9 @@ public class CompletableFutureExample {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_locks_and_conditions(
@@ -1241,6 +1241,6 @@ public class LocksExample {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"

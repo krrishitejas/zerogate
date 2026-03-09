@@ -137,9 +137,9 @@ void demonstrateBasicConcepts() {
         )
     ]
 
-    assert len(concept_definitions) >= 3, (
-        f"Expected at least 3 concept-related definitions, found {len(concept_definitions)}"
-    )
+    assert (
+        len(concept_definitions) >= 3
+    ), f"Expected at least 3 concept-related definitions, found {len(concept_definitions)}"
 
 
 def test_advanced_concept_patterns(
@@ -275,9 +275,9 @@ void demonstrateAdvancedConcepts() {
         call for call in call_relationships if "advanced_concepts" in call.args[0][2]
     ]
 
-    assert len(advanced_calls) >= 5, (
-        f"Expected at least 5 advanced concept calls, found {len(advanced_calls)}"
-    )
+    assert (
+        len(advanced_calls) >= 5
+    ), f"Expected at least 5 advanced concept calls, found {len(advanced_calls)}"
 
 
 def test_concept_composition_and_specialization(
@@ -374,9 +374,9 @@ void demonstrateConceptComposition() {
         if "concept_composition" in call.args[0][2] and "math" in str(call.args).lower()
     ]
 
-    assert len(namespace_relationships) >= 1, (
-        f"Expected namespace relationships for concepts, found {len(namespace_relationships)}"
-    )
+    assert (
+        len(namespace_relationships) >= 1
+    ), f"Expected namespace relationships for concepts, found {len(namespace_relationships)}"
 
     defines_relationships = get_relationships(mock_ingestor, "DEFINES")
 
@@ -386,6 +386,6 @@ void demonstrateConceptComposition() {
         if "concept_composition" in call.args[0][2]
     ]
 
-    assert len(composition_definitions) >= 5, (
-        f"Expected at least 5 concept composition definitions, found {len(composition_definitions)}"
-    )
+    assert (
+        len(composition_definitions) >= 5
+    ), f"Expected at least 5 concept composition definitions, found {len(composition_definitions)}"

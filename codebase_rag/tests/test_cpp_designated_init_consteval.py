@@ -321,16 +321,16 @@ void demonstrateDesignatedInitializers() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_consteval_immediate_functions(
@@ -668,9 +668,9 @@ void demonstrateConsteval() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_lambda_init_captures(
@@ -991,9 +991,9 @@ void demonstrateLambdaInitCaptures() {
 
     total_calls = len(call_relationships)
 
-    assert total_calls >= 15, (
-        f"Expected at least 15 total calls across all tests, found {total_calls}"
-    )
+    assert (
+        total_calls >= 15
+    ), f"Expected at least 15 total calls across all tests, found {total_calls}"
 
     assert defines_relationships, "Should still have DEFINES relationships"
 

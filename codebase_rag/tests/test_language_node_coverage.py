@@ -127,24 +127,24 @@ class TestNodeLabelStringValues:
     @pytest.mark.parametrize("label", list(NodeLabel))
     def test_node_label_value_is_pascal_case(self, label: NodeLabel) -> None:
         value = label.value
-        assert value[0].isupper(), (
-            f"NodeLabel.{label.name} value '{value}' should start with uppercase"
-        )
-        assert "_" not in value, (
-            f"NodeLabel.{label.name} value '{value}' should be PascalCase, not snake_case"
-        )
+        assert (
+            value[0].isupper()
+        ), f"NodeLabel.{label.name} value '{value}' should start with uppercase"
+        assert (
+            "_" not in value
+        ), f"NodeLabel.{label.name} value '{value}' should be PascalCase, not snake_case"
 
 
 class TestNodeTypeStringValues:
     @pytest.mark.parametrize("node_type", list(NodeType))
     def test_node_type_value_is_pascal_case(self, node_type: NodeType) -> None:
         value = node_type.value
-        assert value[0].isupper(), (
-            f"NodeType.{node_type.name} value '{value}' should start with uppercase"
-        )
-        assert "_" not in value, (
-            f"NodeType.{node_type.name} value '{value}' should be PascalCase"
-        )
+        assert (
+            value[0].isupper()
+        ), f"NodeType.{node_type.name} value '{value}' should start with uppercase"
+        assert (
+            "_" not in value
+        ), f"NodeType.{node_type.name} value '{value}' should be PascalCase"
 
 
 class TestConstraintsKeyFormat:
@@ -154,9 +154,9 @@ class TestConstraintsKeyFormat:
 
     def test_all_constraint_values_are_strings(self) -> None:
         for key, value in NODE_UNIQUE_CONSTRAINTS.items():
-            assert isinstance(value, str), (
-                f"Constraint value for {key} is not a string: {value}"
-            )
+            assert isinstance(
+                value, str
+            ), f"Constraint value for {key} is not a string: {value}"
 
     def test_all_constraint_keys_are_pascal_case(self) -> None:
         for key in NODE_UNIQUE_CONSTRAINTS:
@@ -179,9 +179,9 @@ class TestLanguageSpecHasRequiredFields:
         if lang not in LANGUAGE_SPECS:
             pytest.skip(f"Language {lang} not in LANGUAGE_SPECS")
         spec = LANGUAGE_SPECS[lang]
-        assert spec.function_node_types is not None, (
-            f"Language {lang} has no function_node_types defined"
-        )
+        assert (
+            spec.function_node_types is not None
+        ), f"Language {lang} has no function_node_types defined"
 
     @pytest.mark.parametrize("lang", list(SupportedLanguage))
     def test_each_language_spec_has_class_node_types(
@@ -190,9 +190,9 @@ class TestLanguageSpecHasRequiredFields:
         if lang not in LANGUAGE_SPECS:
             pytest.skip(f"Language {lang} not in LANGUAGE_SPECS")
         spec = LANGUAGE_SPECS[lang]
-        assert spec.class_node_types is not None, (
-            f"Language {lang} has no class_node_types defined"
-        )
+        assert (
+            spec.class_node_types is not None
+        ), f"Language {lang} has no class_node_types defined"
 
     @pytest.mark.parametrize("lang", list(SupportedLanguage))
     def test_each_language_spec_has_module_node_types(
@@ -201,9 +201,9 @@ class TestLanguageSpecHasRequiredFields:
         if lang not in LANGUAGE_SPECS:
             pytest.skip(f"Language {lang} not in LANGUAGE_SPECS")
         spec = LANGUAGE_SPECS[lang]
-        assert spec.module_node_types is not None, (
-            f"Language {lang} has no module_node_types defined"
-        )
+        assert (
+            spec.module_node_types is not None
+        ), f"Language {lang} has no module_node_types defined"
 
     @pytest.mark.parametrize("lang", list(SupportedLanguage))
     def test_each_language_spec_has_call_node_types(
@@ -212,9 +212,9 @@ class TestLanguageSpecHasRequiredFields:
         if lang not in LANGUAGE_SPECS:
             pytest.skip(f"Language {lang} not in LANGUAGE_SPECS")
         spec = LANGUAGE_SPECS[lang]
-        assert spec.call_node_types is not None, (
-            f"Language {lang} has no call_node_types defined"
-        )
+        assert (
+            spec.call_node_types is not None
+        ), f"Language {lang} has no call_node_types defined"
 
 
 class TestLanguageMetadataComplete:

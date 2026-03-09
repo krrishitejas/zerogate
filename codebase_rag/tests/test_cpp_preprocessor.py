@@ -248,9 +248,9 @@ void demonstrateDefineMacros() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_conditional_compilation(
@@ -545,16 +545,16 @@ void demonstrateConditionalCompilation() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 conditional compilation class, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 conditional compilation class, found {len(found_classes)}: {found_classes}"
 
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_pragma_directives(
@@ -831,16 +831,16 @@ void demonstratePragmaDirectives() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 pragma directive class, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 pragma directive class, found {len(found_classes)}: {found_classes}"
 
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_cpp_preprocessor_comprehensive(
@@ -1061,8 +1061,8 @@ void demonstrateComprehensivePreprocessor() {
         if "comprehensive_preprocessor" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 3, (
-        f"Expected at least 3 comprehensive preprocessor calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 3
+    ), f"Expected at least 3 comprehensive preprocessor calls, found {len(comprehensive_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

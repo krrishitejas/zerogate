@@ -259,9 +259,9 @@ public class InheritanceExample {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -441,12 +441,12 @@ public class InterfaceExample {
     missing_classes = expected_classes - created_classes
     missing_interfaces = expected_interfaces - created_interfaces
 
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_interfaces, (
-        f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_interfaces
+    ), f"Missing expected interfaces: {sorted(list(missing_interfaces))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 

@@ -177,9 +177,9 @@ public class OuterClass {
     }
 
     missing_classes = expected_outer_class - created_classes
-    assert not missing_classes, (
-        f"Missing expected outer class: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected outer class: {sorted(list(missing_classes))}"
 
 
 def test_anonymous_classes_complex(
@@ -508,9 +508,9 @@ public class AnonymousComplex {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_local_classes_in_methods(
@@ -819,9 +819,9 @@ public class LocalClasses {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_lambda_edge_cases(
@@ -1141,9 +1141,9 @@ public class LambdaEdgeCases {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_builder_pattern_nested(
@@ -1489,9 +1489,9 @@ public class ComplexObject {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_visitor_pattern_nested(
@@ -1947,6 +1947,6 @@ public abstract class Expression {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"

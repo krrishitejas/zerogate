@@ -318,9 +318,9 @@ void demonstrateSingleInheritance() {
         )
     ]
 
-    assert len(virtual_calls) >= 10, (
-        f"Expected at least 10 virtual function calls, found {len(virtual_calls)}"
-    )
+    assert (
+        len(virtual_calls) >= 10
+    ), f"Expected at least 10 virtual function calls, found {len(virtual_calls)}"
 
 
 def test_multiple_inheritance(
@@ -680,9 +680,9 @@ void testAnimalAbilities() {
         if found:
             found_relationships += 1
 
-    assert found_relationships >= 4, (
-        f"Expected at least 4 multiple inheritance relationships, found {found_relationships}"
-    )
+    assert (
+        found_relationships >= 4
+    ), f"Expected at least 4 multiple inheritance relationships, found {found_relationships}"
 
 
 def test_abstract_classes_and_interfaces(
@@ -1062,9 +1062,9 @@ void testAbstractDestructors() {
         if found:
             found_abstract_relationships += 1
 
-    assert found_abstract_relationships >= 3, (
-        f"Expected at least 3 abstract inheritance relationships, found {found_abstract_relationships}"
-    )
+    assert (
+        found_abstract_relationships >= 3
+    ), f"Expected at least 3 abstract inheritance relationships, found {found_abstract_relationships}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -1078,9 +1078,9 @@ void testAbstractDestructors() {
         )
     ]
 
-    assert len(virtual_interface_calls) >= 8, (
-        f"Expected at least 8 virtual interface calls, found {len(virtual_interface_calls)}"
-    )
+    assert (
+        len(virtual_interface_calls) >= 8
+    ), f"Expected at least 8 virtual interface calls, found {len(virtual_interface_calls)}"
 
 
 def test_cpp_inheritance_comprehensive(
@@ -1345,9 +1345,9 @@ void testTemplateInheritance() {
         if "comprehensive_inheritance" in call.args[0][2]
     ]
 
-    assert len(comprehensive_inherits) >= 6, (
-        f"Expected at least 6 comprehensive inheritance relationships, found {len(comprehensive_inherits)}"
-    )
+    assert (
+        len(comprehensive_inherits) >= 6
+    ), f"Expected at least 6 comprehensive inheritance relationships, found {len(comprehensive_inherits)}"
 
     comprehensive_calls = [
         call
@@ -1355,26 +1355,26 @@ void testTemplateInheritance() {
         if "comprehensive_inheritance" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 15, (
-        f"Expected at least 15 comprehensive virtual calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 15
+    ), f"Expected at least 15 comprehensive virtual calls, found {len(comprehensive_calls)}"
 
     for relationship in comprehensive_inherits:
-        assert len(relationship.args) == 3, (
-            "Inheritance relationship should have 3 args"
-        )
+        assert (
+            len(relationship.args) == 3
+        ), "Inheritance relationship should have 3 args"
         assert relationship.args[1] == "INHERITS", "Second arg should be 'INHERITS'"
 
         source_class = relationship.args[0][2]
         target_class = relationship.args[2][2]
 
-        assert "comprehensive_inheritance" in source_class, (
-            f"Source class should contain test file name: {source_class}"
-        )
+        assert (
+            "comprehensive_inheritance" in source_class
+        ), f"Source class should contain test file name: {source_class}"
 
-        assert isinstance(target_class, str) and target_class, (
-            f"Target should be non-empty string: {target_class}"
-        )
+        assert (
+            isinstance(target_class, str) and target_class
+        ), f"Target should be non-empty string: {target_class}"
 
     assert defines_relationships, "Should still have DEFINES relationships"
 
@@ -1582,17 +1582,17 @@ void demonstrateEdgeCases() {
         call for call in relationship_calls if "edge_case_inheritance" in call[0][0][2]
     ]
 
-    assert len(edge_case_inherits) >= 10, (
-        f"Expected at least 10 edge case inheritance relationships, found {len(edge_case_inherits)}"
-    )
+    assert (
+        len(edge_case_inherits) >= 10
+    ), f"Expected at least 10 edge case inheritance relationships, found {len(edge_case_inherits)}"
 
     specialization_inherits = [
         call for call in edge_case_inherits if "std::vector<int>" in str(call[0][0])
     ]
 
-    assert len(specialization_inherits) >= 1, (
-        f"Expected template specialization inheritance, found {len(specialization_inherits)}"
-    )
+    assert (
+        len(specialization_inherits) >= 1
+    ), f"Expected template specialization inheritance, found {len(specialization_inherits)}"
 
     crtp_inherits = [
         call
@@ -1600,9 +1600,9 @@ void demonstrateEdgeCases() {
         if "CRTP" in call[0][0][2] and "CRTP" in call[0][2][2]
     ]
 
-    assert len(crtp_inherits) >= 1, (
-        f"Expected CRTP inheritance pattern, found {len(crtp_inherits)}"
-    )
+    assert (
+        len(crtp_inherits) >= 1
+    ), f"Expected CRTP inheritance pattern, found {len(crtp_inherits)}"
 
     diamond_inherits = [
         call
@@ -1612,9 +1612,9 @@ void demonstrateEdgeCases() {
         or ("DiamondDerived" in call[0][0][2])
     ]
 
-    assert len(diamond_inherits) >= 3, (
-        f"Expected diamond inheritance with virtual bases, found {len(diamond_inherits)}"
-    )
+    assert (
+        len(diamond_inherits) >= 3
+    ), f"Expected diamond inheritance with virtual bases, found {len(diamond_inherits)}"
 
     nested_ns_inherits = [
         call
@@ -1622,9 +1622,9 @@ void demonstrateEdgeCases() {
         if "NestedTemplate" in call[0][2][2] or "ComplexBase" in call[0][2][2]
     ]
 
-    assert len(nested_ns_inherits) >= 2, (
-        f"Expected nested namespace template inheritance, found {len(nested_ns_inherits)}"
-    )
+    assert (
+        len(nested_ns_inherits) >= 2
+    ), f"Expected nested namespace template inheritance, found {len(nested_ns_inherits)}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -1634,6 +1634,6 @@ void demonstrateEdgeCases() {
         if "edge_case_inheritance" in call.args[0][2]
     ]
 
-    assert len(edge_case_calls) >= 5, (
-        f"Expected complex inheritance to preserve function calls, found {len(edge_case_calls)}"
-    )
+    assert (
+        len(edge_case_calls) >= 5
+    ), f"Expected complex inheritance to preserve function calls, found {len(edge_case_calls)}"

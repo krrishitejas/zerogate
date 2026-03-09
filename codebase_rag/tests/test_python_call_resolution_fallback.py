@@ -183,7 +183,7 @@ class TestCallResolutionFallback:
         assert result is not None, "Call resolution should succeed"
         func_type, resolved_qn = result
 
-        assert resolved_qn == same_module_qn, (
-            f"Should choose same-module function {same_module_qn}, got {resolved_qn}"
-        )
+        assert (
+            resolved_qn == same_module_qn
+        ), f"Should choose same-module function {same_module_qn}, got {resolved_qn}"
         assert func_type == NodeType.FUNCTION

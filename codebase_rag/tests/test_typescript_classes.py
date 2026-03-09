@@ -290,9 +290,9 @@ console.log(newRepo.name); // OK
     ]
 
     for expected in expected_classes:
-        assert expected in created_classes, (
-            f"Missing class with access modifiers: {expected}"
-        )
+        assert (
+            expected in created_classes
+        ), f"Missing class with access modifiers: {expected}"
 
     inheritance_relationships = get_relationships(mock_ingestor, "INHERITS")
 
@@ -302,9 +302,9 @@ console.log(newRepo.name); // OK
         if "ExtendedDemo" in call.args[0][2] and "AccessModifierDemo" in call.args[2][2]
     ]
 
-    assert len(access_inheritance) >= 1, (
-        "Expected ExtendedDemo to inherit from AccessModifierDemo"
-    )
+    assert (
+        len(access_inheritance) >= 1
+    ), "Expected ExtendedDemo to inherit from AccessModifierDemo"
 
 
 def test_abstract_classes(
@@ -650,9 +650,9 @@ console.log(car.start());
         )
     ]
 
-    assert len(abstract_inheritance) >= 2, (
-        f"Expected at least 2 abstract class inheritance relationships, found {len(abstract_inheritance)}"
-    )
+    assert (
+        len(abstract_inheritance) >= 2
+    ), f"Expected at least 2 abstract class inheritance relationships, found {len(abstract_inheritance)}"
 
 
 def test_parameter_properties(
@@ -924,9 +924,9 @@ service.process();
     ]
 
     for expected in expected_classes:
-        assert expected in created_classes, (
-            f"Missing parameter properties class: {expected}"
-        )
+        assert (
+            expected in created_classes
+        ), f"Missing parameter properties class: {expected}"
 
     method_calls = get_nodes(mock_ingestor, "Method")
 
@@ -940,9 +940,9 @@ service.process();
         )
     ]
 
-    assert len(parameter_property_methods) >= 4, (
-        f"Expected at least 4 parameter property accessor methods, found {len(parameter_property_methods)}"
-    )
+    assert (
+        len(parameter_property_methods) >= 4
+    ), f"Expected at least 4 parameter property accessor methods, found {len(parameter_property_methods)}"
 
 
 def test_typescript_class_comprehensive(
@@ -1128,9 +1128,9 @@ console.log(userRepo.name); // users
         if "comprehensive_classes" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 3, (
-        f"Expected at least 3 comprehensive class calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 3
+    ), f"Expected at least 3 comprehensive class calls, found {len(comprehensive_calls)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -1140,9 +1140,9 @@ console.log(userRepo.name); // users
         if "comprehensive_classes" in call[0][1]["qualified_name"]
     ]
 
-    assert len(comprehensive_classes) >= 4, (
-        f"Expected at least 4 classes in comprehensive test, found {len(comprehensive_classes)}"
-    )
+    assert (
+        len(comprehensive_classes) >= 4
+    ), f"Expected at least 4 classes in comprehensive test, found {len(comprehensive_classes)}"
 
     ts_inheritance = [
         call
@@ -1156,6 +1156,6 @@ console.log(userRepo.name); // users
         if "comprehensive_classes" in call.args[0][2]
     ]
 
-    assert len(ts_inheritance) >= 1, (
-        f"Expected at least 1 inheritance relationship, found {len(ts_inheritance)}"
-    )
+    assert (
+        len(ts_inheritance) >= 1
+    ), f"Expected at least 1 inheritance relationship, found {len(ts_inheritance)}"

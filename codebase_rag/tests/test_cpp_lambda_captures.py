@@ -73,16 +73,16 @@ void testInitCaptures() {
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
-    assert len(function_calls) >= 2, (
-        f"Expected at least 2 functions, found {len(function_calls)}"
-    )
+    assert (
+        len(function_calls) >= 2
+    ), f"Expected at least 2 functions, found {len(function_calls)}"
 
     function_names = {call[0][1]["name"] for call in function_calls}
     expected_functions = {"testBasicCaptures", "testInitCaptures"}
 
-    assert expected_functions.issubset(function_names), (
-        f"Missing functions. Expected {expected_functions}, found {function_names}"
-    )
+    assert expected_functions.issubset(
+        function_names
+    ), f"Missing functions. Expected {expected_functions}, found {function_names}"
 
 
 def test_generalized_captures(
@@ -174,9 +174,9 @@ void testStateMachine() {
     function_calls = get_nodes(mock_ingestor, "Function")
 
     assert len(class_calls) >= 1, f"Expected at least 1 class, found {len(class_calls)}"
-    assert len(function_calls) >= 3, (
-        f"Expected at least 3 functions, found {len(function_calls)}"
-    )
+    assert (
+        len(function_calls) >= 3
+    ), f"Expected at least 3 functions, found {len(function_calls)}"
 
     class_names = {call[0][1]["name"] for call in class_calls}
     assert "Resource" in class_names, f"Resource class not found in {class_names}"
@@ -188,9 +188,9 @@ void testStateMachine() {
         "testStateMachine",
     }
 
-    assert expected_functions.issubset(function_names), (
-        f"Missing functions. Expected {expected_functions}, found {function_names}"
-    )
+    assert expected_functions.issubset(
+        function_names
+    ), f"Missing functions. Expected {expected_functions}, found {function_names}"
 
 
 def test_lambda_validation_complete(
@@ -241,13 +241,13 @@ void validateLambdaCaptures() {
         c for c in all_relationships if len(c.args) > 1 and c.args[1] == "DEFINES"
     ]
 
-    assert len(function_calls) >= 1, (
-        f"Expected at least 1 function, found {len(function_calls)}"
-    )
+    assert (
+        len(function_calls) >= 1
+    ), f"Expected at least 1 function, found {len(function_calls)}"
     assert len(call_relationships) >= 0, "Should have CALLS relationships"
     assert len(defines_relationships) >= 0, "Should have DEFINES relationships"
 
     function_names = {call[0][1]["name"] for call in function_calls}
-    assert "validateLambdaCaptures" in function_names, (
-        f"validateLambdaCaptures function not found in {function_names}"
-    )
+    assert (
+        "validateLambdaCaptures" in function_names
+    ), f"validateLambdaCaptures function not found in {function_names}"

@@ -95,13 +95,13 @@ def test_single_file_repo_path_static_functions(
 ) -> None:
     functions = get_node_names(mock_ingestor, "Function")
 
-    assert any("helperFunc" in qn for qn in functions), (
-        f"Static function helperFunc not found. Functions: {functions}"
-    )
+    assert any(
+        "helperFunc" in qn for qn in functions
+    ), f"Static function helperFunc not found. Functions: {functions}"
 
-    assert any("generateAlias" in qn for qn in functions), (
-        f"Template function generateAlias not found. Functions: {functions}"
-    )
+    assert any(
+        "generateAlias" in qn for qn in functions
+    ), f"Template function generateAlias not found. Functions: {functions}"
 
 
 def test_single_file_repo_path_out_of_class_methods(
@@ -111,9 +111,9 @@ def test_single_file_repo_path_out_of_class_methods(
     methods = get_node_names(mock_ingestor, "Method")
     defines_method_rels = get_relationships(mock_ingestor, "DEFINES_METHOD")
 
-    assert any("GenerateAliases" in qn for qn in methods), (
-        f"Out-of-class method GenerateAliases not found. Methods: {methods}"
-    )
+    assert any(
+        "GenerateAliases" in qn for qn in methods
+    ), f"Out-of-class method GenerateAliases not found. Methods: {methods}"
     assert len(defines_method_rels) >= 1
 
 

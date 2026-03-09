@@ -380,9 +380,9 @@ def test_chained_cross_file_calls(
         call_graph[caller].add(callee)
 
     assert "main.main" in call_graph, "main.main should make calls"
-    assert "main.Application.start" in call_graph["main.main"], (
-        "main.main should call Application.start"
-    )
+    assert (
+        "main.Application.start" in call_graph["main.main"]
+    ), "main.main should call Application.start"
 
     assert "main.Application.start" in call_graph, "Application.start should make calls"
     assert (
@@ -392,9 +392,9 @@ def test_chained_cross_file_calls(
 
     scene_method = "scene_controller.scene_handler.SceneHandler.load_menu_scene"
     assert scene_method in call_graph, "SceneHandler.load_menu_scene should make calls"
-    assert "storage.storage.Storage.get_instance" in call_graph[scene_method], (
-        "SceneHandler.load_menu_scene should call Storage.get_instance"
-    )
+    assert (
+        "storage.storage.Storage.get_instance" in call_graph[scene_method]
+    ), "SceneHandler.load_menu_scene should call Storage.get_instance"
 
     chain_depth = 0
     if "main.main" in call_graph:
@@ -404,6 +404,6 @@ def test_chained_cross_file_calls(
             if scene_method in call_graph:
                 chain_depth = 3
 
-    assert chain_depth >= 3, (
-        f"Expected call chain depth of at least 3, got {chain_depth}"
-    )
+    assert (
+        chain_depth >= 3
+    ), f"Expected call chain depth of at least 3, got {chain_depth}"

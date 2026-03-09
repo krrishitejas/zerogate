@@ -59,13 +59,13 @@ return math_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 5, (
-        f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 5
+    ), f"Expected at least 5 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 3, (
-        f"Expected at least 3 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 3
+    ), f"Expected at least 3 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_string_module_functions(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -130,13 +130,13 @@ return string_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 6, (
-        f"Expected at least 6 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 6
+    ), f"Expected at least 6 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 4, (
-        f"Expected at least 4 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 4
+    ), f"Expected at least 4 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_table_module_functions(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -204,13 +204,13 @@ return table_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 7, (
-        f"Expected at least 7 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 7
+    ), f"Expected at least 7 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 4, (
-        f"Expected at least 4 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 4
+    ), f"Expected at least 4 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_os_module_functions(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -289,13 +289,13 @@ return os_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 8, (
-        f"Expected at least 8 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 8
+    ), f"Expected at least 8 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 4, (
-        f"Expected at least 4 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 4
+    ), f"Expected at least 4 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_io_module_functions(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -385,13 +385,13 @@ return io_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 10, (
-        f"Expected at least 10 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 10
+    ), f"Expected at least 10 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 4, (
-        f"Expected at least 4 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 4
+    ), f"Expected at least 4 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_debug_module_functions(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -476,13 +476,13 @@ return debug_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 9, (
-        f"Expected at least 9 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 9
+    ), f"Expected at least 9 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 6, (
-        f"Expected at least 6 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 6
+    ), f"Expected at least 6 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_package_module_functions(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -577,13 +577,13 @@ return package_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 10, (
-        f"Expected at least 10 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 10
+    ), f"Expected at least 10 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 8, (
-        f"Expected at least 8 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 8
+    ), f"Expected at least 8 CALLS relationships, got {len(calls_rels)}"
 
 
 def test_builtin_functions(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -732,10 +732,10 @@ return builtin_utils
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 14, (
-        f"Expected at least 14 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 14
+    ), f"Expected at least 14 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 10, (
-        f"Expected at least 10 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 10
+    ), f"Expected at least 10 CALLS relationships, got {len(calls_rels)}"

@@ -198,16 +198,16 @@ def test_simple_function_decorators(
         func_qn = func_props["qualified_name"]
 
         if func_qn in expected_decorators:
-            assert "decorators" in func_props, (
-                f"Function {func_qn} should have decorators property"
-            )
+            assert (
+                "decorators" in func_props
+            ), f"Function {func_qn} should have decorators property"
 
             expected = expected_decorators[func_qn]
             actual = func_props["decorators"]
 
-            assert actual == expected, (
-                f"Function {func_qn}: expected decorators {expected}, got {actual}"
-            )
+            assert (
+                actual == expected
+            ), f"Function {func_qn}: expected decorators {expected}, got {actual}"
 
 
 def test_class_decorators(decorator_project: Path, mock_ingestor: MagicMock) -> None:
@@ -242,16 +242,16 @@ def test_class_decorators(decorator_project: Path, mock_ingestor: MagicMock) -> 
         class_qn = class_props["qualified_name"]
 
         if class_qn in expected_decorators:
-            assert "decorators" in class_props, (
-                f"Class {class_qn} should have decorators property"
-            )
+            assert (
+                "decorators" in class_props
+            ), f"Class {class_qn} should have decorators property"
 
             expected = expected_decorators[class_qn]
             actual = class_props["decorators"]
 
-            assert actual == expected, (
-                f"Class {class_qn}: expected decorators {expected}, got {actual}"
-            )
+            assert (
+                actual == expected
+            ), f"Class {class_qn}: expected decorators {expected}, got {actual}"
 
 
 def test_method_decorators(decorator_project: Path, mock_ingestor: MagicMock) -> None:
@@ -305,29 +305,27 @@ def test_method_decorators(decorator_project: Path, mock_ingestor: MagicMock) ->
         method_qn = method_props["qualified_name"]
 
         if method_qn in expected_decorators:
-            assert "decorators" in method_props, (
-                f"Method {method_qn} should have decorators property"
-            )
+            assert (
+                "decorators" in method_props
+            ), f"Method {method_qn} should have decorators property"
 
             expected = expected_decorators[method_qn]
             actual = method_props["decorators"]
 
-            assert actual == expected, (
-                f"Method {method_qn}: expected decorators {expected}, got {actual}"
-            )
+            assert (
+                actual == expected
+            ), f"Method {method_qn}: expected decorators {expected}, got {actual}"
 
         elif method_qn in property_methods:
-            assert "decorators" in method_props, (
-                f"Property method {method_qn} should have decorators property"
-            )
+            assert (
+                "decorators" in method_props
+            ), f"Property method {method_qn} should have decorators property"
 
             expected_variants = property_methods[method_qn]
             actual = method_props["decorators"]
 
             match_found = any(actual == expected for expected in expected_variants)
-            assert match_found, (
-                f"Property method {method_qn}: expected one of {expected_variants}, got {actual}"
-            )
+            assert match_found, f"Property method {method_qn}: expected one of {expected_variants}, got {actual}"
 
 
 def test_nested_function_decorators(
@@ -357,14 +355,14 @@ def test_nested_function_decorators(
         if func_props["qualified_name"] == expected_qn:
             nested_func_found = True
 
-            assert "decorators" in func_props, (
-                f"Nested function {expected_qn} should have decorators property"
-            )
+            assert (
+                "decorators" in func_props
+            ), f"Nested function {expected_qn} should have decorators property"
 
             actual = func_props["decorators"]
-            assert actual == expected_decorators, (
-                f"Nested function {expected_qn}: expected decorators {expected_decorators}, got {actual}"
-            )
+            assert (
+                actual == expected_decorators
+            ), f"Nested function {expected_qn}: expected decorators {expected_decorators}, got {actual}"
 
     assert nested_func_found, f"Nested decorated function {expected_qn} not found"
 
@@ -409,9 +407,9 @@ def test_decorator_with_complex_arguments(
                 func_found = True
 
                 actual = func_props["decorators"]
-                assert actual == expected_decorators, (
-                    f"Function {expected_qn}: expected decorators {expected_decorators}, got {actual}"
-                )
+                assert (
+                    actual == expected_decorators
+                ), f"Function {expected_qn}: expected decorators {expected_decorators}, got {actual}"
 
         assert func_found, f"Function {expected_qn} not found"
 
@@ -447,14 +445,14 @@ def test_empty_decorators_for_undecorated_functions(
             if func_props["qualified_name"] == expected_qn:
                 func_found = True
 
-                assert "decorators" in func_props, (
-                    f"Function {expected_qn} should have decorators property"
-                )
+                assert (
+                    "decorators" in func_props
+                ), f"Function {expected_qn} should have decorators property"
 
                 actual = func_props["decorators"]
-                assert actual == [], (
-                    f"Undecorated function {expected_qn} should have empty decorators, got {actual}"
-                )
+                assert (
+                    actual == []
+                ), f"Undecorated function {expected_qn} should have empty decorators, got {actual}"
 
         if not func_found:
             pass

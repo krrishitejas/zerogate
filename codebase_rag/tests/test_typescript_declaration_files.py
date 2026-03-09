@@ -373,9 +373,9 @@ export {};
         and call[0][0] in ["Function", "Class", "Interface", "Namespace", "Module"]
     ]
 
-    assert len(ambient_nodes) >= 5, (
-        f"Expected at least 5 ambient declaration nodes, found {len(ambient_nodes)}"
-    )
+    assert (
+        len(ambient_nodes) >= 5
+    ), f"Expected at least 5 ambient declaration nodes, found {len(ambient_nodes)}"
 
     function_calls = [
         call
@@ -398,13 +398,13 @@ export {};
         and "ambient_declarations" in call[0][1].get("qualified_name", "")
     ]
 
-    assert len(function_calls) >= 2, (
-        f"Expected at least 2 ambient functions, found {len(function_calls)}"
-    )
+    assert (
+        len(function_calls) >= 2
+    ), f"Expected at least 2 ambient functions, found {len(function_calls)}"
 
-    assert len(interface_calls) >= 3, (
-        f"Expected at least 3 ambient interfaces, found {len(interface_calls)}"
-    )
+    assert (
+        len(interface_calls) >= 3
+    ), f"Expected at least 3 ambient interfaces, found {len(interface_calls)}"
 
 
 def test_module_declarations(
@@ -812,9 +812,9 @@ export {};
         and call[0][0] in ["Module", "Namespace", "Interface", "Class", "Function"]
     ]
 
-    assert len(module_nodes) >= 8, (
-        f"Expected at least 8 module declaration nodes, found {len(module_nodes)}"
-    )
+    assert (
+        len(module_nodes) >= 8
+    ), f"Expected at least 8 module declaration nodes, found {len(module_nodes)}"
 
     interface_calls = [
         call
@@ -837,17 +837,17 @@ export {};
         and "module_declarations" in call[0][1].get("qualified_name", "")
     ]
 
-    assert len(interface_calls) >= 5, (
-        f"Expected at least 5 module interfaces, found {len(interface_calls)}"
-    )
+    assert (
+        len(interface_calls) >= 5
+    ), f"Expected at least 5 module interfaces, found {len(interface_calls)}"
 
-    assert len(class_calls) >= 3, (
-        f"Expected at least 3 module classes, found {len(class_calls)}"
-    )
+    assert (
+        len(class_calls) >= 3
+    ), f"Expected at least 3 module classes, found {len(class_calls)}"
 
-    assert len(function_calls) >= 5, (
-        f"Expected at least 5 module functions, found {len(function_calls)}"
-    )
+    assert (
+        len(function_calls) >= 5
+    ), f"Expected at least 5 module functions, found {len(function_calls)}"
 
 
 def test_global_augmentations(
@@ -1223,9 +1223,9 @@ export {};
         if "global_augmentations" in call[0][1].get("qualified_name", "")
     ]
 
-    assert len(global_nodes) >= 10, (
-        f"Expected at least 10 global augmentation nodes, found {len(global_nodes)}"
-    )
+    assert (
+        len(global_nodes) >= 10
+    ), f"Expected at least 10 global augmentation nodes, found {len(global_nodes)}"
 
     interface_calls = [
         call
@@ -1248,9 +1248,9 @@ export {};
         and "global_augmentations" in call[0][1].get("qualified_name", "")
     ]
 
-    assert len(interface_calls) >= 5, (
-        f"Expected at least 5 global interfaces, found {len(interface_calls)}"
-    )
+    assert (
+        len(interface_calls) >= 5
+    ), f"Expected at least 5 global interfaces, found {len(interface_calls)}"
 
 
 def test_typescript_declarations_comprehensive(
@@ -1357,9 +1357,9 @@ export {};
         if "comprehensive_declarations" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 1, (
-        f"Expected at least 1 comprehensive declaration call, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 1
+    ), f"Expected at least 1 comprehensive declaration call, found {len(comprehensive_calls)}"
 
     all_nodes = mock_ingestor.ensure_node_batch.call_args_list
 
@@ -1369,6 +1369,6 @@ export {};
         if "comprehensive_declarations" in call[0][1].get("qualified_name", "")
     ]
 
-    assert len(comprehensive_declarations) >= 5, (
-        f"Expected at least 5 declaration patterns, found {len(comprehensive_declarations)}"
-    )
+    assert (
+        len(comprehensive_declarations) >= 5
+    ), f"Expected at least 5 declaration patterns, found {len(comprehensive_declarations)}"

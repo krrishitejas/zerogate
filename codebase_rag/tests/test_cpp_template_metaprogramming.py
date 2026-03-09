@@ -341,16 +341,16 @@ void demonstrateBasicMetaprogramming() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 metaprogramming class, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 metaprogramming class, found {len(found_classes)}: {found_classes}"
 
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_advanced_metaprogramming(
@@ -701,9 +701,9 @@ void demonstrateAdvancedMetaprogramming() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_cpp_metaprogramming_comprehensive(
@@ -793,8 +793,8 @@ void demonstrateComprehensiveMetaprogramming() {
         if "comprehensive_metaprogramming" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 2, (
-        f"Expected at least 2 comprehensive metaprogramming calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 2
+    ), f"Expected at least 2 comprehensive metaprogramming calls, found {len(comprehensive_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

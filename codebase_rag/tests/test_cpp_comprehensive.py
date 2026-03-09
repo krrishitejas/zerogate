@@ -607,9 +607,9 @@ void runComprehensiveTest() {
         if "comprehensive_example" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 20, (
-        f"Expected at least 20 comprehensive calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 20
+    ), f"Expected at least 20 comprehensive calls, found {len(comprehensive_calls)}"
 
     comprehensive_inherits = [
         call
@@ -617,9 +617,9 @@ void runComprehensiveTest() {
         if "comprehensive_example" in call.args[0][2]
     ]
 
-    assert len(comprehensive_inherits) >= 8, (
-        f"Expected at least 8 inheritance relationships, found {len(comprehensive_inherits)}"
-    )
+    assert (
+        len(comprehensive_inherits) >= 8
+    ), f"Expected at least 8 inheritance relationships, found {len(comprehensive_inherits)}"
 
     comprehensive_imports = [
         call
@@ -627,9 +627,9 @@ void runComprehensiveTest() {
         if "comprehensive_example" in call.args[0][2]
     ]
 
-    assert len(comprehensive_imports) >= 10, (
-        f"Expected at least 10 include relationships, found {len(comprehensive_imports)}"
-    )
+    assert (
+        len(comprehensive_imports) >= 10
+    ), f"Expected at least 10 include relationships, found {len(comprehensive_imports)}"
 
     expected_classes = [
         "DataProcessor",
@@ -648,9 +648,9 @@ void runComprehensiveTest() {
         if any(expected in cls for expected in expected_classes)
     ]
 
-    assert len(found_complex_classes) >= 4, (
-        f"Expected at least 4 complex classes, found {len(found_complex_classes)}: {found_complex_classes}"
-    )
+    assert (
+        len(found_complex_classes) >= 4
+    ), f"Expected at least 4 complex classes, found {len(found_complex_classes)}: {found_complex_classes}"
 
     expected_functions = [
         "create_filter",
@@ -670,9 +670,9 @@ void runComprehensiveTest() {
         if any(expected in func for expected in expected_functions)
     ]
 
-    assert len(found_modern_functions) >= 4, (
-        f"Expected at least 4 modern C++ functions, found {len(found_modern_functions)}: {found_modern_functions}"
-    )
+    assert (
+        len(found_modern_functions) >= 4
+    ), f"Expected at least 4 modern C++ functions, found {len(found_modern_functions)}: {found_modern_functions}"
 
 
 def test_real_world_cpp_scenario(
@@ -892,9 +892,9 @@ int main() {
         if "engine.h" in call.args[2][2] or "iostream" in call.args[2][2]
     ]
 
-    assert len(header_imports) >= 2, (
-        f"Expected at least 2 header imports, found {len(header_imports)}"
-    )
+    assert (
+        len(header_imports) >= 2
+    ), f"Expected at least 2 header imports, found {len(header_imports)}"
 
     component_inheritance = [
         call
@@ -902,9 +902,9 @@ int main() {
         if "Component" in call.args[2][2] or "System" in call.args[2][2]
     ]
 
-    assert len(component_inheritance) >= 2, (
-        f"Expected at least 2 component inheritance relationships, found {len(component_inheritance)}"
-    )
+    assert (
+        len(component_inheritance) >= 2
+    ), f"Expected at least 2 component inheritance relationships, found {len(component_inheritance)}"
 
 
 def test_cpp_comprehensive_complete() -> None:

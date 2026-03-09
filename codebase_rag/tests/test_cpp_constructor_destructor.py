@@ -324,9 +324,9 @@ void demonstrateBasicConstructorsDestructors() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
     expected_functions = [
         f"{project_name}.basic_constructors.testBasicConstructors",
@@ -338,9 +338,9 @@ void demonstrateBasicConstructorsDestructors() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_raii_patterns(
@@ -723,9 +723,9 @@ void demonstrateRAIIPatterns() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_special_member_functions(
@@ -1084,9 +1084,9 @@ void demonstrateSpecialMemberFunctions() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
 
 def test_cpp_constructor_destructor_comprehensive(
@@ -1271,9 +1271,9 @@ void demonstrateComprehensiveConstructors() {
         if "comprehensive_constructors" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive constructor calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive constructor calls, found {len(comprehensive_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"
 

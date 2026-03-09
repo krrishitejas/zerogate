@@ -232,15 +232,13 @@ function DatabaseService(connectionString) {
     if missing_functions:
         print(f"❌ Missing correctly nested arrow functions: {missing_functions}")
         print(f"✅ Actually created functions: {sorted(created_functions)}")
-        assert False, (
-            f"Missing nested arrow functions with correct qualified names: {missing_functions}"
-        )
+        assert False, f"Missing nested arrow functions with correct qualified names: {missing_functions}"
 
     if incorrectly_created:
         print(f"❌ Incorrectly created module-level functions: {incorrectly_created}")
-        assert False, (
-            f"Arrow functions incorrectly created at module level: {incorrectly_created}"
-        )
+        assert (
+            False
+        ), f"Arrow functions incorrectly created at module level: {incorrectly_created}"
 
 
 def test_export_functions_in_modules(
@@ -317,9 +315,7 @@ class ServiceFactory {
             f"❌ Incorrectly created module-level export functions (should be nested): {incorrectly_created}"
         )
         print(f"✅ Actually created functions: {sorted(created_functions)}")
-        assert False, (
-            f"Export functions should be nested, not at module level: {incorrectly_created}"
-        )
+        assert False, f"Export functions should be nested, not at module level: {incorrectly_created}"
 
 
 def test_commonjs_exports_in_functions(
@@ -427,14 +423,10 @@ class ModuleFactory {
             f"❌ Missing correctly nested CommonJS export functions: {missing_functions}"
         )
         print(f"✅ Actually created functions: {sorted(created_functions)}")
-        assert False, (
-            f"Missing nested CommonJS export functions with correct qualified names: {missing_functions}"
-        )
+        assert False, f"Missing nested CommonJS export functions with correct qualified names: {missing_functions}"
 
     if incorrectly_created:
         print(
             f"❌ Incorrectly created module-level CommonJS exports: {incorrectly_created}"
         )
-        assert False, (
-            f"CommonJS exports should be nested, not at module level: {incorrectly_created}"
-        )
+        assert False, f"CommonJS exports should be nested, not at module level: {incorrectly_created}"

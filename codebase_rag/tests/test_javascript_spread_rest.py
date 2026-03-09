@@ -178,9 +178,9 @@ console.log(max);           // 10
     ]
 
     for expected in expected_functions:
-        assert expected in created_functions, (
-            f"Missing array spread function: {expected}"
-        )
+        assert (
+            expected in created_functions
+        ), f"Missing array spread function: {expected}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -188,9 +188,9 @@ console.log(max);           // 10
         call for call in class_calls if "ArrayProcessor" in call[0][1]["qualified_name"]
     ]
 
-    assert len(array_processor_class) >= 1, (
-        f"Expected ArrayProcessor class, found {len(array_processor_class)}"
-    )
+    assert (
+        len(array_processor_class) >= 1
+    ), f"Expected ArrayProcessor class, found {len(array_processor_class)}"
 
 
 def test_spread_in_objects(
@@ -400,9 +400,9 @@ console.log(apiConfig);    // Environment-specific config
     ]
 
     for expected in expected_functions:
-        assert expected in created_functions, (
-            f"Missing object spread function: {expected}"
-        )
+        assert (
+            expected in created_functions
+        ), f"Missing object spread function: {expected}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -410,9 +410,9 @@ console.log(apiConfig);    // Environment-specific config
         call for call in class_calls if "ConfigManager" in call[0][1]["qualified_name"]
     ]
 
-    assert len(config_manager_class) >= 1, (
-        f"Expected ConfigManager class, found {len(config_manager_class)}"
-    )
+    assert (
+        len(config_manager_class) >= 1
+    ), f"Expected ConfigManager class, found {len(config_manager_class)}"
 
 
 def test_rest_parameters(
@@ -644,9 +644,9 @@ for (const value of combined) {
         func for func in expected_rest_functions if func in created_functions
     ]
 
-    assert len(found_rest_functions) >= 7, (
-        f"Expected at least 7 rest parameter functions, found {len(found_rest_functions)}"
-    )
+    assert (
+        len(found_rest_functions) >= 7
+    ), f"Expected at least 7 rest parameter functions, found {len(found_rest_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -654,9 +654,9 @@ for (const value of combined) {
         call for call in class_calls if "Calculator" in call[0][1]["qualified_name"]
     ]
 
-    assert len(calculator_class) >= 1, (
-        f"Expected Calculator class, found {len(calculator_class)}"
-    )
+    assert (
+        len(calculator_class) >= 1
+    ), f"Expected Calculator class, found {len(calculator_class)}"
 
 
 def test_destructuring_with_spread_rest(
@@ -921,9 +921,9 @@ console.log(coordinates);   // { coordinates: {x:10, y:20, z:30}, extra: [40,50]
         func for func in expected_destructuring_functions if func in created_functions
     ]
 
-    assert len(found_destructuring_functions) >= 6, (
-        f"Expected at least 6 destructuring functions, found {len(found_destructuring_functions)}"
-    )
+    assert (
+        len(found_destructuring_functions) >= 6
+    ), f"Expected at least 6 destructuring functions, found {len(found_destructuring_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -931,9 +931,9 @@ console.log(coordinates);   // { coordinates: {x:10, y:20, z:30}, extra: [40,50]
         call for call in class_calls if "DataProcessor" in call[0][1]["qualified_name"]
     ]
 
-    assert len(data_processor_class) >= 1, (
-        f"Expected DataProcessor class, found {len(data_processor_class)}"
-    )
+    assert (
+        len(data_processor_class) >= 1
+    ), f"Expected DataProcessor class, found {len(data_processor_class)}"
 
 
 def test_spread_rest_comprehensive(
@@ -1064,9 +1064,9 @@ console.log(complex);
         if "comprehensive_spread_rest" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive spread/rest calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive spread/rest calls, found {len(comprehensive_calls)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -1076,6 +1076,6 @@ console.log(complex);
         if "comprehensive_spread_rest" in call[0][1]["qualified_name"]
     ]
 
-    assert len(comprehensive_functions) >= 6, (
-        f"Expected at least 6 functions in comprehensive test, found {len(comprehensive_functions)}"
-    )
+    assert (
+        len(comprehensive_functions) >= 6
+    ), f"Expected at least 6 functions in comprehensive test, found {len(comprehensive_functions)}"

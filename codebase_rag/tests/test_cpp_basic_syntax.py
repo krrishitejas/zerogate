@@ -186,14 +186,14 @@ void demonstrateClasses() {
     created_functions = get_qualified_names(function_calls)
 
     missing_methods = set(expected_methods) - created_methods
-    assert not missing_methods, (
-        f"Missing expected methods: {sorted(list(missing_methods))}"
-    )
+    assert (
+        not missing_methods
+    ), f"Missing expected methods: {sorted(list(missing_methods))}"
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_basic_function_declarations(
@@ -307,9 +307,9 @@ void demonstrateFunctions() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -323,9 +323,9 @@ void demonstrateFunctions() {
         )
     ]
 
-    assert len(function_calls_relationships) >= 3, (
-        f"Expected at least 3 function call relationships, found {len(function_calls_relationships)}"
-    )
+    assert (
+        len(function_calls_relationships) >= 3
+    ), f"Expected at least 3 function call relationships, found {len(function_calls_relationships)}"
 
 
 def test_basic_namespaces(
@@ -459,9 +459,9 @@ void demonstrateUsingDirectives() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
     expected_methods = [
         f"{project_name}.basic_namespaces.graphics.Circle.area",
@@ -482,14 +482,14 @@ void demonstrateUsingDirectives() {
     created_functions = get_qualified_names(function_calls)
 
     missing_methods = set(expected_methods) - created_methods
-    assert not missing_methods, (
-        f"Missing expected methods: {sorted(list(missing_methods))}"
-    )
+    assert (
+        not missing_methods
+    ), f"Missing expected methods: {sorted(list(missing_methods))}"
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_basic_member_functions(
@@ -633,9 +633,9 @@ void bankingDemo() {
         "SavingsAccount" in call[0][0][2] and "BankAccount" in call[0][2][2]
         for call in relationship_calls
     )
-    assert inheritance_found, (
-        "Expected inheritance relationship SavingsAccount -> BankAccount"
-    )
+    assert (
+        inheritance_found
+    ), "Expected inheritance relationship SavingsAccount -> BankAccount"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -655,9 +655,9 @@ void bankingDemo() {
         )
     ]
 
-    assert len(method_call_relationships) >= 5, (
-        f"Expected at least 5 method call relationships, found {len(method_call_relationships)}"
-    )
+    assert (
+        len(method_call_relationships) >= 5
+    ), f"Expected at least 5 method call relationships, found {len(method_call_relationships)}"
 
 
 def test_cpp_basic_comprehensive(
@@ -820,9 +820,9 @@ void globalUtility() {
         call for call in call_relationships if "comprehensive_basic" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 8, (
-        f"Expected at least 8 comprehensive basic calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 8
+    ), f"Expected at least 8 comprehensive basic calls, found {len(comprehensive_calls)}"
 
     basic_inheritance = [
         call
@@ -830,9 +830,9 @@ void globalUtility() {
         if "comprehensive_basic" in call.args[0][2]
     ]
 
-    assert len(basic_inheritance) >= 1, (
-        f"Expected at least 1 inheritance relationship, found {len(basic_inheritance)}"
-    )
+    assert (
+        len(basic_inheritance) >= 1
+    ), f"Expected at least 1 inheritance relationship, found {len(basic_inheritance)}"
 
     for relationship in comprehensive_calls:
         assert len(relationship.args) == 3, "Call relationship should have 3 args"
@@ -841,12 +841,12 @@ void globalUtility() {
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_basic" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_basic" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

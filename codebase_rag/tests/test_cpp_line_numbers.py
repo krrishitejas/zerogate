@@ -108,12 +108,12 @@ bool QCMakeCacheView::setSearchFilter(QString const& s)
         props = _get_method_props(mock_ingestor, "QCMakeCacheView", "setSearchFilter")
 
         assert props is not None, "Method should exist"
-        assert props["start_line"] == 6, (
-            f"Expected start_line=6 (definition), got {props['start_line']}"
-        )
-        assert props["end_line"] == 9, (
-            f"Expected end_line=9 (definition), got {props['end_line']}"
-        )
+        assert (
+            props["start_line"] == 6
+        ), f"Expected start_line=6 (definition), got {props['start_line']}"
+        assert (
+            props["end_line"] == 9
+        ), f"Expected end_line=9 (definition), got {props['end_line']}"
 
     def test_multiple_out_of_class_methods_have_correct_lines(
         self,
@@ -190,12 +190,12 @@ MyClass::MyClass(int value) : value_(value) {
         props = _get_method_props(mock_ingestor, "MyClass", "MyClass")
 
         assert props is not None, "Constructor should exist"
-        assert props["start_line"] == 8, (
-            f"Expected start_line=8 (definition), got {props['start_line']}"
-        )
-        assert props["end_line"] == 10, (
-            f"Expected end_line=10 (definition), got {props['end_line']}"
-        )
+        assert (
+            props["start_line"] == 8
+        ), f"Expected start_line=8 (definition), got {props['start_line']}"
+        assert (
+            props["end_line"] == 10
+        ), f"Expected end_line=10 (definition), got {props['end_line']}"
 
     def test_destructor_out_of_class_has_definition_line_numbers(
         self,
@@ -224,12 +224,12 @@ Resource::~Resource() {
         props = _get_method_props(mock_ingestor, "Resource", "~Resource")
 
         assert props is not None, "Destructor should exist"
-        assert props["start_line"] == 8, (
-            f"Expected start_line=8 (definition), got {props['start_line']}"
-        )
-        assert props["end_line"] == 10, (
-            f"Expected end_line=10 (definition), got {props['end_line']}"
-        )
+        assert (
+            props["start_line"] == 8
+        ), f"Expected start_line=8 (definition), got {props['start_line']}"
+        assert (
+            props["end_line"] == 10
+        ), f"Expected end_line=10 (definition), got {props['end_line']}"
 
 
 class TestTemplateOutOfClassLineNumbers:
@@ -267,20 +267,20 @@ T Container<T>::get(int index) const {
         get_props = _get_method_props(mock_ingestor, "Container", "get")
 
         assert add_props is not None, "add method should exist"
-        assert add_props["start_line"] == 8, (
-            f"Expected start_line=8, got {add_props['start_line']}"
-        )
-        assert add_props["end_line"] == 11, (
-            f"Expected end_line=11, got {add_props['end_line']}"
-        )
+        assert (
+            add_props["start_line"] == 8
+        ), f"Expected start_line=8, got {add_props['start_line']}"
+        assert (
+            add_props["end_line"] == 11
+        ), f"Expected end_line=11, got {add_props['end_line']}"
 
         assert get_props is not None, "get method should exist"
-        assert get_props["start_line"] == 13, (
-            f"Expected start_line=13, got {get_props['start_line']}"
-        )
-        assert get_props["end_line"] == 16, (
-            f"Expected end_line=16, got {get_props['end_line']}"
-        )
+        assert (
+            get_props["start_line"] == 13
+        ), f"Expected start_line=13, got {get_props['start_line']}"
+        assert (
+            get_props["end_line"] == 16
+        ), f"Expected end_line=16, got {get_props['end_line']}"
 
 
 class TestInlineMethodLineNumbers:
@@ -541,15 +541,15 @@ bool Vector::operator==(const Vector& other) const {
             m for m in methods if "operator" in _get_method_name(m).lower()
         ]
 
-        assert len(operator_methods) >= 3, (
-            f"Expected at least 3 operator methods, got {len(operator_methods)}"
-        )
+        assert (
+            len(operator_methods) >= 3
+        ), f"Expected at least 3 operator methods, got {len(operator_methods)}"
 
         for method in operator_methods:
             start_line = _get_start_line(method)
-            assert start_line >= 8, (
-                f"Operator method should have definition line >= 8, got {start_line}"
-            )
+            assert (
+                start_line >= 8
+            ), f"Operator method should have definition line >= 8, got {start_line}"
 
 
 class TestDeclarationOnlyMethods:

@@ -451,9 +451,9 @@ class TestJsImportsRelationships:
         external_modules = ["lodash", "lodash.default"]
         found_external = any(ext in modules for ext in external_modules)
 
-        assert found_external, (
-            f"Expected external module node for lodash.\nAvailable modules: {modules}"
-        )
+        assert (
+            found_external
+        ), f"Expected external module node for lodash.\nAvailable modules: {modules}"
 
 
 class TestTsImportsRelationships:
@@ -494,9 +494,9 @@ class TestTsImportsRelationships:
         external_modules = ["fs"]
         found_external = any(ext in modules for ext in external_modules)
 
-        assert found_external, (
-            f"Expected external module node for fs.\nAvailable modules: {modules}"
-        )
+        assert (
+            found_external
+        ), f"Expected external module node for fs.\nAvailable modules: {modules}"
 
 
 class TestRustImportsRelationships:
@@ -537,9 +537,9 @@ class TestRustImportsRelationships:
         external_modules = ["std", "std::collections", "std::collections::HashMap"]
         found_external = any(ext in modules for ext in external_modules)
 
-        assert found_external, (
-            f"Expected external module node for std.\nAvailable modules: {modules}"
-        )
+        assert (
+            found_external
+        ), f"Expected external module node for std.\nAvailable modules: {modules}"
 
 
 class TestGoImportsRelationships:
@@ -580,9 +580,9 @@ class TestGoImportsRelationships:
         external_modules = ["fmt"]
         found_external = any(ext in modules for ext in external_modules)
 
-        assert found_external, (
-            f"Expected external module node for fmt.\nAvailable modules: {modules}"
-        )
+        assert (
+            found_external
+        ), f"Expected external module node for fmt.\nAvailable modules: {modules}"
 
 
 class TestCppImportsRelationships:

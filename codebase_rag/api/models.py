@@ -8,8 +8,8 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-
 # ── Enums ─────────────────────────────────────────────────────────────────
+
 
 class ProjectStatus(str, Enum):
     QUEUED = "queued"
@@ -36,6 +36,7 @@ class FindingStatus(str, Enum):
 
 # ── Project Models ────────────────────────────────────────────────────────
 
+
 class ProjectUploadResponse(BaseModel):
     project_id: str
     status: ProjectStatus = ProjectStatus.QUEUED
@@ -53,6 +54,7 @@ class ProjectStatusResponse(BaseModel):
 
 
 # ── Vulnerability Models ──────────────────────────────────────────────────
+
 
 class AffectedNode(BaseModel):
     file_path: str
@@ -84,14 +86,13 @@ class ReportSummary(BaseModel):
 
 class VulnerabilityReport(BaseModel):
     project_id: str
-    scan_timestamp: str = Field(
-        default_factory=lambda: datetime.now().isoformat()
-    )
+    scan_timestamp: str = Field(default_factory=lambda: datetime.now().isoformat())
     findings: list[VulnerabilityFinding] = []
     summary: ReportSummary = Field(default_factory=ReportSummary)
 
 
 # ── Fix/Patch Models ─────────────────────────────────────────────────────
+
 
 class FixProposal(BaseModel):
     finding_id: str
@@ -114,6 +115,7 @@ class ApplyFixResponse(BaseModel):
 
 
 # ── WebSocket Models ──────────────────────────────────────────────────────
+
 
 class WSMessage(BaseModel):
     type: Literal["progress", "status", "finding", "error"]

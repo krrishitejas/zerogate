@@ -88,9 +88,9 @@ const data = shared;
         if "es6_default_imports" in call.args[0][2]
     ]
 
-    assert len(default_imports) >= 5, (
-        f"Expected at least 5 default imports, found {len(default_imports)}"
-    )
+    assert (
+        len(default_imports) >= 5
+    ), f"Expected at least 5 default imports, found {len(default_imports)}"
 
     imported_modules = [call.args[2][2] for call in default_imports]
     expected_modules = [
@@ -102,9 +102,9 @@ const data = shared;
     ]
 
     for expected in expected_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing default import: {expected}\nFound: {imported_modules}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing default import: {expected}\nFound: {imported_modules}"
 
 
 def test_es6_named_imports(
@@ -145,9 +145,9 @@ useEffect(() => {});
         call for call in import_relationships if "es6_named_imports" in call.args[0][2]
     ]
 
-    assert len(named_imports) >= 8, (
-        f"Expected at least 8 named imports, found {len(named_imports)}"
-    )
+    assert (
+        len(named_imports) >= 8
+    ), f"Expected at least 8 named imports, found {len(named_imports)}"
 
     imported_modules = [call.args[2][2] for call in named_imports]
     expected_patterns = [
@@ -158,9 +158,9 @@ useEffect(() => {});
     ]
 
     for pattern in expected_patterns:
-        assert any(pattern in module for module in imported_modules), (
-            f"Missing named import pattern: {pattern}\nFound: {imported_modules}"
-        )
+        assert any(
+            pattern in module for module in imported_modules
+        ), f"Missing named import pattern: {pattern}\nFound: {imported_modules}"
 
 
 def test_es6_namespace_imports(
@@ -196,9 +196,9 @@ const url = constants.API_URL;
         if "es6_namespace_imports" in call.args[0][2]
     ]
 
-    assert len(namespace_imports) >= 4, (
-        f"Expected at least 4 namespace imports, found {len(namespace_imports)}"
-    )
+    assert (
+        len(namespace_imports) >= 4
+    ), f"Expected at least 4 namespace imports, found {len(namespace_imports)}"
 
     imported_modules = [call.args[2][2] for call in namespace_imports]
     expected_modules = [
@@ -209,9 +209,9 @@ const url = constants.API_URL;
     ]
 
     for expected in expected_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing namespace import: {expected}\nFound: {imported_modules}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing namespace import: {expected}\nFound: {imported_modules}"
 
 
 def test_commonjs_require_imports(
@@ -266,9 +266,9 @@ const sum = mathAdd(1, 2);
         call for call in import_relationships if "commonjs_imports" in call.args[0][2]
     ]
 
-    assert len(commonjs_imports) >= 8, (
-        f"Expected at least 8 CommonJS imports, found {len(commonjs_imports)}"
-    )
+    assert (
+        len(commonjs_imports) >= 8
+    ), f"Expected at least 8 CommonJS imports, found {len(commonjs_imports)}"
 
     imported_modules = [call.args[2][2] for call in commonjs_imports]
     expected_modules = [
@@ -280,9 +280,9 @@ const sum = mathAdd(1, 2);
     ]
 
     for expected in expected_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing CommonJS import: {expected}\nFound: {imported_modules}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing CommonJS import: {expected}\nFound: {imported_modules}"
 
 
 def test_commonjs_aliased_destructuring(
@@ -322,9 +322,9 @@ const finalUrl = apiEndpoint;
         if "commonjs_aliased_destructuring" in call.args[0][2]
     ]
 
-    assert len(aliased_imports) >= 3, (
-        f"Expected at least 3 aliased destructuring imports, found {len(aliased_imports)}"
-    )
+    assert (
+        len(aliased_imports) >= 3
+    ), f"Expected at least 3 aliased destructuring imports, found {len(aliased_imports)}"
 
     imported_modules = [call.args[2][2] for call in aliased_imports]
     expected_modules = [
@@ -334,9 +334,9 @@ const finalUrl = apiEndpoint;
     ]
 
     for expected in expected_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing aliased destructuring import: {expected}\nFound: {imported_modules}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing aliased destructuring import: {expected}\nFound: {imported_modules}"
 
 
 def test_relative_path_resolution(
@@ -381,9 +381,9 @@ const url = constants.API_URL;
         call for call in import_relationships if "Input" in call.args[0][2]
     ]
 
-    assert len(relative_imports) >= 6, (
-        f"Expected at least 6 relative imports, found {len(relative_imports)}"
-    )
+    assert (
+        len(relative_imports) >= 6
+    ), f"Expected at least 6 relative imports, found {len(relative_imports)}"
 
     imported_modules = [call.args[2][2] for call in relative_imports]
     project_name = javascript_imports_project.name
@@ -397,9 +397,9 @@ const url = constants.API_URL;
     ]
 
     for pattern in expected_patterns:
-        assert any(pattern in module for module in imported_modules), (
-            f"Missing relative import pattern: {pattern}\nFound: {imported_modules}"
-        )
+        assert any(
+            pattern in module for module in imported_modules
+        ), f"Missing relative import pattern: {pattern}\nFound: {imported_modules}"
 
 
 def test_absolute_package_imports(
@@ -446,9 +446,9 @@ const debounced = debounce(() => {});
         call for call in import_relationships if "package_imports" in call.args[0][2]
     ]
 
-    assert len(package_imports) >= 10, (
-        f"Expected at least 10 package imports, found {len(package_imports)}"
-    )
+    assert (
+        len(package_imports) >= 10
+    ), f"Expected at least 10 package imports, found {len(package_imports)}"
 
     imported_modules = [call.args[2][2] for call in package_imports]
     expected_packages = [
@@ -464,9 +464,9 @@ const debounced = debounce(() => {});
     ]
 
     for expected in expected_packages:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing package import: {expected}\nFound: {imported_modules}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing package import: {expected}\nFound: {imported_modules}"
 
 
 def test_dynamic_imports(
@@ -525,9 +525,9 @@ modulePromise.then(({ shared }) => {
         call for call in call_relationships if "dynamic_imports" in call.args[0][2]
     ]
 
-    assert len(dynamic_calls) >= 1, (
-        f"Expected at least 1 dynamic import call, found {len(dynamic_calls)}"
-    )
+    assert (
+        len(dynamic_calls) >= 1
+    ), f"Expected at least 1 dynamic import call, found {len(dynamic_calls)}"
 
 
 def test_mixed_import_patterns(
@@ -575,9 +575,9 @@ const url = API_URL;
         call for call in import_relationships if "mixed_imports" in call.args[0][2]
     ]
 
-    assert len(mixed_imports) >= 6, (
-        f"Expected at least 6 mixed imports, found {len(mixed_imports)}"
-    )
+    assert (
+        len(mixed_imports) >= 6
+    ), f"Expected at least 6 mixed imports, found {len(mixed_imports)}"
 
     imported_modules = [call.args[2][2] for call in mixed_imports]
 
@@ -590,9 +590,9 @@ const url = API_URL;
     ]
 
     for pattern in expected_patterns:
-        assert any(pattern in module for module in imported_modules), (
-            f"Missing mixed import pattern: {pattern}\nFound: {imported_modules}"
-        )
+        assert any(
+            pattern in module for module in imported_modules
+        ), f"Missing mixed import pattern: {pattern}\nFound: {imported_modules}"
 
 
 def test_import_error_handling(
@@ -631,17 +631,17 @@ require('./also-side-effects');
         call for call in import_relationships if "error_imports" in call.args[0][2]
     ]
 
-    assert len(error_file_imports) >= 3, (
-        f"Expected at least 3 valid imports despite errors, found {len(error_file_imports)}"
-    )
+    assert (
+        len(error_file_imports) >= 3
+    ), f"Expected at least 3 valid imports despite errors, found {len(error_file_imports)}"
 
     imported_modules = [call.args[2][2] for call in error_file_imports]
     expected_valid = ["react", "fs", "path"]
 
     for expected in expected_valid:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing valid import after error: {expected}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing valid import after error: {expected}"
 
 
 def test_aliased_re_export_import_mapping(
@@ -723,25 +723,25 @@ export { useUtils };
         call for call in import_relationships if "consumer" in call.args[0][2]
     ]
 
-    assert len(consumer_imports) >= 2, (
-        f"Expected at least 2 consumer import relationships, found {len(consumer_imports)}"
-    )
+    assert (
+        len(consumer_imports) >= 2
+    ), f"Expected at least 2 consumer import relationships, found {len(consumer_imports)}"
 
     re_export_imports = [
         call for call in import_relationships if "utils_index" in call.args[0][2]
     ]
 
-    assert len(re_export_imports) >= 2, (
-        f"Expected at least 2 re-export import relationships, found {len(re_export_imports)}"
-    )
+    assert (
+        len(re_export_imports) >= 2
+    ), f"Expected at least 2 re-export import relationships, found {len(re_export_imports)}"
 
     re_export_targets = [call.args[2][2] for call in re_export_imports]
 
     expected_targets = ["math_utils", "string_utils"]
     for expected in expected_targets:
-        assert any(expected in target for target in re_export_targets), (
-            f"Missing re-export target: {expected}\nFound: {re_export_targets}"
-        )
+        assert any(
+            expected in target for target in re_export_targets
+        ), f"Missing re-export target: {expected}\nFound: {re_export_targets}"
     print(
         "   - Bug fix verified: export { name as alias } now correctly maps alias -> source.name"
     )
@@ -797,9 +797,9 @@ const url = API_URL;
         if "comprehensive_imports" in call.args[0][2]
     ]
 
-    assert len(comprehensive_imports) >= 10, (
-        f"Expected at least 10 comprehensive imports, found {len(comprehensive_imports)}"
-    )
+    assert (
+        len(comprehensive_imports) >= 10
+    ), f"Expected at least 10 comprehensive imports, found {len(comprehensive_imports)}"
 
     for relationship in comprehensive_imports:
         assert len(relationship.args) == 3, "Import relationship should have 3 args"
@@ -808,13 +808,13 @@ const url = API_URL;
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_imports" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_imports" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target module should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target module should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"
 

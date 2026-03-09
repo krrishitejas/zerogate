@@ -245,9 +245,9 @@ movePlayer(Direction.Right);
         )
     ]
 
-    assert len(enum_using_functions) >= 2, (
-        f"Expected at least 2 enum-using functions, found {len(enum_using_functions)}"
-    )
+    assert (
+        len(enum_using_functions) >= 2
+    ), f"Expected at least 2 enum-using functions, found {len(enum_using_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -255,9 +255,9 @@ movePlayer(Direction.Right);
         call for call in class_calls if "Task" in call[0][1]["qualified_name"]
     ]
 
-    assert len(task_class) >= 1, (
-        f"Expected Task class using enums, found {len(task_class)}"
-    )
+    assert (
+        len(task_class) >= 1
+    ), f"Expected Task class using enums, found {len(task_class)}"
 
 
 def test_string_enums(
@@ -507,9 +507,9 @@ function createMessage(level: LogLevel, text: string): string {
         )
     ]
 
-    assert len(string_enum_classes) >= 2, (
-        f"Expected at least 2 classes using string enums, found {len(string_enum_classes)}"
-    )
+    assert (
+        len(string_enum_classes) >= 2
+    ), f"Expected at least 2 classes using string enums, found {len(string_enum_classes)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -523,9 +523,9 @@ function createMessage(level: LogLevel, text: string): string {
         )
     ]
 
-    assert len(string_enum_functions) >= 3, (
-        f"Expected at least 3 string enum functions, found {len(string_enum_functions)}"
-    )
+    assert (
+        len(string_enum_functions) >= 3
+    ), f"Expected at least 3 string enum functions, found {len(string_enum_functions)}"
 
 
 def test_const_enums(
@@ -776,9 +776,9 @@ methodHandlers[HttpMethod.GET]('/api/data');
         call for call in class_calls if "ApiClient" in call[0][1]["qualified_name"]
     ]
 
-    assert len(api_client_class) >= 1, (
-        f"Expected ApiClient class using const enums, found {len(api_client_class)}"
-    )
+    assert (
+        len(api_client_class) >= 1
+    ), f"Expected ApiClient class using const enums, found {len(api_client_class)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -792,9 +792,9 @@ methodHandlers[HttpMethod.GET]('/api/data');
         )
     ]
 
-    assert len(const_enum_functions) >= 2, (
-        f"Expected at least 2 const enum functions, found {len(const_enum_functions)}"
-    )
+    assert (
+        len(const_enum_functions) >= 2
+    ), f"Expected at least 2 const enum functions, found {len(const_enum_functions)}"
 
 
 def test_enum_comprehensive(
@@ -938,6 +938,6 @@ console.log(demo.getColor());
         call for call in class_calls if "EnumDemo" in call[0][1]["qualified_name"]
     ]
 
-    assert len(enum_demo_class) >= 1, (
-        f"Expected EnumDemo class, found {len(enum_demo_class)}"
-    )
+    assert (
+        len(enum_demo_class) >= 1
+    ), f"Expected EnumDemo class, found {len(enum_demo_class)}"

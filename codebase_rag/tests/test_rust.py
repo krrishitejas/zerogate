@@ -139,9 +139,9 @@ fn demonstrate_functions() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -159,9 +159,9 @@ fn demonstrate_functions() {
         )
     ]
 
-    assert len(function_call_relationships) >= 3, (
-        f"Expected at least 3 function call relationships, found {len(function_call_relationships)}"
-    )
+    assert (
+        len(function_call_relationships) >= 3
+    ), f"Expected at least 3 function call relationships, found {len(function_call_relationships)}"
 
 
 def test_rust_structs_enums_unions(
@@ -314,9 +314,9 @@ fn demonstrate_types() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_structs = set(expected_structs) - created_classes
-    assert not missing_structs, (
-        f"Missing expected structs: {sorted(list(missing_structs))}"
-    )
+    assert (
+        not missing_structs
+    ), f"Missing expected structs: {sorted(list(missing_structs))}"
 
     expected_enums = [
         f"{project_name}.types.Direction",
@@ -337,9 +337,9 @@ fn demonstrate_types() {
     created_unions = get_node_names(mock_ingestor, "Union")
 
     missing_unions = set(expected_unions) - created_unions
-    assert not missing_unions, (
-        f"Missing expected unions: {sorted(list(missing_unions))}"
-    )
+    assert (
+        not missing_unions
+    ), f"Missing expected unions: {sorted(list(missing_unions))}"
 
     expected_methods = [
         f"{project_name}.types.Point.new",
@@ -353,9 +353,9 @@ fn demonstrate_types() {
     created_methods = get_node_names(mock_ingestor, "Method")
 
     missing_methods = set(expected_methods) - created_methods
-    assert not missing_methods, (
-        f"Missing expected methods: {sorted(list(missing_methods))}"
-    )
+    assert (
+        not missing_methods
+    ), f"Missing expected methods: {sorted(list(missing_methods))}"
 
 
 def test_rust_traits_and_implementations(
@@ -516,9 +516,9 @@ fn demonstrate_traits() {
     created_interfaces = get_node_names(mock_ingestor, "Interface")
 
     missing_traits = set(expected_traits) - created_interfaces
-    assert not missing_traits, (
-        f"Missing expected traits: {sorted(list(missing_traits))}"
-    )
+    assert (
+        not missing_traits
+    ), f"Missing expected traits: {sorted(list(missing_traits))}"
 
     expected_structs = [
         f"{project_name}.traits.Point",
@@ -528,9 +528,9 @@ fn demonstrate_traits() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_structs = set(expected_structs) - created_classes
-    assert not missing_structs, (
-        f"Missing expected structs: {sorted(list(missing_structs))}"
-    )
+    assert (
+        not missing_structs
+    ), f"Missing expected structs: {sorted(list(missing_structs))}"
 
     expected_methods = [
         f"{project_name}.traits.Display.fmt",
@@ -545,9 +545,9 @@ fn demonstrate_traits() {
     created_methods = get_node_names(mock_ingestor, "Method")
 
     found_methods = set(expected_methods) & created_methods
-    assert len(found_methods) >= 3, (
-        f"Expected at least 3 trait methods, found: {sorted(list(found_methods))}"
-    )
+    assert (
+        len(found_methods) >= 3
+    ), f"Expected at least 3 trait methods, found: {sorted(list(found_methods))}"
 
 
 def test_rust_modules_and_crates(
@@ -696,9 +696,9 @@ pub fn multiply(a: i32, b: i32) -> i32 {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     found_functions = set(expected_functions) & created_functions
-    assert len(found_functions) >= 5, (
-        f"Expected at least 5 module functions, found: {sorted(list(found_functions))}"
-    )
+    assert (
+        len(found_functions) >= 5
+    ), f"Expected at least 5 module functions, found: {sorted(list(found_functions))}"
 
     expected_structs = [
         f"{project_name}.modules.public_module.PublicStruct",
@@ -709,9 +709,9 @@ pub fn multiply(a: i32, b: i32) -> i32 {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_structs = set(expected_structs) & created_classes
-    assert len(found_structs) >= 2, (
-        f"Expected at least 2 module structs, found: {sorted(list(found_structs))}"
-    )
+    assert (
+        len(found_structs) >= 2
+    ), f"Expected at least 2 module structs, found: {sorted(list(found_structs))}"
 
 
 def test_rust_generics_and_lifetimes(
@@ -885,9 +885,9 @@ fn demonstrate_generics() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_structs = set(expected_structs) & created_classes
-    assert len(found_structs) >= 3, (
-        f"Expected at least 3 generic structs, found: {sorted(list(found_structs))}"
-    )
+    assert (
+        len(found_structs) >= 3
+    ), f"Expected at least 3 generic structs, found: {sorted(list(found_structs))}"
 
     expected_functions = [
         f"{project_name}.generics.generic_function",
@@ -901,9 +901,9 @@ fn demonstrate_generics() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     found_functions = set(expected_functions) & created_functions
-    assert len(found_functions) >= 4, (
-        f"Expected at least 4 generic functions, found: {sorted(list(found_functions))}"
-    )
+    assert (
+        len(found_functions) >= 4
+    ), f"Expected at least 4 generic functions, found: {sorted(list(found_functions))}"
 
 
 def test_rust_pattern_matching(
@@ -1090,9 +1090,9 @@ fn demonstrate_patterns() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_structs = set(expected_structs) - created_classes
-    assert not missing_structs, (
-        f"Missing expected structs: {sorted(list(missing_structs))}"
-    )
+    assert (
+        not missing_structs
+    ), f"Missing expected structs: {sorted(list(missing_structs))}"
 
     expected_enums = [
         f"{project_name}.pattern_matching.Color",
@@ -1119,9 +1119,9 @@ fn demonstrate_patterns() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     found_functions = set(expected_functions) & created_functions
-    assert len(found_functions) >= 6, (
-        f"Expected at least 6 pattern matching functions, found: {sorted(list(found_functions))}"
-    )
+    assert (
+        len(found_functions) >= 6
+    ), f"Expected at least 6 pattern matching functions, found: {sorted(list(found_functions))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -1135,9 +1135,9 @@ fn demonstrate_patterns() {
         )
     ]
 
-    assert len(pattern_call_relationships) >= 2, (
-        f"Expected at least 2 pattern matching call relationships, found {len(pattern_call_relationships)}"
-    )
+    assert (
+        len(pattern_call_relationships) >= 2
+    ), f"Expected at least 2 pattern matching call relationships, found {len(pattern_call_relationships)}"
 
 
 def test_rust_closures_and_lambdas(
@@ -1332,9 +1332,9 @@ fn demonstrate_function_usage() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     found_functions = set(expected_functions) & created_functions
-    assert len(found_functions) >= 5, (
-        f"Expected at least 5 closure functions, found: {sorted(list(found_functions))}"
-    )
+    assert (
+        len(found_functions) >= 5
+    ), f"Expected at least 5 closure functions, found: {sorted(list(found_functions))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -1348,9 +1348,9 @@ fn demonstrate_function_usage() {
         )
     ]
 
-    assert len(closure_call_relationships) >= 2, (
-        f"Expected at least 2 closure call relationships, found {len(closure_call_relationships)}"
-    )
+    assert (
+        len(closure_call_relationships) >= 2
+    ), f"Expected at least 2 closure call relationships, found {len(closure_call_relationships)}"
 
 
 def test_rust_macros(
@@ -1562,9 +1562,9 @@ mod tests {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     found_functions = set(expected_functions) & created_functions
-    assert len(found_functions) >= 2, (
-        f"Expected at least 2 macro functions, found: {sorted(list(found_functions))}"
-    )
+    assert (
+        len(found_functions) >= 2
+    ), f"Expected at least 2 macro functions, found: {sorted(list(found_functions))}"
 
     expected_structs = [
         f"{project_name}.macros.MacroStruct",
@@ -1573,9 +1573,9 @@ mod tests {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_structs = set(expected_structs) - created_classes
-    assert not missing_structs, (
-        f"Missing expected structs: {sorted(list(missing_structs))}"
-    )
+    assert (
+        not missing_structs
+    ), f"Missing expected structs: {sorted(list(missing_structs))}"
 
     expected_enums = [
         f"{project_name}.macros.MacroEnum",
@@ -1778,9 +1778,9 @@ impl Debug for CustomStruct {
         call for call in import_relationships if "imports" in call.args[0][2]
     ]
 
-    assert len(rust_imports) >= 10, (
-        f"Expected at least 10 import relationships, found {len(rust_imports)}"
-    )
+    assert (
+        len(rust_imports) >= 10
+    ), f"Expected at least 10 import relationships, found {len(rust_imports)}"
 
     imported_modules = [call.args[2][2] for call in rust_imports]
 
@@ -1797,9 +1797,9 @@ impl Debug for CustomStruct {
         if any(expected in module for module in imported_modules):
             found_std_imports += 1
 
-    assert found_std_imports >= 3, (
-        f"Expected at least 3 std module imports, found {found_std_imports} matches"
-    )
+    assert (
+        found_std_imports >= 3
+    ), f"Expected at least 3 std module imports, found {found_std_imports} matches"
 
     expected_external_imports = [
         "serde",
@@ -1812,9 +1812,9 @@ impl Debug for CustomStruct {
         if any(expected in module for module in imported_modules):
             found_external_imports += 1
 
-    assert found_external_imports >= 2, (
-        f"Expected at least 2 external crate imports, found {found_external_imports} matches"
-    )
+    assert (
+        found_external_imports >= 2
+    ), f"Expected at least 2 external crate imports, found {found_external_imports} matches"
 
     project_name = rust_project.name
 
@@ -1828,9 +1828,9 @@ impl Debug for CustomStruct {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     found_functions = set(expected_functions) & created_functions
-    assert len(found_functions) >= 3, (
-        f"Expected at least 3 import-related functions, found: {sorted(list(found_functions))}"
-    )
+    assert (
+        len(found_functions) >= 3
+    ), f"Expected at least 3 import-related functions, found: {sorted(list(found_functions))}"
 
 
 def test_rust_error_handling(
@@ -2080,9 +2080,9 @@ fn demonstrate_error_handling() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     found_functions = set(expected_functions) & created_functions
-    assert len(found_functions) >= 8, (
-        f"Expected at least 8 error handling functions, found: {sorted(list(found_functions))}"
-    )
+    assert (
+        len(found_functions) >= 8
+    ), f"Expected at least 8 error handling functions, found: {sorted(list(found_functions))}"
 
     expected_enums = [
         f"{project_name}.error_handling.CustomError",
@@ -2091,9 +2091,9 @@ fn demonstrate_error_handling() {
     created_enums = get_node_names(mock_ingestor, "Enum")
 
     found_enums = set(expected_enums) & created_enums
-    assert len(found_enums) >= 1, (
-        f"Expected at least 1 custom error enum, found: {sorted(list(found_enums))}"
-    )
+    assert (
+        len(found_enums) >= 1
+    ), f"Expected at least 1 custom error enum, found: {sorted(list(found_enums))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -2107,9 +2107,9 @@ fn demonstrate_error_handling() {
         )
     ]
 
-    assert len(error_call_relationships) >= 2, (
-        f"Expected at least 2 error handling call relationships, found {len(error_call_relationships)}"
-    )
+    assert (
+        len(error_call_relationships) >= 2
+    ), f"Expected at least 2 error handling call relationships, found {len(error_call_relationships)}"
 
 
 def test_rust_comprehensive_integration(
@@ -2410,17 +2410,17 @@ fn demonstrate_comprehensive_rust() {
         call for call in call_relationships if "comprehensive" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive function calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive function calls, found {len(comprehensive_calls)}"
 
     comprehensive_imports = [
         call for call in import_relationships if "comprehensive" in call.args[0][2]
     ]
 
-    assert len(comprehensive_imports) >= 3, (
-        f"Expected at least 3 imports, found {len(comprehensive_imports)}"
-    )
+    assert (
+        len(comprehensive_imports) >= 3
+    ), f"Expected at least 3 imports, found {len(comprehensive_imports)}"
 
     for relationship in comprehensive_calls:
         assert len(relationship.args) == 3, "Call relationship should have 3 args"
@@ -2429,13 +2429,13 @@ fn demonstrate_comprehensive_rust() {
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"
 
@@ -2449,9 +2449,9 @@ fn demonstrate_comprehensive_rust() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_structs = set(expected_structs) - created_classes
-    assert not missing_structs, (
-        f"Missing expected structs: {sorted(list(missing_structs))}"
-    )
+    assert (
+        not missing_structs
+    ), f"Missing expected structs: {sorted(list(missing_structs))}"
 
     expected_enums = [
         f"{project_name}.comprehensive.RepositoryError",
@@ -2469,9 +2469,9 @@ fn demonstrate_comprehensive_rust() {
     created_interfaces = get_node_names(mock_ingestor, "Interface")
 
     missing_interfaces = set(expected_interfaces) - created_interfaces
-    assert not missing_interfaces, (
-        f"Missing expected traits: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_interfaces
+    ), f"Missing expected traits: {sorted(list(missing_interfaces))}"
 
 
 def test_rust_advanced_edge_cases(
@@ -3204,9 +3204,9 @@ async fn test_async_features() -> Result<String, ComplexError> {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     found_functions = set(expected_functions) & created_functions
-    assert len(found_functions) >= 10, (
-        f"Expected at least 10 advanced edge case functions, found: {sorted(list(found_functions))}"
-    )
+    assert (
+        len(found_functions) >= 10
+    ), f"Expected at least 10 advanced edge case functions, found: {sorted(list(found_functions))}"
 
     expected_types = [
         f"{project_name}.advanced_edge_cases.ComplexLifetimes",
@@ -3239,9 +3239,9 @@ async fn test_async_features() -> Result<String, ComplexError> {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_types = set(expected_types) & created_classes
-    assert len(found_types) >= 8, (
-        f"Expected at least 8 advanced types, found: {sorted(list(found_types))}"
-    )
+    assert (
+        len(found_types) >= 8
+    ), f"Expected at least 8 advanced types, found: {sorted(list(found_types))}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -3249,9 +3249,9 @@ async fn test_async_features() -> Result<String, ComplexError> {
         call for call in call_relationships if "advanced_edge_cases" in call.args[0][2]
     ]
 
-    assert len(edge_case_calls) >= 8, (
-        f"Expected at least 8 advanced edge case call relationships, found {len(edge_case_calls)}"
-    )
+    assert (
+        len(edge_case_calls) >= 8
+    ), f"Expected at least 8 advanced edge case call relationships, found {len(edge_case_calls)}"
 
     import_relationships = get_relationships(mock_ingestor, "IMPORTS")
 
@@ -3261,6 +3261,6 @@ async fn test_async_features() -> Result<String, ComplexError> {
         if "advanced_edge_cases" in call.args[0][2]
     ]
 
-    assert len(edge_case_imports) >= 5, (
-        f"Expected at least 5 import relationships for advanced features, found {len(edge_case_imports)}"
-    )
+    assert (
+        len(edge_case_imports) >= 5
+    ), f"Expected at least 5 import relationships for advanced features, found {len(edge_case_imports)}"

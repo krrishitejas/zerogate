@@ -132,9 +132,9 @@ const total = sum(1, 2, 3, 4, 5);
         and "function_declarations" in call.args[2][2]
     ]
 
-    assert len(function_to_function_calls) >= 2, (
-        f"Expected at least 2 function-to-function calls, found {len(function_to_function_calls)}"
-    )
+    assert (
+        len(function_to_function_calls) >= 2
+    ), f"Expected at least 2 function-to-function calls, found {len(function_to_function_calls)}"
 
 
 def test_arrow_functions(
@@ -219,9 +219,9 @@ const quadrupled = doubler(8);
         if "arrow_functions" in call[0][1]["qualified_name"]
     ]
 
-    assert len(arrow_functions) >= 10, (
-        f"Expected at least 10 arrow functions, found {len(arrow_functions)}"
-    )
+    assert (
+        len(arrow_functions) >= 10
+    ), f"Expected at least 10 arrow functions, found {len(arrow_functions)}"
 
     created_functions = get_qualified_names(function_calls)
     expected_arrow_functions = [
@@ -362,9 +362,9 @@ async function orchestrate() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     for expected_qn in expected_async_functions:
-        assert expected_qn in created_functions, (
-            f"Missing async function: {expected_qn}"
-        )
+        assert (
+            expected_qn in created_functions
+        ), f"Missing async function: {expected_qn}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -375,9 +375,9 @@ async function orchestrate() {
         and "async_functions" in call.args[2][2]
     ]
 
-    assert len(async_to_async_calls) >= 2, (
-        f"Expected at least 2 async function calls, found {len(async_to_async_calls)}"
-    )
+    assert (
+        len(async_to_async_calls) >= 2
+    ), f"Expected at least 2 async function calls, found {len(async_to_async_calls)}"
 
 
 def test_immediately_invoked_function_expressions(
@@ -491,9 +491,9 @@ const configValue = Config.get('apiUrl');
         if "iife_patterns" in call[0][1]["qualified_name"]
     ]
 
-    assert len(iife_functions) >= 5, (
-        f"Expected at least 5 IIFE functions, found {len(iife_functions)}"
-    )
+    assert (
+        len(iife_functions) >= 5
+    ), f"Expected at least 5 IIFE functions, found {len(iife_functions)}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -501,9 +501,9 @@ const configValue = Config.get('apiUrl');
         call for call in call_relationships if "iife_patterns" in call.args[0][2]
     ]
 
-    assert len(iife_calls) >= 3, (
-        f"Expected at least 3 IIFE calls, found {len(iife_calls)}"
-    )
+    assert (
+        len(iife_calls) >= 3
+    ), f"Expected at least 3 IIFE calls, found {len(iife_calls)}"
 
 
 def test_higher_order_functions(
@@ -644,9 +644,9 @@ const memoizedAdd = memoize(add5);
     created_functions = get_qualified_names(function_calls)
 
     for expected_qn in expected_hof_functions:
-        assert expected_qn in created_functions, (
-            f"Missing higher-order function: {expected_qn}"
-        )
+        assert (
+            expected_qn in created_functions
+        ), f"Missing higher-order function: {expected_qn}"
 
     nested_functions = [
         call
@@ -655,9 +655,9 @@ const memoizedAdd = memoize(add5);
         and len(call[0][1]["qualified_name"].split(SEPARATOR_DOT)) > 3
     ]
 
-    assert len(nested_functions) >= 5, (
-        f"Expected at least 5 nested functions from higher-order functions, found {len(nested_functions)}"
-    )
+    assert (
+        len(nested_functions) >= 5
+    ), f"Expected at least 5 nested functions from higher-order functions, found {len(nested_functions)}"
 
 
 def test_method_definitions(
@@ -820,9 +820,9 @@ const isValid = Person.isValidAge(30);
         if "method_definitions" in call[0][1]["qualified_name"]
     ]
 
-    assert len(method_definitions) >= 10, (
-        f"Expected at least 10 method definitions, found {len(method_definitions)}"
-    )
+    assert (
+        len(method_definitions) >= 10
+    ), f"Expected at least 10 method definitions, found {len(method_definitions)}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -830,9 +830,9 @@ const isValid = Person.isValidAge(30);
         call for call in call_relationships if "method_definitions" in call.args[0][2]
     ]
 
-    assert len(method_calls) >= 5, (
-        f"Expected at least 5 method calls, found {len(method_calls)}"
-    )
+    assert (
+        len(method_calls) >= 5
+    ), f"Expected at least 5 method calls, found {len(method_calls)}"
 
 
 def test_function_comprehensive(
@@ -935,9 +935,9 @@ const orchestrated = orchestrator();
         if "comprehensive_functions" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 8, (
-        f"Expected at least 8 comprehensive function calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 8
+    ), f"Expected at least 8 comprehensive function calls, found {len(comprehensive_calls)}"
 
     for relationship in comprehensive_calls:
         assert len(relationship.args) == 3, "Call relationship should have 3 args"
@@ -946,12 +946,12 @@ const orchestrated = orchestrator();
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_functions" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_functions" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

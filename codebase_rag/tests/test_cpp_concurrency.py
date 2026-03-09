@@ -263,9 +263,9 @@ void demonstrateThreadUtilities() {
     found_entities = [
         entity for entity in expected_entities if entity in created_entities
     ]
-    assert len(found_entities) >= 4, (
-        f"Expected at least 4 thread entities, found {len(found_entities)}: {found_entities}"
-    )
+    assert (
+        len(found_entities) >= 4
+    ), f"Expected at least 4 thread entities, found {len(found_entities)}: {found_entities}"
 
 
 def test_mutex_and_locks(
@@ -593,9 +593,9 @@ void demonstrateMutexPatterns() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 3, (
-        f"Expected at least 3 mutex-related classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 3
+    ), f"Expected at least 3 mutex-related classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_atomics_and_memory_ordering(
@@ -937,9 +937,9 @@ void compareAtomicVsMutex() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 3, (
-        f"Expected at least 3 atomic-related classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 3
+    ), f"Expected at least 3 atomic-related classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_condition_variables_and_futures(
@@ -1345,9 +1345,9 @@ void demonstrateAsyncPipeline() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 4, (
-        f"Expected at least 4 condition/future classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 4
+    ), f"Expected at least 4 condition/future classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_cpp_concurrency_comprehensive(
@@ -1850,8 +1850,8 @@ void runComprehensiveBenchmark() {
         if "comprehensive_concurrency" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 10, (
-        f"Expected at least 10 comprehensive concurrency calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 10
+    ), f"Expected at least 10 comprehensive concurrency calls, found {len(comprehensive_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

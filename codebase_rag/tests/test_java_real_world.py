@@ -167,9 +167,9 @@ public class DatabaseConnection {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing Spring components: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing Spring components: {sorted(list(missing_classes))}"
 
 
 def test_design_patterns_singleton_factory(
@@ -368,12 +368,12 @@ class WindowsTextField implements TextField {
     missing_classes = expected_classes - created_classes
     missing_interfaces = expected_interfaces - created_interfaces
 
-    assert not missing_classes, (
-        f"Missing design pattern classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_interfaces, (
-        f"Missing design pattern interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing design pattern classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_interfaces
+    ), f"Missing design pattern interfaces: {sorted(list(missing_interfaces))}"
 
 
 def test_builder_observer_patterns(
@@ -597,12 +597,12 @@ class PaymentContext {
     missing_classes = expected_classes - created_classes
     missing_interfaces = expected_interfaces - created_interfaces
 
-    assert not missing_classes, (
-        f"Missing pattern classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_interfaces, (
-        f"Missing pattern interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing pattern classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_interfaces
+    ), f"Missing pattern interfaces: {sorted(list(missing_interfaces))}"
 
 
 def test_dao_repository_patterns(
@@ -850,9 +850,9 @@ class CustomerRepository {
     missing_interfaces = expected_interfaces - created_interfaces
 
     assert not missing_classes, f"Missing DAO classes: {sorted(list(missing_classes))}"
-    assert not missing_interfaces, (
-        f"Missing DAO interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_interfaces
+    ), f"Missing DAO interfaces: {sorted(list(missing_interfaces))}"
 
 
 def test_configuration_classes(
@@ -1055,12 +1055,12 @@ class SmtpEmailService implements EmailService {
     missing_classes = expected_classes - created_classes
     missing_interfaces = expected_interfaces - created_interfaces
 
-    assert not missing_classes, (
-        f"Missing configuration classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_interfaces, (
-        f"Missing configuration interfaces: {sorted(list(missing_interfaces))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing configuration classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_interfaces
+    ), f"Missing configuration interfaces: {sorted(list(missing_interfaces))}"
 
 
 def test_utility_helper_classes(
@@ -1330,6 +1330,6 @@ public final class MathUtils {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing utility classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing utility classes: {sorted(list(missing_classes))}"

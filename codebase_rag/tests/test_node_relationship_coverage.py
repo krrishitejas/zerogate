@@ -241,9 +241,9 @@ class TestEnsureConstraintsForAllLabels:
             expected = (
                 f"CREATE CONSTRAINT ON (n:{label.value}) ASSERT n.{prop} IS UNIQUE;"
             )
-            assert expected in executed_queries, (
-                f"Missing constraint for {label.value}. Expected query: {expected}"
-            )
+            assert (
+                expected in executed_queries
+            ), f"Missing constraint for {label.value}. Expected query: {expected}"
 
     def test_ensure_constraints_creates_all_indexes(self) -> None:
         ingestor = MemgraphIngestor(host="localhost", port=7687)

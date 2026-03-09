@@ -505,9 +505,9 @@ class TestTypeScriptNodeLabels:
         index_project(memgraph_ingestor, typescript_project)
 
         labels = get_node_labels(memgraph_ingestor)
-        assert NodeLabel.INTERFACE.value in labels, (
-            f"Interface label missing. Got labels: {labels}"
-        )
+        assert (
+            NodeLabel.INTERFACE.value in labels
+        ), f"Interface label missing. Got labels: {labels}"
 
         interfaces = get_nodes_by_label(memgraph_ingestor, NodeLabel.INTERFACE.value)
         interface_names = {n["name"] for n in interfaces}
@@ -519,9 +519,9 @@ class TestTypeScriptNodeLabels:
         index_project(memgraph_ingestor, typescript_project)
 
         labels = get_node_labels(memgraph_ingestor)
-        assert NodeLabel.ENUM.value in labels, (
-            f"Enum label missing. Got labels: {labels}"
-        )
+        assert (
+            NodeLabel.ENUM.value in labels
+        ), f"Enum label missing. Got labels: {labels}"
 
         enums = get_nodes_by_label(memgraph_ingestor, NodeLabel.ENUM.value)
         enum_names = {n["name"] for n in enums}
@@ -533,9 +533,9 @@ class TestTypeScriptNodeLabels:
         index_project(memgraph_ingestor, typescript_project)
 
         labels = get_node_labels(memgraph_ingestor)
-        assert NodeLabel.TYPE.value in labels, (
-            f"Type label missing. Got labels: {labels}"
-        )
+        assert (
+            NodeLabel.TYPE.value in labels
+        ), f"Type label missing. Got labels: {labels}"
 
         types = get_nodes_by_label(memgraph_ingestor, NodeLabel.TYPE.value)
         type_names = {n["name"] for n in types}

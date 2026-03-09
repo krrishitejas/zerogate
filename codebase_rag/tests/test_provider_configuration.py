@@ -53,15 +53,15 @@ class TestProviderConfiguration:
             config = AppConfig()
 
             orch_config = config.active_orchestrator_config
-            assert orch_config.provider == "ollama", (
-                "Should use Ollama from env vars, not default to other providers"
-            )
+            assert (
+                orch_config.provider == "ollama"
+            ), "Should use Ollama from env vars, not default to other providers"
             assert orch_config.model_id == "llama3.2"
 
             cypher_config = config.active_cypher_config
-            assert cypher_config.provider == "ollama", (
-                "Should use Ollama from env vars, not default to other providers"
-            )
+            assert (
+                cypher_config.provider == "ollama"
+            ), "Should use Ollama from env vars, not default to other providers"
             assert cypher_config.model_id == "codellama"
 
     def test_custom_model_names_with_colons(self) -> None:

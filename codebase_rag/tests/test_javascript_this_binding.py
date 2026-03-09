@@ -231,9 +231,9 @@ bound(); // preserved this
         if "this_contexts" in call[0][1]["qualified_name"]
     ]
 
-    assert len(this_context_callables) >= 10, (
-        f"Expected at least 10 functions/methods with this context, found {len(this_context_callables)}"
-    )
+    assert (
+        len(this_context_callables) >= 10
+    ), f"Expected at least 10 functions/methods with this context, found {len(this_context_callables)}"
 
     created_functions = get_qualified_names(function_calls)
     arrow_patterns = ["arrowMethod", "innerArrow", "arrowProperty"]
@@ -244,9 +244,9 @@ bound(); // preserved this
         if any(pattern in func for pattern in arrow_patterns)
     ]
 
-    assert len(arrow_functions_found) >= 2, (
-        f"Expected at least 2 arrow functions, found {len(arrow_functions_found)}"
-    )
+    assert (
+        len(arrow_functions_found) >= 2
+    ), f"Expected at least 2 arrow functions, found {len(arrow_functions_found)}"
 
 
 def test_bind_call_apply_methods(
@@ -429,9 +429,9 @@ console.log(result2); // [15, 20]
         )
     ]
 
-    assert len(bind_call_apply_calls) >= 5, (
-        f"Expected at least 5 bind/call/apply calls, found {len(bind_call_apply_calls)}"
-    )
+    assert (
+        len(bind_call_apply_calls) >= 5
+    ), f"Expected at least 5 bind/call/apply calls, found {len(bind_call_apply_calls)}"
 
     created_functions = get_node_names(mock_ingestor, "Function")
     project_name = javascript_this_project.name
@@ -685,9 +685,9 @@ regularFunction(10, 20, 30);
         )
     ]
 
-    assert len(arrow_functions) >= 5, (
-        f"Expected at least 5 arrow functions, found {len(arrow_functions)}"
-    )
+    assert (
+        len(arrow_functions) >= 5
+    ), f"Expected at least 5 arrow functions, found {len(arrow_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -697,9 +697,9 @@ regularFunction(10, 20, 30);
         if "arrow_lexical_this" in call[0][1]["qualified_name"]
     ]
 
-    assert len(classes_with_arrows) >= 2, (
-        f"Expected at least 2 classes with arrow functions, found {len(classes_with_arrows)}"
-    )
+    assert (
+        len(classes_with_arrows) >= 2
+    ), f"Expected at least 2 classes with arrow functions, found {len(classes_with_arrows)}"
 
 
 def test_this_in_callbacks_and_events(
@@ -990,9 +990,9 @@ searchHandler.debouncedSearch('test query');
         if "callbacks_events" in call[0][1]["qualified_name"]
     ]
 
-    assert len(callback_functions) >= 10, (
-        f"Expected at least 10 callback-related functions, found {len(callback_functions)}"
-    )
+    assert (
+        len(callback_functions) >= 10
+    ), f"Expected at least 10 callback-related functions, found {len(callback_functions)}"
 
     method_calls = get_nodes(mock_ingestor, "Method")
 
@@ -1006,9 +1006,9 @@ searchHandler.debouncedSearch('test query');
         )
     ]
 
-    assert len(event_methods) >= 3, (
-        f"Expected at least 3 event handler methods, found {len(event_methods)}"
-    )
+    assert (
+        len(event_methods) >= 3
+    ), f"Expected at least 3 event handler methods, found {len(event_methods)}"
 
 
 def test_this_comprehensive(
@@ -1143,9 +1143,9 @@ outer.call({ context: 'custom' });
         call for call in calls_relationships if "comprehensive_this" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive this-related calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive this-related calls, found {len(comprehensive_calls)}"
 
     binding_calls = [
         call
@@ -1155,6 +1155,6 @@ outer.call({ context: 'custom' });
         )
     ]
 
-    assert len(binding_calls) >= 2, (
-        f"Expected at least 2 bind/call/apply calls, found {len(binding_calls)}"
-    )
+    assert (
+        len(binding_calls) >= 2
+    ), f"Expected at least 2 bind/call/apply calls, found {len(binding_calls)}"

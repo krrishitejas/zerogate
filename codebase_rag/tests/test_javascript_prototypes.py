@@ -189,9 +189,9 @@ console.log(manager instanceof Person);    // true
     ]
 
     for expected in expected_constructors:
-        assert expected in created_functions, (
-            f"Missing constructor function: {expected}"
-        )
+        assert (
+            expected in created_functions
+        ), f"Missing constructor function: {expected}"
 
     expected_prototype_methods = [
         f"{project_name}.constructor_prototypes.Person.greet",
@@ -211,9 +211,9 @@ console.log(manager instanceof Person);    // true
         )
     ]
 
-    assert len(prototype_methods_found) >= 4, (
-        f"Expected at least 4 prototype methods, found {len(prototype_methods_found)}"
-    )
+    assert (
+        len(prototype_methods_found) >= 4
+    ), f"Expected at least 4 prototype methods, found {len(prototype_methods_found)}"
 
     inheritance_relationships = get_relationships(mock_ingestor, "INHERITS")
 
@@ -432,9 +432,9 @@ myTask.outputTaskDetails();
         )
     ]
 
-    assert len(method_like_functions) >= 3, (
-        f"Expected at least 3 prototype methods, found {len(method_like_functions)}"
-    )
+    assert (
+        len(method_like_functions) >= 3
+    ), f"Expected at least 3 prototype methods, found {len(method_like_functions)}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -442,9 +442,9 @@ myTask.outputTaskDetails();
         call for call in call_relationships if "Object.create" in str(call.args[2][2])
     ]
 
-    assert len(object_create_calls) >= 3, (
-        f"Expected at least 3 Object.create calls, found {len(object_create_calls)}"
-    )
+    assert (
+        len(object_create_calls) >= 3
+    ), f"Expected at least 3 Object.create calls, found {len(object_create_calls)}"
 
 
 def test_prototype_chain_and_method_resolution(
@@ -628,9 +628,9 @@ square.scale(2);
     ]
 
     for expected in expected_constructors:
-        assert expected in created_functions, (
-            f"Missing constructor in chain: {expected}"
-        )
+        assert (
+            expected in created_functions
+        ), f"Missing constructor in chain: {expected}"
 
     method_patterns = ["move", "getArea", "setSize", "getColor", "getFullInfo"]
     methods_found = [
@@ -639,9 +639,9 @@ square.scale(2);
         if any(pattern in func for pattern in method_patterns)
     ]
 
-    assert len(methods_found) >= 4, (
-        f"Expected at least 4 prototype methods, found {len(methods_found)}"
-    )
+    assert (
+        len(methods_found) >= 4
+    ), f"Expected at least 4 prototype methods, found {len(methods_found)}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -652,9 +652,9 @@ square.scale(2);
         and ".prototype." in str(call.args[2][2])
     ]
 
-    assert len(prototype_calls) >= 2, (
-        f"Expected at least 2 prototype method calls, found {len(prototype_calls)}"
-    )
+    assert (
+        len(prototype_calls) >= 2
+    ), f"Expected at least 2 prototype method calls, found {len(prototype_calls)}"
 
 
 def test_prototype_mixins_and_composition(
@@ -930,9 +930,9 @@ console.log(entity.validate());
     ]
 
     for expected in expected_functions:
-        assert expected in created_functions, (
-            f"Missing mixin-related function: {expected}"
-        )
+        assert (
+            expected in created_functions
+        ), f"Missing mixin-related function: {expected}"
 
     mixin_methods = [
         "on",
@@ -949,9 +949,9 @@ console.log(entity.validate());
         if any(method in func for method in mixin_methods)
     ]
 
-    assert len(mixin_method_functions) >= 3, (
-        f"Expected at least 3 mixin methods, found {len(mixin_method_functions)}"
-    )
+    assert (
+        len(mixin_method_functions) >= 3
+    ), f"Expected at least 3 mixin methods, found {len(mixin_method_functions)}"
 
     model_methods = [
         func
@@ -959,9 +959,9 @@ console.log(entity.validate());
         if "Model" in func and any(m in func for m in ["get", "set"])
     ]
 
-    assert len(model_methods) >= 1, (
-        f"Expected at least 1 Model method, found {len(model_methods)}"
-    )
+    assert (
+        len(model_methods) >= 1
+    ), f"Expected at least 1 Model method, found {len(model_methods)}"
 
 
 def test_prototype_patterns_edge_cases(
@@ -1193,9 +1193,9 @@ for (const value of generator) {
     ]
 
     for expected in expected_constructors:
-        assert expected in created_functions, (
-            f"Missing edge case constructor: {expected}"
-        )
+        assert (
+            expected in created_functions
+        ), f"Missing edge case constructor: {expected}"
 
     async_generator_methods = [
         func
@@ -1206,9 +1206,9 @@ for (const value of generator) {
         )
     ]
 
-    assert len(async_generator_methods) >= 2, (
-        f"Expected at least 2 async/generator methods, found {len(async_generator_methods)}"
-    )
+    assert (
+        len(async_generator_methods) >= 2
+    ), f"Expected at least 2 async/generator methods, found {len(async_generator_methods)}"
 
 
 def test_prototype_comprehensive(
@@ -1322,9 +1322,9 @@ console.log(dog.eat('bone')); // Works due to prototype chain
         if "comprehensive_prototypes" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive prototype calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive prototype calls, found {len(comprehensive_calls)}"
 
     all_nodes = mock_ingestor.ensure_node_batch.call_args_list
     function_nodes = [call for call in all_nodes if call[0][0] == NodeType.FUNCTION]
@@ -1335,6 +1335,6 @@ console.log(dog.eat('bone')); // Works due to prototype chain
         if "comprehensive_prototypes" in call[0][1]["qualified_name"]
     ]
 
-    assert len(comprehensive_functions) >= 6, (
-        f"Expected at least 6 functions/methods in comprehensive test, found {len(comprehensive_functions)}"
-    )
+    assert (
+        len(comprehensive_functions) >= 6
+    ), f"Expected at least 6 functions/methods in comprehensive test, found {len(comprehensive_functions)}"

@@ -9,7 +9,7 @@ import uuid
 import zipfile
 from pathlib import Path
 
-from fastapi import APIRouter, HTTPException, UploadFile, File
+from fastapi import APIRouter, File, HTTPException, UploadFile
 from fastapi.responses import StreamingResponse
 from loguru import logger
 
@@ -40,11 +40,14 @@ async def _run_ingestion(project_id: str, project_path: Path) -> None:
         project_store.update_status(
             project_id, status=ProjectStatus.PARSING, progress=0.1
         )
-        await ws_manager.broadcast(project_id, {
-            "type": "status",
-            "project_id": project_id,
-            "data": {"status": "parsing", "progress": 0.1},
-        })
+        await ws_manager.broadcast(
+            project_id,
+            {
+                "type": "status",
+                "project_id": project_id,
+                "data": {"status": "parsing", "progress": 0.1},
+            },
+        )
 
         # Count files for progress tracking
         all_files = list(project_path.rglob("*"))
@@ -55,11 +58,14 @@ async def _run_ingestion(project_id: str, project_path: Path) -> None:
         project_store.update_status(
             project_id, status=ProjectStatus.INDEXING, progress=0.3
         )
-        await ws_manager.broadcast(project_id, {
-            "type": "status",
-            "project_id": project_id,
-            "data": {"status": "indexing", "progress": 0.3},
-        })
+        await ws_manager.broadcast(
+            project_id,
+            {
+                "type": "status",
+                "project_id": project_id,
+                "data": {"status": "indexing", "progress": 0.3},
+            },
+        )
 
         # Use existing GraphUpdater to parse and ingest into Memgraph
         from ...parser_loader import load_parsers
@@ -90,11 +96,14 @@ async def _run_ingestion(project_id: str, project_path: Path) -> None:
             progress=0.7,
             files_processed=total,
         )
-        await ws_manager.broadcast(project_id, {
-            "type": "status",
-            "project_id": project_id,
-            "data": {"status": "scanning", "progress": 0.7},
-        })
+        await ws_manager.broadcast(
+            project_id,
+            {
+                "type": "status",
+                "project_id": project_id,
+                "data": {"status": "scanning", "progress": 0.7},
+            },
+        )
 
         # Run auto-scanner
         from ...auto_scanner import AutoScanner
@@ -110,19 +119,20 @@ async def _run_ingestion(project_id: str, project_path: Path) -> None:
         report = await scanner.run_full_scan(project_id)
 
         project_store.set_report(project_id, report)
-        project_store.update_status(
-            project_id, status=ProjectStatus.DONE, progress=1.0
-        )
+        project_store.update_status(project_id, status=ProjectStatus.DONE, progress=1.0)
 
-        await ws_manager.broadcast(project_id, {
-            "type": "status",
-            "project_id": project_id,
-            "data": {
-                "status": "done",
-                "progress": 1.0,
-                "findings_count": len(report.findings),
+        await ws_manager.broadcast(
+            project_id,
+            {
+                "type": "status",
+                "project_id": project_id,
+                "data": {
+                    "status": "done",
+                    "progress": 1.0,
+                    "findings_count": len(report.findings),
+                },
             },
-        })
+        )
         logger.success(
             f"Project {project_id} ingestion and scan complete. "
             f"{len(report.findings)} findings."
@@ -135,11 +145,14 @@ async def _run_ingestion(project_id: str, project_path: Path) -> None:
             status=ProjectStatus.ERROR,
             error_message=str(e),
         )
-        await ws_manager.broadcast(project_id, {
-            "type": "error",
-            "project_id": project_id,
-            "data": {"message": str(e)},
-        })
+        await ws_manager.broadcast(
+            project_id,
+            {
+                "type": "error",
+                "project_id": project_id,
+                "data": {"message": str(e)},
+            },
+        )
 
 
 @router.post("/upload", response_model=ProjectUploadResponse)
@@ -208,12 +221,10 @@ async def trigger_scan(project_id: str):
             detail=f"Project is currently '{state.status.value}'. Wait for completion.",
         )
 
-    from ...config import settings
     from ...auto_scanner import AutoScanner
+    from ...config import settings
 
-    project_store.update_status(
-        project_id, status=ProjectStatus.SCANNING, progress=0.5
-    )
+    project_store.update_status(project_id, status=ProjectStatus.SCANNING, progress=0.5)
 
     try:
         scanner = AutoScanner(
@@ -226,9 +237,7 @@ async def trigger_scan(project_id: str):
         )
         report = await scanner.run_full_scan(project_id)
         project_store.set_report(project_id, report)
-        project_store.update_status(
-            project_id, status=ProjectStatus.DONE, progress=1.0
-        )
+        project_store.update_status(project_id, status=ProjectStatus.DONE, progress=1.0)
         return {"status": "done", "findings_count": len(report.findings)}
     except Exception as e:
         project_store.update_status(

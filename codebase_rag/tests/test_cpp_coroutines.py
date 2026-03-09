@@ -253,16 +253,16 @@ void demonstrateBasicGenerators() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 coroutine class, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 coroutine class, found {len(found_classes)}: {found_classes}"
 
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_async_await_coroutines(
@@ -546,9 +546,9 @@ void demonstrateAsyncAwait() {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_custom_coroutine_types(
@@ -889,8 +889,8 @@ void demonstrateCustomCoroutines() {
         call for call in call_relationships if "custom_coroutines" in call.args[0][2]
     ]
 
-    assert len(custom_coroutine_calls) >= 3, (
-        f"Expected at least 3 custom coroutine calls, found {len(custom_coroutine_calls)}"
-    )
+    assert (
+        len(custom_coroutine_calls) >= 3
+    ), f"Expected at least 3 custom coroutine calls, found {len(custom_coroutine_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

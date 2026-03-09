@@ -622,9 +622,9 @@ end
 
         calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-        assert len(calls_rels) >= 10, (
-            f"Expected at least 10 CALLS, got {len(calls_rels)}"
-        )
+        assert (
+            len(calls_rels) >= 10
+        ), f"Expected at least 10 CALLS, got {len(calls_rels)}"
 
         print("✅ Lua 5.4 enhanced standard library test PASSED")
 

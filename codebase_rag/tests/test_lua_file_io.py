@@ -58,9 +58,9 @@ io.write("Processing complete\n")
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 3, (
-        f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 3
+    ), f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"
 
 
 def test_file_reading_modes(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -122,9 +122,9 @@ end
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 2, (
-        f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 2
+    ), f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
 
 
 def test_file_positioning_and_info(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -193,9 +193,9 @@ temp:close()
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 2, (
-        f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 2
+    ), f"Expected at least 2 DEFINES relationships, got {len(defines_rels)}"
 
 
 def test_serialization_patterns(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -293,13 +293,13 @@ local person = deserialize_from_file("person.lua")
 
     calls_rels = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(defines_rels) >= 3, (
-        f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 3
+    ), f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 1, (
-        f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 1
+    ), f"Expected at least 1 CALLS relationship, got {len(calls_rels)}"
 
 
 def test_binary_file_operations(temp_repo: Path, mock_ingestor: MagicMock) -> None:
@@ -369,6 +369,6 @@ write_binary_file("copy.png", binary_data.data)
 
     defines_rels = get_relationships(mock_ingestor, "DEFINES")
 
-    assert len(defines_rels) >= 3, (
-        f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 3
+    ), f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"

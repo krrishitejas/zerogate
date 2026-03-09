@@ -286,9 +286,9 @@ function handleProfileError(error) {
     found_promise_functions = [
         func for func in expected_promise_functions if func in created_functions
     ]
-    assert len(found_promise_functions) >= 7, (
-        f"Expected at least 7 Promise functions, found {len(found_promise_functions)}"
-    )
+    assert (
+        len(found_promise_functions) >= 7
+    ), f"Expected at least 7 Promise functions, found {len(found_promise_functions)}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -296,9 +296,9 @@ function handleProfileError(error) {
         call for call in call_relationships if "promise_patterns" in call.args[0][2]
     ]
 
-    assert len(promise_calls) >= 8, (
-        f"Expected at least 8 function calls in Promise code, found {len(promise_calls)}"
-    )
+    assert (
+        len(promise_calls) >= 8
+    ), f"Expected at least 8 function calls in Promise code, found {len(promise_calls)}"
 
 
 def test_async_await_patterns(
@@ -647,9 +647,9 @@ function delay(ms) {
     found_async_functions = [
         func for func in expected_async_functions if func in created_functions
     ]
-    assert len(found_async_functions) >= 6, (
-        f"Expected at least 6 async functions, found {len(found_async_functions)}"
-    )
+    assert (
+        len(found_async_functions) >= 6
+    ), f"Expected at least 6 async functions, found {len(found_async_functions)}"
 
     expected_classes = [
         f"{project_name}.async_await_patterns.UserService",
@@ -658,9 +658,9 @@ function delay(ms) {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 class with async methods, found {len(found_classes)}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 class with async methods, found {len(found_classes)}"
 
 
 def test_callback_patterns(
@@ -1013,9 +1013,9 @@ fetchUserPromise(789)
     found_callback_functions = [
         func for func in expected_callback_functions if func in created_functions
     ]
-    assert len(found_callback_functions) >= 6, (
-        f"Expected at least 6 callback functions, found {len(found_callback_functions)}"
-    )
+    assert (
+        len(found_callback_functions) >= 6
+    ), f"Expected at least 6 callback functions, found {len(found_callback_functions)}"
 
     expected_classes = [
         f"{project_name}.callback_patterns.EventEmitter",
@@ -1024,9 +1024,9 @@ fetchUserPromise(789)
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 callback-based class, found {len(found_classes)}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 callback-based class, found {len(found_classes)}"
 
 
 def test_generator_patterns(
@@ -1348,9 +1348,9 @@ consumeAsyncGenerator();
     found_generator_functions = [
         func for func in expected_generator_functions if func in created_functions
     ]
-    assert len(found_generator_functions) >= 8, (
-        f"Expected at least 8 generator functions, found {len(found_generator_functions)}"
-    )
+    assert (
+        len(found_generator_functions) >= 8
+    ), f"Expected at least 8 generator functions, found {len(found_generator_functions)}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -1358,9 +1358,9 @@ consumeAsyncGenerator();
         call for call in call_relationships if "generator_patterns" in call.args[0][2]
     ]
 
-    assert len(generator_calls) >= 5, (
-        f"Expected at least 5 function calls in generator code, found {len(generator_calls)}"
-    )
+    assert (
+        len(generator_calls) >= 5
+    ), f"Expected at least 5 function calls in generator code, found {len(generator_calls)}"
 
 
 def test_async_comprehensive(
@@ -1529,9 +1529,9 @@ function delay(ms) {
         call for call in call_relationships if "comprehensive_async" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive async calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive async calls, found {len(comprehensive_calls)}"
 
     for relationship in comprehensive_calls:
         assert len(relationship.args) == 3, "Call relationship should have 3 args"
@@ -1540,12 +1540,12 @@ function delay(ms) {
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_async" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_async" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

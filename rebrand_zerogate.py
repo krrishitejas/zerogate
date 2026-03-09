@@ -18,8 +18,9 @@ The script:
 
 import os
 import re
-import sys
 from pathlib import Path
+
+from loguru import logger
 
 # ------------------------------------------------------------
 # Configuration – mapping from old terms to new ones
@@ -40,16 +41,36 @@ IGNORE_DIRS = {".git", ".idea", "__pycache__", "node_modules"}
 
 # File extensions considered binary (image, compiled bytecode, etc.)
 BINARY_EXTS = {
-    ".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff",
-    ".ico", ".svg", ".eot", ".ttf", ".otf",
-    ".woff", ".woff2", ".mp4", ".mp3", ".wav",
-    ".exe", ".dll", ".so", ".dylib", ".pyc", ".pyo",
-    ".class", ".jar",
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".gif",
+    ".bmp",
+    ".tiff",
+    ".ico",
+    ".svg",
+    ".eot",
+    ".ttf",
+    ".otf",
+    ".woff",
+    ".woff2",
+    ".mp4",
+    ".mp3",
+    ".wav",
+    ".exe",
+    ".dll",
+    ".so",
+    ".dylib",
+    ".pyc",
+    ".pyo",
+    ".class",
+    ".jar",
 }
 
 # ------------------------------------------------------------
 # Helpers
 # ------------------------------------------------------------
+
 
 def is_text_file(path: Path) -> bool:
     """Heuristic: return True if file appears to be a text file."""
@@ -69,12 +90,13 @@ def replace_in_text(text: str) -> str:
     """Replace all occurrences of the mapping keys."""
     return PATTERN.sub(lambda m: MAPPING[m.group(0)], text)
 
+
 # ------------------------------------------------------------
 # Phase 1 – Content replacement
 # ------------------------------------------------------------
 
+
 def phase_one(root: Path):
-    print("Phase 1: Content replacement")
     changed_files = []
 
     for dirpath, dirnames, filenames in os.walk(root):
@@ -89,8 +111,7 @@ def phase_one(root: Path):
                 continue
             try:
                 text = fpath.read_text(encoding="utf-8")
-            except Exception as e:
-                print(f"  ⚠️  Skipping unreadable file: {fpath} ({e})")
+            except Exception:
                 continue
 
             new_text = replace_in_text(text)
@@ -98,16 +119,18 @@ def phase_one(root: Path):
                 fpath.write_text(new_text, encoding="utf-8")
                 changed_files.append(fpath)
 
-    for f in changed_files:
-        print(f"Modified: {f.relative_to(root)}")
-    print(f"Total files changed: {len(changed_files)}\n")
+    if changed_files:
+        logger.info(f"Phase 1: Updated content in {len(changed_files)} files.")
+    else:
+        logger.info("Phase 1: No content changes needed.")
+
 
 # ------------------------------------------------------------
 # Phase 2 – Path renaming
 # ------------------------------------------------------------
 
+
 def phase_two(root: Path):
-    print("Phase 2: Path renaming")
     renamed = []
 
     # Walk bottom‑up so that we rename children before parents
@@ -116,7 +139,9 @@ def phase_two(root: Path):
         for d in dirnames:
             if "code_graph_rag" in d or "code-graph-rag" in d:
                 old = Path(dirpath) / d
-                new_name = d.replace("code_graph_rag", "zerogate").replace("code-graph-rag", "zerogate")
+                new_name = d.replace("code_graph_rag", "zerogate").replace(
+                    "code-graph-rag", "zerogate"
+                )
                 new = Path(dirpath) / new_name
                 old.rename(new)
                 renamed.append((old, new))
@@ -127,25 +152,30 @@ def phase_two(root: Path):
                 continue
             if "code_graph_rag" in f or "code-graph-rag" in f:
                 old = Path(dirpath) / f
-                new_name = f.replace("code_graph_rag", "zerogate").replace("code-graph-rag", "zerogate")
+                new_name = f.replace("code_graph_rag", "zerogate").replace(
+                    "code-graph-rag", "zerogate"
+                )
                 new = Path(dirpath) / new_name
                 old.rename(new)
                 renamed.append((old, new))
 
-    for old, new in renamed:
-        print(f"Renamed: {old.relative_to(root)} → {new.relative_to(root)}")
-    print(f"Total items renamed: {len(renamed)}\n")
+    if renamed:
+        logger.success(f"Phase 2: Renamed {len(renamed)} paths.")
+        for old, new in renamed:
+            logger.info(f"  {old.name} -> {new.name}")
+    else:
+        logger.info("Phase 2: No paths needed renaming.")
+
 
 # ------------------------------------------------------------
 # Main
 # ------------------------------------------------------------
 
+
 def main():
     root = Path.cwd()
-    print(f"Rebranding repository at: {root}\n")
     phase_one(root)
     phase_two(root)
-    print("Rebranding complete! 🎉")
 
 
 if __name__ == "__main__":

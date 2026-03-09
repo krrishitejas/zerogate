@@ -395,16 +395,16 @@ void demonstrateSTLContainers() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     missing_classes = set(expected_classes) - created_classes
-    assert not missing_classes, (
-        f"Missing expected classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing expected classes: {sorted(list(missing_classes))}"
 
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_stl_algorithms(
@@ -726,9 +726,9 @@ void demonstrateSTLAlgorithms() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 STL algorithms class, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 STL algorithms class, found {len(found_classes)}: {found_classes}"
 
 
 def test_stl_iterators_functors(
@@ -1085,9 +1085,9 @@ void demonstrateSTLIteratorsAndFunctors() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 STL iterator/functor class, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 STL iterator/functor class, found {len(found_classes)}: {found_classes}"
 
 
 def test_cpp_stl_comprehensive(
@@ -1202,8 +1202,8 @@ void demonstrateComprehensiveSTL() {
         call for call in call_relationships if "comprehensive_stl" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 3, (
-        f"Expected at least 3 comprehensive STL calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 3
+    ), f"Expected at least 3 comprehensive STL calls, found {len(comprehensive_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

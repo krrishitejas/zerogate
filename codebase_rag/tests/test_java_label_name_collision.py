@@ -51,15 +51,13 @@ public interface Interface {
     interface_nodes = get_nodes(mock_ingestor, NodeType.INTERFACE)
     interface_qns = get_qualified_names(interface_nodes)
 
-    assert _has_qn_ending(interface_qns, ".Interface"), (
-        f"Interface named 'Interface' not found in Interface nodes. Got: {interface_qns}"
-    )
+    assert _has_qn_ending(
+        interface_qns, ".Interface"
+    ), f"Interface named 'Interface' not found in Interface nodes. Got: {interface_qns}"
 
     class_qns = get_node_names(mock_ingestor, NodeType.CLASS)
     interface_in_class = [qn for qn in class_qns if qn.endswith(".Interface")]
-    assert not interface_in_class, (
-        f"Interface named 'Interface' should not appear as a Class node. Got: {interface_in_class}"
-    )
+    assert not interface_in_class, f"Interface named 'Interface' should not appear as a Class node. Got: {interface_in_class}"
 
 
 def test_enum_named_enum_ingested_as_enum_node(
@@ -84,15 +82,15 @@ public enum Enum {
     enum_nodes = get_nodes(mock_ingestor, NodeType.ENUM)
     enum_qns = get_qualified_names(enum_nodes)
 
-    assert _has_qn_ending(enum_qns, ".Enum"), (
-        f"Enum named 'Enum' not found in Enum nodes. Got: {enum_qns}"
-    )
+    assert _has_qn_ending(
+        enum_qns, ".Enum"
+    ), f"Enum named 'Enum' not found in Enum nodes. Got: {enum_qns}"
 
     class_qns = get_node_names(mock_ingestor, NodeType.CLASS)
     enum_in_class = [qn for qn in class_qns if qn.endswith(".Enum")]
-    assert not enum_in_class, (
-        f"Enum named 'Enum' should not appear as a Class node. Got: {enum_in_class}"
-    )
+    assert (
+        not enum_in_class
+    ), f"Enum named 'Enum' should not appear as a Class node. Got: {enum_in_class}"
 
 
 def test_class_named_class_ingested_as_class_node(
@@ -115,27 +113,27 @@ public class Class {
     class_nodes = get_nodes(mock_ingestor, NodeType.CLASS)
     class_qns = get_qualified_names(class_nodes)
 
-    assert _has_qn_ending(class_qns, ".Class"), (
-        f"Class named 'Class' not found in Class nodes. Got: {class_qns}"
-    )
+    assert _has_qn_ending(
+        class_qns, ".Class"
+    ), f"Class named 'Class' not found in Class nodes. Got: {class_qns}"
 
 
 def test_interface_and_enum_labels_have_constraints() -> None:
-    assert NodeLabel.INTERFACE in NODE_UNIQUE_CONSTRAINTS, (
-        "Interface label missing from NODE_UNIQUE_CONSTRAINTS"
-    )
-    assert NodeLabel.ENUM in NODE_UNIQUE_CONSTRAINTS, (
-        "Enum label missing from NODE_UNIQUE_CONSTRAINTS"
-    )
+    assert (
+        NodeLabel.INTERFACE in NODE_UNIQUE_CONSTRAINTS
+    ), "Interface label missing from NODE_UNIQUE_CONSTRAINTS"
+    assert (
+        NodeLabel.ENUM in NODE_UNIQUE_CONSTRAINTS
+    ), "Enum label missing from NODE_UNIQUE_CONSTRAINTS"
     assert NODE_UNIQUE_CONSTRAINTS[NodeLabel.INTERFACE] == "qualified_name"
     assert NODE_UNIQUE_CONSTRAINTS[NodeLabel.ENUM] == "qualified_name"
 
 
 def test_all_node_labels_have_constraints() -> None:
     for label in NodeLabel:
-        assert label.value in NODE_UNIQUE_CONSTRAINTS, (
-            f"NodeLabel.{label.name} ('{label.value}') missing from NODE_UNIQUE_CONSTRAINTS"
-        )
+        assert (
+            label.value in NODE_UNIQUE_CONSTRAINTS
+        ), f"NodeLabel.{label.name} ('{label.value}') missing from NODE_UNIQUE_CONSTRAINTS"
 
 
 def test_interface_named_interface_has_defines_relationship(
@@ -164,14 +162,14 @@ public interface Interface {
                 to_label = to_spec[0]
                 to_qn = str(to_spec[2])
                 if to_qn.endswith(".Interface"):
-                    assert to_label == NodeType.INTERFACE, (
-                        f"DEFINES target label should be 'Interface', got '{to_label}'"
-                    )
+                    assert (
+                        to_label == NodeType.INTERFACE
+                    ), f"DEFINES target label should be 'Interface', got '{to_label}'"
                     found_defines = True
 
-    assert found_defines, (
-        "No DEFINES relationship found for Interface named 'Interface'"
-    )
+    assert (
+        found_defines
+    ), "No DEFINES relationship found for Interface named 'Interface'"
 
 
 def test_enum_named_enum_has_defines_relationship(
@@ -201,9 +199,9 @@ public enum Enum {
                 to_label = to_spec[0]
                 to_qn = str(to_spec[2])
                 if to_qn.endswith(".Enum"):
-                    assert to_label == NodeType.ENUM, (
-                        f"DEFINES target label should be 'Enum', got '{to_label}'"
-                    )
+                    assert (
+                        to_label == NodeType.ENUM
+                    ), f"DEFINES target label should be 'Enum', got '{to_label}'"
                     found_defines = True
 
     assert found_defines, "No DEFINES relationship found for Enum named 'Enum'"
@@ -254,9 +252,9 @@ public class Implementor implements Interface {
                 if from_qn.endswith(".Implementor"):
                     found_implements = True
 
-    assert found_implements, (
-        "No IMPLEMENTS relationship found for Implementor -> Interface"
-    )
+    assert (
+        found_implements
+    ), "No IMPLEMENTS relationship found for Implementor -> Interface"
 
 
 def test_multiple_label_colliding_names(
@@ -309,6 +307,4 @@ public class Module {
         for qn in non_class_qns
         if qn.endswith(".Function") or qn.endswith(".Method") or qn.endswith(".Module")
     ]
-    assert not collisions, (
-        f"Class names colliding with node labels should not appear as wrong node types: {collisions}"
-    )
+    assert not collisions, f"Class names colliding with node labels should not appear as wrong node types: {collisions}"

@@ -156,9 +156,9 @@ void demonstrateStdLibrary() {
         call for call in import_relationships if "stdlib_includes" in call.args[0][2]
     ]
 
-    assert len(stdlib_imports) >= 10, (
-        f"Expected at least 10 stdlib includes, found {len(stdlib_imports)}"
-    )
+    assert (
+        len(stdlib_imports) >= 10
+    ), f"Expected at least 10 stdlib includes, found {len(stdlib_imports)}"
 
     imported_headers = [call.args[2][2] for call in stdlib_imports]
     expected_headers = [
@@ -175,9 +175,9 @@ void demonstrateStdLibrary() {
     ]
 
     for expected in expected_headers:
-        assert any(expected in header for header in imported_headers), (
-            f"Missing stdlib include: {expected}\nFound: {imported_headers}"
-        )
+        assert any(
+            expected in header for header in imported_headers
+        ), f"Missing stdlib include: {expected}\nFound: {imported_headers}"
 
 
 def test_local_header_includes(
@@ -269,9 +269,9 @@ void useLocalHeaders();
         call for call in import_relationships if "local_includes" in call.args[0][2]
     ]
 
-    assert len(local_imports) >= 4, (
-        f"Expected at least 4 local includes, found {len(local_imports)}"
-    )
+    assert (
+        len(local_imports) >= 4
+    ), f"Expected at least 4 local includes, found {len(local_imports)}"
 
     imported_headers = [call.args[2][2] for call in local_imports]
     expected_patterns = [
@@ -282,9 +282,9 @@ void useLocalHeaders();
     ]
 
     for pattern in expected_patterns:
-        assert any(pattern in header for header in imported_headers), (
-            f"Missing local include pattern: {pattern}\nFound: {imported_headers}"
-        )
+        assert any(
+            pattern in header for header in imported_headers
+        ), f"Missing local include pattern: {pattern}\nFound: {imported_headers}"
 
 
 def test_conditional_includes(
@@ -433,17 +433,17 @@ void demonstrateConditionalIncludes() {
         if "conditional_includes" in call.args[0][2]
     ]
 
-    assert len(conditional_imports) >= 3, (
-        f"Expected at least 3 conditional includes, found {len(conditional_imports)}"
-    )
+    assert (
+        len(conditional_imports) >= 3
+    ), f"Expected at least 3 conditional includes, found {len(conditional_imports)}"
 
     imported_headers = [call.args[2][2] for call in conditional_imports]
     always_present = ["string", "vector", "memory"]
 
     for expected in always_present:
-        assert any(expected in header for header in imported_headers), (
-            f"Missing always-present include: {expected}\nFound: {imported_headers}"
-        )
+        assert any(
+            expected in header for header in imported_headers
+        ), f"Missing always-present include: {expected}\nFound: {imported_headers}"
 
 
 def test_system_vs_local_includes(
@@ -557,23 +557,23 @@ void demonstrateIncludeTypes() {
         call for call in import_relationships if "include_types" in call.args[0][2]
     ]
 
-    assert len(include_type_imports) >= 8, (
-        f"Expected at least 8 include relationships, found {len(include_type_imports)}"
-    )
+    assert (
+        len(include_type_imports) >= 8
+    ), f"Expected at least 8 include relationships, found {len(include_type_imports)}"
 
     imported_headers = [call.args[2][2] for call in include_type_imports]
 
     system_headers = ["iostream", "vector", "string", "algorithm", "memory", "map"]
     for expected in system_headers:
-        assert any(expected in header for header in imported_headers), (
-            f"Missing system include: {expected}\nFound: {imported_headers}"
-        )
+        assert any(
+            expected in header for header in imported_headers
+        ), f"Missing system include: {expected}\nFound: {imported_headers}"
 
     local_headers = ["base", "types", "math"]
     for expected in local_headers:
-        assert any(expected in header for header in imported_headers), (
-            f"Missing local include: {expected}\nFound: {imported_headers}"
-        )
+        assert any(
+            expected in header for header in imported_headers
+        ), f"Missing local include: {expected}\nFound: {imported_headers}"
 
 
 def test_include_guards_and_pragma_once(
@@ -691,17 +691,17 @@ std::vector<int> PragmaClass::getItems() const {
         if "include_guards_test" in call.args[0][2]
     ]
 
-    assert len(guard_test_imports) >= 4, (
-        f"Expected at least 4 include relationships, found {len(guard_test_imports)}"
-    )
+    assert (
+        len(guard_test_imports) >= 4
+    ), f"Expected at least 4 include relationships, found {len(guard_test_imports)}"
 
     imported_headers = [call.args[2][2] for call in guard_test_imports]
 
     expected_headers = ["with_guards", "with_pragma", "iostream", "string"]
     for expected in expected_headers:
-        assert any(expected in header for header in imported_headers), (
-            f"Missing include: {expected}\nFound: {imported_headers}"
-        )
+        assert any(
+            expected in header for header in imported_headers
+        ), f"Missing include: {expected}\nFound: {imported_headers}"
 
 
 def test_cpp_includes_comprehensive(
@@ -843,9 +843,9 @@ void demonstrateAllIncludes() {
         if "comprehensive_includes" in call.args[0][2]
     ]
 
-    assert len(comprehensive_imports) >= 10, (
-        f"Expected at least 10 comprehensive imports, found {len(comprehensive_imports)}"
-    )
+    assert (
+        len(comprehensive_imports) >= 10
+    ), f"Expected at least 10 comprehensive imports, found {len(comprehensive_imports)}"
 
     for relationship in comprehensive_imports:
         assert len(relationship.args) == 3, "Import relationship should have 3 args"
@@ -854,13 +854,13 @@ void demonstrateAllIncludes() {
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_includes" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_includes" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target module should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target module should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"
 
@@ -868,9 +868,9 @@ void demonstrateAllIncludes() {
         "ComprehensiveIncludeDemo" in call.args[0][2] and "Base" in call.args[2][2]
         for call in inherits_relationships
     )
-    assert inheritance_found, (
-        "Expected inheritance relationship ComprehensiveIncludeDemo -> Base"
-    )
+    assert (
+        inheritance_found
+    ), "Expected inheritance relationship ComprehensiveIncludeDemo -> Base"
 
 
 def test_cpp20_module_import_syntax(
@@ -916,17 +916,17 @@ public:
         call for call in import_relationships if "module_imports" in call.args[0][2]
     ]
 
-    assert len(module_imports) >= 3, (
-        f"Expected at least 3 module imports, found {len(module_imports)}"
-    )
+    assert (
+        len(module_imports) >= 3
+    ), f"Expected at least 3 module imports, found {len(module_imports)}"
 
     imported_modules = [call.args[2][2] for call in module_imports]
 
     expected_patterns = ["iostream", "vector", "string"]
     for pattern in expected_patterns:
-        assert any(pattern in module for module in imported_modules), (
-            f"Missing C++20 module import: {pattern}\nFound: {imported_modules}"
-        )
+        assert any(
+            pattern in module for module in imported_modules
+        ), f"Missing C++20 module import: {pattern}\nFound: {imported_modules}"
 
 
 def test_cpp20_module_partition_imports(
@@ -971,14 +971,14 @@ export namespace processor {
         call for call in import_relationships if "partition_imports" in call.args[0][2]
     ]
 
-    assert len(partition_imports) >= 3, (
-        f"Expected at least 3 partition imports, found {len(partition_imports)}"
-    )
+    assert (
+        len(partition_imports) >= 3
+    ), f"Expected at least 3 partition imports, found {len(partition_imports)}"
 
     imported_modules = [call.args[2][2] for call in partition_imports]
 
     expected_stdlib = ["vector", "algorithm", "functional"]
     for pattern in expected_stdlib:
-        assert any(pattern in module for module in imported_modules), (
-            f"Missing stdlib import: {pattern}\nFound: {imported_modules}"
-        )
+        assert any(
+            pattern in module for module in imported_modules
+        ), f"Missing stdlib import: {pattern}\nFound: {imported_modules}"

@@ -77,9 +77,9 @@ from http.server import HTTPServer
         call for call in import_relationships if "stdlib_imports" in call.args[0][2]
     ]
 
-    assert len(stdlib_imports) >= 15, (
-        f"Expected at least 15 stdlib imports, found {len(stdlib_imports)}"
-    )
+    assert (
+        len(stdlib_imports) >= 15
+    ), f"Expected at least 15 stdlib imports, found {len(stdlib_imports)}"
 
     imported_modules = [call.args[2][2] for call in stdlib_imports]
     expected_modules = [
@@ -98,9 +98,9 @@ from http.server import HTTPServer
     ]
 
     for expected in expected_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing stdlib import: {expected}\nFound: {imported_modules}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing stdlib import: {expected}\nFound: {imported_modules}"
 
 
 def test_relative_imports(
@@ -164,9 +164,9 @@ from ...models import User
         )
     ]
 
-    assert len(relative_imports) >= 8, (
-        f"Expected at least 8 relative imports, found {len(relative_imports)}"
-    )
+    assert (
+        len(relative_imports) >= 8
+    ), f"Expected at least 8 relative imports, found {len(relative_imports)}"
 
     imported_modules = [call.args[2][2] for call in relative_imports]
     project_name = python_imports_project.name
@@ -179,9 +179,9 @@ from ...models import User
     ]
 
     for pattern in expected_patterns:
-        assert any(pattern in module for module in imported_modules), (
-            f"Missing relative import pattern: {pattern}\nFound: {imported_modules}"
-        )
+        assert any(
+            pattern in module for module in imported_modules
+        ), f"Missing relative import pattern: {pattern}\nFound: {imported_modules}"
 
 
 def test_complex_import_patterns(
@@ -253,27 +253,27 @@ class DataProcessor:
         call for call in import_relationships if "complex_imports" in call.args[0][2]
     ]
 
-    assert len(complex_imports) >= 12, (
-        f"Expected at least 12 complex imports, found {len(complex_imports)}"
-    )
+    assert (
+        len(complex_imports) >= 12
+    ), f"Expected at least 12 complex imports, found {len(complex_imports)}"
 
     imported_modules = [call.args[2][2] for call in complex_imports]
 
     wildcard_patterns = ["os", "typing"]
     for pattern in wildcard_patterns:
-        assert any(pattern in module for module in imported_modules), (
-            f"Missing wildcard import target: {pattern}\nFound modules: {imported_modules}"
-        )
+        assert any(
+            pattern in module for module in imported_modules
+        ), f"Missing wildcard import target: {pattern}\nFound modules: {imported_modules}"
 
     collections_imports = [m for m in imported_modules if "collections" in m]
-    assert len(collections_imports) >= 3, (
-        f"Expected multiple collections imports, found: {collections_imports}"
-    )
+    assert (
+        len(collections_imports) >= 3
+    ), f"Expected multiple collections imports, found: {collections_imports}"
 
     conditional_imports = [m for m in imported_modules if "typing" in m or "numpy" in m]
-    assert conditional_imports, (
-        f"Expected conditional imports, found: {conditional_imports}"
-    )
+    assert (
+        conditional_imports
+    ), f"Expected conditional imports, found: {conditional_imports}"
 
 
 def test_third_party_framework_imports(
@@ -335,9 +335,9 @@ from marshmallow import Schema, fields, validate, post_load, pre_dump
         call for call in import_relationships if "framework_imports" in call.args[0][2]
     ]
 
-    assert len(framework_imports) >= 25, (
-        f"Expected at least 25 framework imports, found {len(framework_imports)}"
-    )
+    assert (
+        len(framework_imports) >= 25
+    ), f"Expected at least 25 framework imports, found {len(framework_imports)}"
 
     imported_modules = [call.args[2][2] for call in framework_imports]
 
@@ -355,9 +355,9 @@ from marshmallow import Schema, fields, validate, post_load, pre_dump
         category_imports = [
             m for m in imported_modules if any(exp in m for exp in expected_modules)
         ]
-        assert category_imports, (
-            f"Missing {category} imports, expected patterns: {expected_modules}"
-        )
+        assert (
+            category_imports
+        ), f"Missing {category} imports, expected patterns: {expected_modules}"
 
 
 def test_import_aliases_and_renaming(
@@ -412,9 +412,9 @@ from yaml import load as yaml_load
         call for call in import_relationships if "alias_imports" in call.args[0][2]
     ]
 
-    assert len(alias_imports) >= 15, (
-        f"Expected at least 15 aliased imports, found {len(alias_imports)}"
-    )
+    assert (
+        len(alias_imports) >= 15
+    ), f"Expected at least 15 aliased imports, found {len(alias_imports)}"
 
     imported_modules = [call.args[2][2] for call in alias_imports]
 
@@ -432,9 +432,9 @@ from yaml import load as yaml_load
     ]
 
     for expected in expected_original_modules:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing aliased import: {expected}\nFound: {imported_modules}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing aliased import: {expected}\nFound: {imported_modules}"
 
 
 def test_import_error_handling(
@@ -479,17 +479,17 @@ import sys, json  # trailing comma handled gracefully
         call for call in import_relationships if "error_imports" in call.args[0][2]
     ]
 
-    assert len(error_file_imports) >= 4, (
-        f"Expected at least 4 valid imports despite errors, found {len(error_file_imports)}"
-    )
+    assert (
+        len(error_file_imports) >= 4
+    ), f"Expected at least 4 valid imports despite errors, found {len(error_file_imports)}"
 
     imported_modules = [call.args[2][2] for call in error_file_imports]
     expected_valid = ["os", "pathlib", "json", "datetime"]
 
     for expected in expected_valid:
-        assert any(expected in module for module in imported_modules), (
-            f"Missing valid import after error: {expected}"
-        )
+        assert any(
+            expected in module for module in imported_modules
+        ), f"Missing valid import after error: {expected}"
 
 
 def test_import_relationships_comprehensive(
@@ -542,9 +542,9 @@ if True:
         if "comprehensive_imports" in call.args[0][2]
     ]
 
-    assert len(comprehensive_imports) >= 15, (
-        f"Expected at least 15 comprehensive imports, found {len(comprehensive_imports)}"
-    )
+    assert (
+        len(comprehensive_imports) >= 15
+    ), f"Expected at least 15 comprehensive imports, found {len(comprehensive_imports)}"
 
     for relationship in comprehensive_imports:
         assert len(relationship.args) == 3, "Import relationship should have 3 args"
@@ -553,12 +553,12 @@ if True:
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_imports" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_imports" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target module should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target module should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

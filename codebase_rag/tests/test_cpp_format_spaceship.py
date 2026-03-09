@@ -58,16 +58,16 @@ void testNumberFormatting() {
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
-    assert len(function_calls) >= 2, (
-        f"Expected at least 2 functions, found {len(function_calls)}"
-    )
+    assert (
+        len(function_calls) >= 2
+    ), f"Expected at least 2 functions, found {len(function_calls)}"
 
     function_names = {call[0][1]["name"] for call in function_calls}
     expected_functions = {"testBasicFormatting", "testNumberFormatting"}
 
-    assert expected_functions.issubset(function_names), (
-        f"Missing functions. Expected {expected_functions}, found {function_names}"
-    )
+    assert expected_functions.issubset(
+        function_names
+    ), f"Missing functions. Expected {expected_functions}, found {function_names}"
 
 
 def test_spaceship_operator(
@@ -137,19 +137,19 @@ void testSpaceshipOperator() {
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
-    assert len(class_calls) >= 2, (
-        f"Expected at least 2 classes, found {len(class_calls)}"
-    )
-    assert len(function_calls) >= 1, (
-        f"Expected at least 1 function, found {len(function_calls)}"
-    )
+    assert (
+        len(class_calls) >= 2
+    ), f"Expected at least 2 classes, found {len(class_calls)}"
+    assert (
+        len(function_calls) >= 1
+    ), f"Expected at least 1 function, found {len(function_calls)}"
 
     class_names = {call[0][1]["name"] for call in class_calls}
     expected_classes = {"Point", "CustomCompare"}
 
-    assert expected_classes.issubset(class_names), (
-        f"Missing classes. Expected {expected_classes}, found {class_names}"
-    )
+    assert expected_classes.issubset(
+        class_names
+    ), f"Missing classes. Expected {expected_classes}, found {class_names}"
 
 
 def test_format_spaceship_integration(
@@ -211,9 +211,9 @@ void analyzeData() {
     function_calls = get_nodes(mock_ingestor, "Function")
 
     assert len(class_calls) >= 1, f"Expected at least 1 class, found {len(class_calls)}"
-    assert len(function_calls) >= 1, (
-        f"Expected at least 1 function, found {len(function_calls)}"
-    )
+    assert (
+        len(function_calls) >= 1
+    ), f"Expected at least 1 function, found {len(function_calls)}"
 
     class_names = {call[0][1]["name"] for call in class_calls}
     assert "DataPoint" in class_names, f"DataPoint struct not found in {class_names}"

@@ -475,9 +475,7 @@ def serve(
     host: str = typer.Option(
         "0.0.0.0", "--host", help="Host address to bind the server to."
     ),
-    port: int = typer.Option(
-        8000, "--port", help="Port number for the web server."
-    ),
+    port: int = typer.Option(8000, "--port", help="Port number for the web server."),
     reload: bool = typer.Option(
         False, "--reload", help="Enable hot-reload for development."
     ),

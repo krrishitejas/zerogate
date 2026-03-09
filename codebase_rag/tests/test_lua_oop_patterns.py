@@ -61,17 +61,17 @@ bob:greet()
 
     imports_rels = get_relationships(mock_ingestor, "IMPORTS")
 
-    assert len(defines_rels) >= 3, (
-        f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"
-    )
+    assert (
+        len(defines_rels) >= 3
+    ), f"Expected at least 3 DEFINES relationships, got {len(defines_rels)}"
 
-    assert len(calls_rels) >= 2, (
-        f"Expected at least 2 CALLS relationships, got {len(calls_rels)}"
-    )
+    assert (
+        len(calls_rels) >= 2
+    ), f"Expected at least 2 CALLS relationships, got {len(calls_rels)}"
 
-    assert len(imports_rels) >= 1, (
-        f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
-    )
+    assert (
+        len(imports_rels) >= 1
+    ), f"Expected at least 1 IMPORTS relationship, got {len(imports_rels)}"
 
     import_map = updater.factory.import_processor.import_mapping.get(main_qn, {})
     assert "Person" in import_map

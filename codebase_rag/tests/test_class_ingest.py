@@ -180,9 +180,9 @@ def test_typescript_interface_implementation(
     found_interfaces = [
         iface for iface in expected_interfaces if iface in interface_qns
     ]
-    assert len(found_interfaces) >= 1, (
-        f"Should have at least one interface node, found: {interface_qns}"
-    )
+    assert (
+        len(found_interfaces) >= 1
+    ), f"Should have at least one interface node, found: {interface_qns}"
 
 
 @pytest.fixture
@@ -610,9 +610,9 @@ def test_rust_inline_modules_are_ingested(
 
     module_names = {call[0][1].get("name", "") for call in module_nodes}
 
-    assert "main" in module_names or any("main" in name for name in module_names), (
-        "main module should be ingested"
-    )
+    assert "main" in module_names or any(
+        "main" in name for name in module_names
+    ), "main module should be ingested"
 
 
 @pytest.fixture
@@ -683,15 +683,15 @@ def test_method_override_chain(
         if call.args[0][2] == f"{project_name}.base.DerivedClass.method_a"
     ]
 
-    assert len(derived_method_a_overrides) == 1, (
-        "DerivedClass.method_a should override MiddleClass.method_a (not BaseClass)"
-    )
+    assert (
+        len(derived_method_a_overrides) == 1
+    ), "DerivedClass.method_a should override MiddleClass.method_a (not BaseClass)"
 
     if derived_method_a_overrides:
         parent_qn = derived_method_a_overrides[0].args[2][2]
-        assert f"{project_name}.base.MiddleClass.method_a" == parent_qn, (
-            f"Should override MiddleClass.method_a, not {parent_qn}"
-        )
+        assert (
+            f"{project_name}.base.MiddleClass.method_a" == parent_qn
+        ), f"Should override MiddleClass.method_a, not {parent_qn}"
 
 
 def test_method_override_skips_non_overriding_methods(
@@ -717,9 +717,9 @@ def test_method_override_skips_non_overriding_methods(
         if call.args[0][2] == f"{project_name}.base.DerivedClass.method_e"
     ]
 
-    assert len(method_e_overrides) == 0, (
-        "DerivedClass.method_e should not have any override relationships"
-    )
+    assert (
+        len(method_e_overrides) == 0
+    ), "DerivedClass.method_e should not have any override relationships"
 
 
 @pytest.fixture
@@ -803,9 +803,9 @@ def test_nested_class_method_qualified_names(
 
     method_qns = {call[0][1]["qualified_name"] for call in method_nodes}
 
-    assert f"{project_name}.nested.OuterClass.outer_method" in method_qns, (
-        "outer_method should have correct qualified name"
-    )
+    assert (
+        f"{project_name}.nested.OuterClass.outer_method" in method_qns
+    ), "outer_method should have correct qualified name"
 
 
 @pytest.fixture
@@ -914,9 +914,9 @@ def test_non_abstract_method_override(
         if call.args[0][2] == f"{project_name}.abstract_classes.Rectangle.describe"
     ]
 
-    assert len(rect_describe_overrides) == 1, (
-        "Rectangle.describe should override Shape.describe"
-    )
+    assert (
+        len(rect_describe_overrides) == 1
+    ), "Rectangle.describe should override Shape.describe"
 
 
 @pytest.fixture
@@ -1273,9 +1273,9 @@ def test_go_struct_methods_are_ingested(
     ]
 
     found_methods = [m for m in expected_methods if m in method_qns]
-    assert len(found_methods) >= 1, (
-        f"Should have Go struct methods, found: {method_qns}"
-    )
+    assert (
+        len(found_methods) >= 1
+    ), f"Should have Go struct methods, found: {method_qns}"
 
 
 @pytest.mark.xfail(reason="Go struct/interface ingestion not fully implemented")
@@ -1292,9 +1292,9 @@ def test_go_interface_nodes_created(
 
     interface_qns = {call[0][1]["qualified_name"] for call in interface_nodes}
 
-    assert len(interface_qns) >= 1, (
-        f"Should have Go interface nodes, found: {interface_qns}"
-    )
+    assert (
+        len(interface_qns) >= 1
+    ), f"Should have Go interface nodes, found: {interface_qns}"
 
 
 @pytest.mark.xfail(reason="Go struct/interface ingestion not fully implemented")
@@ -1673,9 +1673,9 @@ def test_csharp_struct_nodes_created(
     point_found = any("Point" in qn for qn in struct_qns)
     rect_found = any("Rectangle" in qn for qn in struct_qns)
 
-    assert point_found or rect_found or len(struct_qns) >= 1, (
-        f"Should have C# struct nodes, found: {struct_qns}"
-    )
+    assert (
+        point_found or rect_found or len(struct_qns) >= 1
+    ), f"Should have C# struct nodes, found: {struct_qns}"
 
 
 def test_csharp_interface_nodes_created(
@@ -2081,9 +2081,9 @@ def test_special_character_names_are_handled(
 
     class_qns = {call[0][1]["qualified_name"] for call in class_nodes}
 
-    assert any("Underscore" in qn for qn in class_qns), (
-        "Classes with underscores should be ingested"
-    )
+    assert any(
+        "Underscore" in qn for qn in class_qns
+    ), "Classes with underscores should be ingested"
 
 
 @pytest.fixture

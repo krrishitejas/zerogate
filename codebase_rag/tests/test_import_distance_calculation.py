@@ -34,9 +34,9 @@ class TestImportDistanceCalculation:
             )
         )
 
-        assert distance == 1, (
-            f"Function in sibling module should have distance 1, got {distance}"
-        )
+        assert (
+            distance == 1
+        ), f"Function in sibling module should have distance 1, got {distance}"
 
     def test_sibling_module_bonus_for_methods(self, mock_updater: GraphUpdater) -> None:
         """Test that methods in sibling modules receive the proximity bonus."""
@@ -51,9 +51,9 @@ class TestImportDistanceCalculation:
             )
         )
 
-        assert distance == 2, (
-            f"Method in sibling module should have distance 2, got {distance}"
-        )
+        assert (
+            distance == 2
+        ), f"Method in sibling module should have distance 2, got {distance}"
 
     def test_function_vs_method_distance_difference(
         self, mock_updater: GraphUpdater
@@ -103,12 +103,12 @@ class TestImportDistanceCalculation:
             )
         )
 
-        assert func_distance > 0, (
-            "Function in different package should not get proximity bonus"
-        )
-        assert method_distance > func_distance, (
-            "Method should have higher distance than function"
-        )
+        assert (
+            func_distance > 0
+        ), "Function in different package should not get proximity bonus"
+        assert (
+            method_distance > func_distance
+        ), "Method should have higher distance than function"
 
     def test_same_module_candidates(self, mock_updater: GraphUpdater) -> None:
         """Test distance calculation for candidates in the same module as caller."""
@@ -131,12 +131,12 @@ class TestImportDistanceCalculation:
         )
 
         # Same module gets best proximity: Functions=0, Methods=1 (due to nesting)
-        assert func_distance == 0, (
-            f"Function in same module should have distance 0, got {func_distance}"
-        )
-        assert method_distance == 1, (
-            f"Method in same module should have distance 1, got {method_distance}"
-        )
+        assert (
+            func_distance == 0
+        ), f"Function in same module should have distance 0, got {func_distance}"
+        assert (
+            method_distance == 1
+        ), f"Method in same module should have distance 1, got {method_distance}"
 
     def test_edge_case_missing_from_registry(self, mock_updater: GraphUpdater) -> None:
         """Test behavior when candidate is not in function registry."""
@@ -148,9 +148,9 @@ class TestImportDistanceCalculation:
                 unknown_qn, caller_module
             )
         )
-        assert isinstance(distance, int), (
-            "Should return integer distance even for unknown candidates"
-        )
+        assert isinstance(
+            distance, int
+        ), "Should return integer distance even for unknown candidates"
 
     def test_method_detection_correctness(self, mock_updater: GraphUpdater) -> None:
         """Test that the method detection logic correctly identifies methods vs functions."""
@@ -173,9 +173,9 @@ class TestImportDistanceCalculation:
             )
         )
 
-        assert func_distance == 1, (
-            f"Function should have distance 1, got {func_distance}"
-        )
-        assert method_distance == 2, (
-            f"Method should have distance 2, got {method_distance}"
-        )
+        assert (
+            func_distance == 1
+        ), f"Function should have distance 1, got {func_distance}"
+        assert (
+            method_distance == 2
+        ), f"Method should have distance 2, got {method_distance}"

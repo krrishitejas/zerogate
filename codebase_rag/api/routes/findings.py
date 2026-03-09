@@ -5,7 +5,7 @@ from __future__ import annotations
 from fastapi import APIRouter, HTTPException
 from loguru import logger
 
-from ..models import ApplyFixRequest, ApplyFixResponse, FindingStatus, FixProposal
+from ..models import ApplyFixResponse, FindingStatus, FixProposal
 from ..state import project_store
 
 router = APIRouter(prefix="/findings", tags=["Findings"])
@@ -33,8 +33,8 @@ async def generate_fix(finding_id: str, project_id: str):
         return state.fix_proposals[finding_id]
 
     try:
-        from ...config import settings
         from ...auto_scanner import AutoScanner
+        from ...config import settings
 
         scanner = AutoScanner(
             host=settings.MEMGRAPH_HOST,
@@ -98,14 +98,14 @@ async def apply_fix(finding_id: str, project_id: str):
         from ...tools.file_editor import FileEditor
 
         editor = FileEditor(project_root=str(state.upload_dir))
-        result = editor.replace_code_block(
+        editor.replace_code_block(
             file_path=proposal.file_path,
             target_block=proposal.original_code,
             replacement_block=proposal.patched_code,
         )
 
         # Update finding status
-        for f in (state.report.findings if state.report else []):
+        for f in state.report.findings if state.report else []:
             if f.finding_id == finding_id:
                 f.status = FindingStatus.APPLIED
                 break

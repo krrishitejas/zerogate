@@ -589,9 +589,7 @@ def test_depends_on_external_pyproject_toml(
             )
             for call in dependency_relationships
         )
-        assert found, (
-            f"Missing pyproject.toml dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
-        )
+        assert found, f"Missing pyproject.toml dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
 
 
 def test_depends_on_external_package_json(
@@ -678,9 +676,9 @@ def test_depends_on_external_cargo_toml(
             )
             for call in dependency_relationships
         )
-        assert found, (
-            f"Missing Rust dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
-        )
+        assert (
+            found
+        ), f"Missing Rust dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
 
 
 def test_depends_on_external_go_mod(
@@ -720,9 +718,9 @@ def test_depends_on_external_go_mod(
             )
             for call in dependency_relationships
         )
-        assert found, (
-            f"Missing Go dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
-        )
+        assert (
+            found
+        ), f"Missing Go dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
 
 
 def test_depends_on_external_gemfile(
@@ -764,9 +762,9 @@ def test_depends_on_external_gemfile(
             )
             for call in dependency_relationships
         )
-        assert found, (
-            f"Missing Ruby dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
-        )
+        assert (
+            found
+        ), f"Missing Ruby dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
 
 
 def test_depends_on_external_composer_json(
@@ -806,9 +804,9 @@ def test_depends_on_external_composer_json(
             )
             for call in dependency_relationships
         )
-        assert found, (
-            f"Missing PHP dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
-        )
+        assert (
+            found
+        ), f"Missing PHP dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
 
 
 def test_depends_on_external_csproj(
@@ -848,9 +846,9 @@ def test_depends_on_external_csproj(
             )
             for call in dependency_relationships
         )
-        assert found, (
-            f"Missing .NET dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
-        )
+        assert (
+            found
+        ), f"Missing .NET dependency: {project_name} DEPENDS_ON_EXTERNAL {dep_name}"
 
 
 def test_mixed_structure_and_dependencies(

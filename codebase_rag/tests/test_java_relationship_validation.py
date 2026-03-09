@@ -134,9 +134,9 @@ public class Car {
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for composition/aggregation"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for composition/aggregation"
 
 
 def test_dependency_injection_relationships(
@@ -264,15 +264,15 @@ class Application {
 
     implements_relationships = get_relationships(mock_ingestor, "IMPLEMENTS")
 
-    assert len(implements_relationships) > 0, (
-        "No interface implementation relationships found"
-    )
+    assert (
+        len(implements_relationships) > 0
+    ), "No interface implementation relationships found"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for dependency injection"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for dependency injection"
 
 
 def test_cross_package_relationships(
@@ -512,9 +512,9 @@ public class UserController {
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No cross-package method call relationships found"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No cross-package method call relationships found"
 
     created_classes = get_node_names(mock_ingestor, "Class")
     project_name = java_relationships_project.name
@@ -525,15 +525,15 @@ public class UserController {
         f"{project_name}.src.main.java.com.example.UserController.UserController"
     )
 
-    assert any(expected_user_class in qn for qn in created_classes), (
-        "User model class not found"
-    )
-    assert any(expected_repo_class in qn for qn in created_classes), (
-        "UserRepository service class not found"
-    )
-    assert any(expected_controller_class in qn for qn in created_classes), (
-        "UserController class not found"
-    )
+    assert any(
+        expected_user_class in qn for qn in created_classes
+    ), "User model class not found"
+    assert any(
+        expected_repo_class in qn for qn in created_classes
+    ), "UserRepository service class not found"
+    assert any(
+        expected_controller_class in qn for qn in created_classes
+    ), "UserController class not found"
 
 
 def test_method_overriding_relationships(
@@ -685,9 +685,9 @@ public class ShapeCalculator {
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for method overriding"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for method overriding"
 
 
 def test_static_method_and_field_relationships(
@@ -962,9 +962,9 @@ public class OuterClass {
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for inner classes"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for inner classes"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 

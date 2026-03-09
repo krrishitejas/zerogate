@@ -386,9 +386,9 @@ console.log(merged.size()); // 2
         )
     ]
 
-    assert len(namespace_like_nodes) >= 3, (
-        f"Expected at least 3 namespace-like nodes, found {len(namespace_like_nodes)}"
-    )
+    assert (
+        len(namespace_like_nodes) >= 3
+    ), f"Expected at least 3 namespace-like nodes, found {len(namespace_like_nodes)}"
 
     function_calls = [
         call
@@ -411,9 +411,9 @@ console.log(merged.size()); // 2
         )
     ]
 
-    assert len(namespace_functions) >= 3, (
-        f"Expected at least 3 namespace functions, found {len(namespace_functions)}"
-    )
+    assert (
+        len(namespace_functions) >= 3
+    ), f"Expected at least 3 namespace functions, found {len(namespace_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -427,9 +427,9 @@ console.log(merged.size()); // 2
         )
     ]
 
-    assert len(namespace_classes) >= 2, (
-        f"Expected at least 2 namespace classes, found {len(namespace_classes)}"
-    )
+    assert (
+        len(namespace_classes) >= 2
+    ), f"Expected at least 2 namespace classes, found {len(namespace_classes)}"
 
 
 def test_namespace_merging(
@@ -783,9 +783,9 @@ console.log('Valid method:', API.Http.isValidMethod('GET')); // true
         )
     ]
 
-    assert len(merged_namespace_nodes) >= 4, (
-        f"Expected at least 4 merged namespace-related nodes, found {len(merged_namespace_nodes)}"
-    )
+    assert (
+        len(merged_namespace_nodes) >= 4
+    ), f"Expected at least 4 merged namespace-related nodes, found {len(merged_namespace_nodes)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -804,9 +804,9 @@ console.log('Valid method:', API.Http.isValidMethod('GET')); // true
         )
     ]
 
-    assert len(merged_functions) >= 3, (
-        f"Expected at least 3 functions from merged namespaces, found {len(merged_functions)}"
-    )
+    assert (
+        len(merged_functions) >= 3
+    ), f"Expected at least 3 functions from merged namespaces, found {len(merged_functions)}"
 
     interface_calls = [
         call
@@ -831,9 +831,9 @@ console.log('Valid method:', API.Http.isValidMethod('GET')); // true
 
     merging_nodes = len(interface_calls) + len(enum_calls) + len(class_calls)
 
-    assert merging_nodes >= 2, (
-        f"Expected at least 2 interface/enum/class nodes for merging, found {merging_nodes}"
-    )
+    assert (
+        merging_nodes >= 2
+    ), f"Expected at least 2 interface/enum/class nodes for merging, found {merging_nodes}"
 
 
 def test_module_patterns(
@@ -1210,9 +1210,9 @@ if (ConditionalModule.IS_NODE) {
         )
     ]
 
-    assert len(module_pattern_nodes) >= 3, (
-        f"Expected at least 3 module pattern nodes, found {len(module_pattern_nodes)}"
-    )
+    assert (
+        len(module_pattern_nodes) >= 3
+    ), f"Expected at least 3 module pattern nodes, found {len(module_pattern_nodes)}"
 
     class_calls = [
         call
@@ -1230,9 +1230,9 @@ if (ConditionalModule.IS_NODE) {
 
     module_classes_interfaces = len(class_calls) + len(interface_calls)
 
-    assert module_classes_interfaces >= 2, (
-        f"Expected at least 2 classes/interfaces in modules, found {module_classes_interfaces}"
-    )
+    assert (
+        module_classes_interfaces >= 2
+    ), f"Expected at least 2 classes/interfaces in modules, found {module_classes_interfaces}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -1246,9 +1246,9 @@ if (ConditionalModule.IS_NODE) {
         )
     ]
 
-    assert len(module_functions) >= 3, (
-        f"Expected at least 3 module functions, found {len(module_functions)}"
-    )
+    assert (
+        len(module_functions) >= 3
+    ), f"Expected at least 3 module functions, found {len(module_functions)}"
 
 
 def test_typescript_namespaces_comprehensive(
@@ -1358,9 +1358,9 @@ Conditional.log('Debug message');
         if "comprehensive_namespaces" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive namespace calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive namespace calls, found {len(comprehensive_calls)}"
 
     all_nodes = mock_ingestor.ensure_node_batch.call_args_list
 
@@ -1381,6 +1381,6 @@ Conditional.log('Debug message');
         )
     ]
 
-    assert len(comprehensive_namespaces) >= 4, (
-        f"Expected at least 4 namespace patterns, found {len(comprehensive_namespaces)}"
-    )
+    assert (
+        len(comprehensive_namespaces) >= 4
+    ), f"Expected at least 4 namespace patterns, found {len(comprehensive_namespaces)}"

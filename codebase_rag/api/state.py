@@ -9,11 +9,9 @@ from datetime import datetime
 from pathlib import Path
 
 from .models import (
-    FindingStatus,
     FixProposal,
     ProjectStatus,
     ProjectStatusResponse,
-    VulnerabilityFinding,
     VulnerabilityReport,
 )
 
@@ -27,9 +25,7 @@ class ProjectState:
     files_processed: int = 0
     total_files: int = 0
     error_message: str | None = None
-    created_at: str = field(
-        default_factory=lambda: datetime.now().isoformat()
-    )
+    created_at: str = field(default_factory=lambda: datetime.now().isoformat())
     report: VulnerabilityReport | None = None
     fix_proposals: dict[str, FixProposal] = field(default_factory=dict)
     _task: asyncio.Task | None = field(default=None, repr=False)
@@ -89,9 +85,7 @@ class ProjectStore:
                 state.error_message = error_message
             return state
 
-    def set_report(
-        self, project_id: str, report: VulnerabilityReport
-    ) -> None:
+    def set_report(self, project_id: str, report: VulnerabilityReport) -> None:
         with self._lock:
             state = self._projects.get(project_id)
             if state:

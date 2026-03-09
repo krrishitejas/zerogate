@@ -194,6 +194,6 @@ def test_ts_singleton_pattern_cross_file_calls(
             f"See output above."
         )
 
-    assert len(found_calls) >= len(expected_calls), (
-        f"Expected at least {len(expected_calls)} calls, found {len(found_calls)}"
-    )
+    assert len(found_calls) >= len(
+        expected_calls
+    ), f"Expected at least {len(expected_calls)} calls, found {len(found_calls)}"

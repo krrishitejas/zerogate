@@ -415,9 +415,9 @@ console.log(container.getValue());
         )
     ]
 
-    assert len(generic_classes) >= 4, (
-        f"Expected at least 4 generic classes, found {len(generic_classes)}"
-    )
+    assert (
+        len(generic_classes) >= 4
+    ), f"Expected at least 4 generic classes, found {len(generic_classes)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -431,9 +431,9 @@ console.log(container.getValue());
         )
     ]
 
-    assert len(generic_functions) >= 4, (
-        f"Expected at least 4 generic functions, found {len(generic_functions)}"
-    )
+    assert (
+        len(generic_functions) >= 4
+    ), f"Expected at least 4 generic functions, found {len(generic_functions)}"
 
     interface_calls = get_nodes(mock_ingestor, "Interface")
 
@@ -447,9 +447,9 @@ console.log(container.getValue());
         )
     ]
 
-    assert len(generic_interfaces) >= 2, (
-        f"Expected at least 2 generic interfaces, found {len(generic_interfaces)}"
-    )
+    assert (
+        len(generic_interfaces) >= 2
+    ), f"Expected at least 2 generic interfaces, found {len(generic_interfaces)}"
 
 
 def test_utility_types(
@@ -828,9 +828,9 @@ console.log('API routes:', apiRoutes);
         )
     ]
 
-    assert len(utility_classes) >= 4, (
-        f"Expected at least 4 utility type classes, found {len(utility_classes)}"
-    )
+    assert (
+        len(utility_classes) >= 4
+    ), f"Expected at least 4 utility type classes, found {len(utility_classes)}"
 
     interface_calls = get_nodes(mock_ingestor, "Interface")
 
@@ -844,9 +844,9 @@ console.log('API routes:', apiRoutes);
         )
     ]
 
-    assert len(utility_interfaces) >= 2, (
-        f"Expected at least 2 utility type interfaces, found {len(utility_interfaces)}"
-    )
+    assert (
+        len(utility_interfaces) >= 2
+    ), f"Expected at least 2 utility type interfaces, found {len(utility_interfaces)}"
 
 
 def test_conditional_types(
@@ -1228,9 +1228,9 @@ console.log('Route parsing and conditional types working correctly');
         )
     ]
 
-    assert len(conditional_classes) >= 4, (
-        f"Expected at least 4 conditional type classes, found {len(conditional_classes)}"
-    )
+    assert (
+        len(conditional_classes) >= 4
+    ), f"Expected at least 4 conditional type classes, found {len(conditional_classes)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -1244,9 +1244,9 @@ console.log('Route parsing and conditional types working correctly');
         )
     ]
 
-    assert len(conditional_functions) >= 4, (
-        f"Expected at least 4 conditional type functions, found {len(conditional_functions)}"
-    )
+    assert (
+        len(conditional_functions) >= 4
+    ), f"Expected at least 4 conditional type functions, found {len(conditional_functions)}"
 
 
 def test_template_literal_types(
@@ -1652,9 +1652,9 @@ console.log('Template literal types are working correctly');
         )
     ]
 
-    assert len(template_literal_classes) >= 5, (
-        f"Expected at least 5 template literal type classes, found {len(template_literal_classes)}"
-    )
+    assert (
+        len(template_literal_classes) >= 5
+    ), f"Expected at least 5 template literal type classes, found {len(template_literal_classes)}"
 
 
 def test_typescript_advanced_types_comprehensive(
@@ -1774,9 +1774,9 @@ console.log('All advanced type patterns working correctly');
         if "comprehensive_advanced_types" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 3, (
-        f"Expected at least 3 comprehensive advanced type calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 3
+    ), f"Expected at least 3 comprehensive advanced type calls, found {len(comprehensive_calls)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -1787,9 +1787,9 @@ console.log('All advanced type patterns working correctly');
         and "transform" in call[0][1]["qualified_name"]
     ]
 
-    assert len(comprehensive_functions) >= 1, (
-        f"Expected at least 1 advanced type function, found {len(comprehensive_functions)}"
-    )
+    assert (
+        len(comprehensive_functions) >= 1
+    ), f"Expected at least 1 advanced type function, found {len(comprehensive_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -1803,6 +1803,6 @@ console.log('All advanced type patterns working correctly');
         )
     ]
 
-    assert len(comprehensive_classes) >= 2, (
-        f"Expected at least 2 comprehensive advanced type classes, found {len(comprehensive_classes)}"
-    )
+    assert (
+        len(comprehensive_classes) >= 2
+    ), f"Expected at least 2 comprehensive advanced type classes, found {len(comprehensive_classes)}"

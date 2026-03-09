@@ -183,9 +183,9 @@ public class BasicCollections {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing basic collections classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing basic collections classes: {sorted(list(missing_classes))}"
 
 
 def test_custom_collection_implementations(
@@ -782,9 +782,9 @@ class SimpleHashMap<K, V> implements Map<K, V> {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing custom collection classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing custom collection classes: {sorted(list(missing_classes))}"
 
 
 def test_iterator_patterns_enhanced_for(
@@ -1026,9 +1026,9 @@ class FibonacciIterable implements Iterable<Long> {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing iterator pattern classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing iterator pattern classes: {sorted(list(missing_classes))}"
 
 
 def test_map_operations_key_value_handling(
@@ -1264,9 +1264,9 @@ class Person implements Comparable<Person> {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing map operations classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing map operations classes: {sorted(list(missing_classes))}"
 
 
 def test_set_operations_uniqueness(
@@ -1512,12 +1512,12 @@ enum Priority {
     missing_classes = expected_classes - created_classes
     missing_enums = expected_enums - created_enums
 
-    assert not missing_classes, (
-        f"Missing set operations classes: {sorted(list(missing_classes))}"
-    )
-    assert not missing_enums, (
-        f"Missing set operations enums: {sorted(list(missing_enums))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing set operations classes: {sorted(list(missing_classes))}"
+    assert (
+        not missing_enums
+    ), f"Missing set operations enums: {sorted(list(missing_enums))}"
 
 
 def test_stream_api_integration_collections(
@@ -1796,9 +1796,9 @@ class Employee {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing stream collections classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing stream collections classes: {sorted(list(missing_classes))}"
 
 
 def test_thread_safe_collections(
@@ -2081,6 +2081,6 @@ class DelayedTask implements Delayed {
     }
 
     missing_classes = expected_classes - created_classes
-    assert not missing_classes, (
-        f"Missing thread-safe collections classes: {sorted(list(missing_classes))}"
-    )
+    assert (
+        not missing_classes
+    ), f"Missing thread-safe collections classes: {sorted(list(missing_classes))}"

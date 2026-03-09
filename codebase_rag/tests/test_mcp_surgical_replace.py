@@ -248,8 +248,10 @@ class TestSurgicalReplaceErrorHandling:
         self, mcp_registry: MCPToolsRegistry, temp_project_root: Path
     ) -> None:
         """Test handling of exceptions during replacement."""
-        mcp_registry._file_editor_tool.function.side_effect = Exception(  # ty: ignore[invalid-assignment]
-            "Permission denied"
+        mcp_registry._file_editor_tool.function.side_effect = (
+            Exception(  # ty: ignore[invalid-assignment]
+                "Permission denied"
+            )
         )
 
         result = await mcp_registry.surgical_replace_code(
@@ -365,7 +367,9 @@ class TestSurgicalReplaceIntegration:
 
         for filename, content in files.items():
             (temp_project_root / filename).write_text(content, encoding="utf-8")
-            mcp_registry._file_editor_tool.function.return_value = "Success"  # ty: ignore[invalid-assignment]
+            mcp_registry._file_editor_tool.function.return_value = (
+                "Success"  # ty: ignore[invalid-assignment]
+            )
 
             result = await mcp_registry.surgical_replace_code(
                 filename, list(content.split())[0], "replacement"

@@ -287,16 +287,16 @@ namespace math {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 1, (
-        f"Expected at least 1 module class, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 1
+    ), f"Expected at least 1 module class, found {len(found_classes)}: {found_classes}"
 
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
 
 def test_module_partitions(
@@ -605,9 +605,7 @@ export namespace ds::algorithms {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert found_classes, (
-        f"Expected at least 1 partition class, found {len(found_classes)}: {found_classes}"
-    )
+    assert found_classes, f"Expected at least 1 partition class, found {len(found_classes)}: {found_classes}"
 
 
 def test_module_imports_usage(
@@ -806,6 +804,6 @@ void showcaseModuleFeatures() {
         call for call in call_relationships if "module_usage" in call.args[0][2]
     ]
 
-    assert len(module_function_calls) >= 5, (
-        f"Expected at least 5 module function calls, found {len(module_function_calls)}"
-    )
+    assert (
+        len(module_function_calls) >= 5
+    ), f"Expected at least 5 module function calls, found {len(module_function_calls)}"

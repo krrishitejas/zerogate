@@ -146,9 +146,9 @@ def test_complex_cross_file_function_calls(
             f"Found: {found_calls_list}"
         )
 
-    assert len(found_calls) >= len(expected_calls), (
-        f"Expected at least {len(expected_calls)} calls, but found {len(found_calls)}"
-    )
+    assert len(found_calls) >= len(
+        expected_calls
+    ), f"Expected at least {len(expected_calls)} calls, but found {len(found_calls)}"
 
 
 def test_cross_file_calls_with_short_names(

@@ -175,9 +175,9 @@ class ComputerService {
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for builder pattern"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for builder pattern"
 
 
 def test_observer_pattern_relationships(
@@ -363,15 +363,15 @@ class NewsSystem {
 
     implements_relationships = get_relationships(mock_ingestor, "IMPLEMENTS")
 
-    assert len(implements_relationships) > 0, (
-        "No interface implementation relationships found for observer pattern"
-    )
+    assert (
+        len(implements_relationships) > 0
+    ), "No interface implementation relationships found for observer pattern"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for observer pattern"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for observer pattern"
 
 
 def test_factory_pattern_relationships(
@@ -608,21 +608,21 @@ class VehicleProduction {
 
     inherits_relationships = get_relationships(mock_ingestor, "INHERITS")
 
-    assert len(inherits_relationships) > 0, (
-        "No inheritance relationships found for factory pattern"
-    )
+    assert (
+        len(inherits_relationships) > 0
+    ), "No inheritance relationships found for factory pattern"
 
     implements_relationships = get_relationships(mock_ingestor, "IMPLEMENTS")
 
-    assert len(implements_relationships) > 0, (
-        "No interface implementation relationships found for factory pattern"
-    )
+    assert (
+        len(implements_relationships) > 0
+    ), "No interface implementation relationships found for factory pattern"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for factory pattern"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for factory pattern"
 
 
 def test_decorator_pattern_relationships(
@@ -815,21 +815,21 @@ class CoffeeShop {
 
     inherits_relationships = get_relationships(mock_ingestor, "INHERITS")
 
-    assert len(inherits_relationships) > 0, (
-        "No inheritance relationships found for decorator pattern"
-    )
+    assert (
+        len(inherits_relationships) > 0
+    ), "No inheritance relationships found for decorator pattern"
 
     implements_relationships = get_relationships(mock_ingestor, "IMPLEMENTS")
 
-    assert len(implements_relationships) > 0, (
-        "No interface implementation relationships found for decorator pattern"
-    )
+    assert (
+        len(implements_relationships) > 0
+    ), "No interface implementation relationships found for decorator pattern"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for decorator pattern"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for decorator pattern"
 
 
 def test_strategy_pattern_relationships(
@@ -1015,15 +1015,15 @@ class PaymentProcessor {
 
     implements_relationships = get_relationships(mock_ingestor, "IMPLEMENTS")
 
-    assert len(implements_relationships) > 0, (
-        "No interface implementation relationships found for strategy pattern"
-    )
+    assert (
+        len(implements_relationships) > 0
+    ), "No interface implementation relationships found for strategy pattern"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for strategy pattern"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for strategy pattern"
 
 
 def test_command_pattern_relationships(
@@ -1300,12 +1300,12 @@ class SmartHome {
 
     implements_relationships = get_relationships(mock_ingestor, "IMPLEMENTS")
 
-    assert len(implements_relationships) > 0, (
-        "No interface implementation relationships found for command pattern"
-    )
+    assert (
+        len(implements_relationships) > 0
+    ), "No interface implementation relationships found for command pattern"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
-    assert len(call_relationships) > 0, (
-        "No method call relationships found for command pattern"
-    )
+    assert (
+        len(call_relationships) > 0
+    ), "No method call relationships found for command pattern"

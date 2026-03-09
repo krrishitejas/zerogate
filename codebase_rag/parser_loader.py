@@ -272,9 +272,11 @@ def _process_language(
         return False
 
 
-def load_parsers() -> tuple[
-    dict[cs.SupportedLanguage, Parser], dict[cs.SupportedLanguage, LanguageQueries]
-]:
+def load_parsers() -> (
+    tuple[
+        dict[cs.SupportedLanguage, Parser], dict[cs.SupportedLanguage, LanguageQueries]
+    ]
+):
     parsers: dict[cs.SupportedLanguage, Parser] = {}
     queries: dict[cs.SupportedLanguage, LanguageQueries] = {}
     available_languages: list[cs.SupportedLanguage] = []

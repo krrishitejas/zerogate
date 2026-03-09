@@ -114,9 +114,9 @@ def test_calls_failure_logging_multiple_batches(
 
     failure_count = log_text.count("Failed to create 1 CALLS relationships")
 
-    assert failure_count == 2, (
-        f"Expected 2 batches to each report 1 failure, but found {failure_count} occurrences in logs:\n{log_text}"
-    )
+    assert (
+        failure_count == 2
+    ), f"Expected 2 batches to each report 1 failure, but found {failure_count} occurrences in logs:\n{log_text}"
 
 
 def test_calls_success_no_failure_logging(

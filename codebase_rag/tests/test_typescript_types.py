@@ -127,9 +127,9 @@ const total = sum(1, 2, 3, 4, 5);
     created_functions = get_node_names(mock_ingestor, "Function")
 
     for expected_qn in expected_functions:
-        assert expected_qn in created_functions, (
-            f"Missing typed function: {expected_qn}"
-        )
+        assert (
+            expected_qn in created_functions
+        ), f"Missing typed function: {expected_qn}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -137,9 +137,9 @@ const total = sum(1, 2, 3, 4, 5);
         call for call in call_relationships if "basic_types" in call.args[0][2]
     ]
 
-    assert len(function_calls_found) >= 5, (
-        f"Expected at least 5 function calls in typed code, found {len(function_calls_found)}"
-    )
+    assert (
+        len(function_calls_found) >= 5
+    ), f"Expected at least 5 function calls in typed code, found {len(function_calls_found)}"
 
 
 def test_interfaces_and_type_aliases(
@@ -332,9 +332,9 @@ interface PaymentMethod {
         and "interfaces_types" in call[0][1].get("qualified_name", "")
     ]
 
-    assert len(interface_nodes) >= 3, (
-        f"Expected at least 3 interface/type definitions, found {len(interface_nodes)}"
-    )
+    assert (
+        len(interface_nodes) >= 3
+    ), f"Expected at least 3 interface/type definitions, found {len(interface_nodes)}"
 
     expected_functions = [
         f"{project_name}.interfaces_types.isUser",
@@ -347,9 +347,9 @@ interface PaymentMethod {
     created_functions = get_node_names(mock_ingestor, "Function")
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
     relationship_calls = [
         call
@@ -361,9 +361,9 @@ interface PaymentMethod {
         call for call in relationship_calls if "interfaces_types" in call[0][0][2]
     ]
 
-    assert len(interface_inheritance) >= 1, (
-        f"Expected at least 1 interface inheritance relationship, found {len(interface_inheritance)}"
-    )
+    assert (
+        len(interface_inheritance) >= 1
+    ), f"Expected at least 1 interface inheritance relationship, found {len(interface_inheritance)}"
 
 
 def test_generic_types(
@@ -612,9 +612,9 @@ const errorResult = createError(new Error("Failed"));
     found_generic_functions = [
         func for func in expected_generic_functions if func in created_functions
     ]
-    assert len(found_generic_functions) >= 5, (
-        f"Expected at least 5 generic functions, found {len(found_generic_functions)}"
-    )
+    assert (
+        len(found_generic_functions) >= 5
+    ), f"Expected at least 5 generic functions, found {len(found_generic_functions)}"
 
     expected_generic_classes = [
         f"{project_name}.generics.GenericContainer",
@@ -628,9 +628,9 @@ const errorResult = createError(new Error("Failed"));
     found_generic_classes = [
         cls for cls in expected_generic_classes if cls in created_classes
     ]
-    assert len(found_generic_classes) >= 3, (
-        f"Expected at least 3 generic classes, found {len(found_generic_classes)}"
-    )
+    assert (
+        len(found_generic_classes) >= 3
+    ), f"Expected at least 3 generic classes, found {len(found_generic_classes)}"
 
 
 def test_utility_types(
@@ -854,9 +854,9 @@ const partial = deepPartial(requiredUser);
     found_utility_functions = [
         func for func in expected_utility_functions if func in created_functions
     ]
-    assert len(found_utility_functions) >= 5, (
-        f"Expected at least 5 utility type functions, found {len(found_utility_functions)}"
-    )
+    assert (
+        len(found_utility_functions) >= 5
+    ), f"Expected at least 5 utility type functions, found {len(found_utility_functions)}"
 
     expected_utility_classes = [
         f"{project_name}.utility_types.UserService",
@@ -867,9 +867,9 @@ const partial = deepPartial(requiredUser);
     found_utility_classes = [
         cls for cls in expected_utility_classes if cls in created_classes
     ]
-    assert len(found_utility_classes) >= 1, (
-        f"Expected at least 1 utility type class, found {len(found_utility_classes)}"
-    )
+    assert (
+        len(found_utility_classes) >= 1
+    ), f"Expected at least 1 utility type class, found {len(found_utility_classes)}"
 
 
 def test_type_comprehensive(
@@ -994,9 +994,9 @@ addEventListener('click', (event) => {
         call for call in call_relationships if "comprehensive_types" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive type calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive type calls, found {len(comprehensive_calls)}"
 
     [
         call
@@ -1011,12 +1011,12 @@ addEventListener('click', (event) => {
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_types" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_types" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

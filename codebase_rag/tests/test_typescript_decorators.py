@@ -332,9 +332,9 @@ console.log((user as any).getValidationErrors()); // []
         )
     ]
 
-    assert len(decorator_functions) >= 5, (
-        f"Expected at least 5 decorator functions, found {len(decorator_functions)}"
-    )
+    assert (
+        len(decorator_functions) >= 5
+    ), f"Expected at least 5 decorator functions, found {len(decorator_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -354,9 +354,9 @@ console.log((user as any).getValidationErrors()); // []
         )
     ]
 
-    assert len(decorated_classes) >= 4, (
-        f"Expected at least 4 decorated classes, found {len(decorated_classes)}"
-    )
+    assert (
+        len(decorated_classes) >= 4
+    ), f"Expected at least 4 decorated classes, found {len(decorated_classes)}"
 
     inheritance_relationships = get_relationships(mock_ingestor, "INHERITS")
 
@@ -366,9 +366,9 @@ console.log((user as any).getValidationErrors()); // []
         if "class_decorators" in call.args[0][2]
     ]
 
-    assert len(decorator_inheritance) >= 1, (
-        f"Expected decorator inheritance relationships, found {len(decorator_inheritance)}"
-    )
+    assert (
+        len(decorator_inheritance) >= 1
+    ), f"Expected decorator inheritance relationships, found {len(decorator_inheritance)}"
 
 
 def test_method_decorators(
@@ -728,9 +728,9 @@ processor.saveToDatabase({ important: 'data' })
         )
     ]
 
-    assert len(method_decorators) >= 6, (
-        f"Expected at least 6 method decorator functions, found {len(method_decorators)}"
-    )
+    assert (
+        len(method_decorators) >= 6
+    ), f"Expected at least 6 method decorator functions, found {len(method_decorators)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -744,9 +744,9 @@ processor.saveToDatabase({ important: 'data' })
         )
     ]
 
-    assert len(decorated_method_classes) >= 2, (
-        f"Expected at least 2 classes with decorated methods, found {len(decorated_method_classes)}"
-    )
+    assert (
+        len(decorated_method_classes) >= 2
+    ), f"Expected at least 2 classes with decorated methods, found {len(decorated_method_classes)}"
 
     method_calls = get_nodes(mock_ingestor, "Method")
 
@@ -760,9 +760,9 @@ processor.saveToDatabase({ important: 'data' })
         )
     ]
 
-    assert len(decorated_methods) >= 3, (
-        f"Expected at least 3 decorated methods, found {len(decorated_methods)}"
-    )
+    assert (
+        len(decorated_methods) >= 3
+    ), f"Expected at least 3 decorated methods, found {len(decorated_methods)}"
 
 
 def test_property_decorators(
@@ -1176,9 +1176,9 @@ console.log(product.timestamps); // Should initialize on first access
         )
     ]
 
-    assert len(property_decorators) >= 6, (
-        f"Expected at least 6 property decorator functions, found {len(property_decorators)}"
-    )
+    assert (
+        len(property_decorators) >= 6
+    ), f"Expected at least 6 property decorator functions, found {len(property_decorators)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -1192,9 +1192,9 @@ console.log(product.timestamps); // Should initialize on first access
         )
     ]
 
-    assert len(decorated_property_classes) >= 2, (
-        f"Expected at least 2 classes with decorated properties, found {len(decorated_property_classes)}"
-    )
+    assert (
+        len(decorated_property_classes) >= 2
+    ), f"Expected at least 2 classes with decorated properties, found {len(decorated_property_classes)}"
 
 
 def test_parameter_decorators(
@@ -1551,9 +1551,9 @@ try {
         )
     ]
 
-    assert len(parameter_decorators) >= 6, (
-        f"Expected at least 6 parameter decorator functions, found {len(parameter_decorators)}"
-    )
+    assert (
+        len(parameter_decorators) >= 6
+    ), f"Expected at least 6 parameter decorator functions, found {len(parameter_decorators)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -1567,9 +1567,9 @@ try {
         )
     ]
 
-    assert len(parameter_decorated_classes) >= 3, (
-        f"Expected at least 3 classes with parameter decorators, found {len(parameter_decorated_classes)}"
-    )
+    assert (
+        len(parameter_decorated_classes) >= 3
+    ), f"Expected at least 3 classes with parameter decorators, found {len(parameter_decorated_classes)}"
 
     method_calls = get_nodes(mock_ingestor, "Method")
 
@@ -1588,9 +1588,9 @@ try {
         )
     ]
 
-    assert len(decorated_parameter_methods) >= 3, (
-        f"Expected at least 3 methods with decorated parameters, found {len(decorated_parameter_methods)}"
-    )
+    assert (
+        len(decorated_parameter_methods) >= 3
+    ), f"Expected at least 3 methods with decorated parameters, found {len(decorated_parameter_methods)}"
 
 
 def test_typescript_decorators_comprehensive(
@@ -1680,9 +1680,9 @@ console.log((example as any).tableName); // 'comprehensive_items'
         if "comprehensive_decorators" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 2, (
-        f"Expected at least 2 comprehensive decorator calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 2
+    ), f"Expected at least 2 comprehensive decorator calls, found {len(comprehensive_calls)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -1696,9 +1696,9 @@ console.log((example as any).tableName); // 'comprehensive_items'
         )
     ]
 
-    assert len(comprehensive_decorators) >= 4, (
-        f"Expected at least 4 decorator functions, found {len(comprehensive_decorators)}"
-    )
+    assert (
+        len(comprehensive_decorators) >= 4
+    ), f"Expected at least 4 decorator functions, found {len(comprehensive_decorators)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -1708,6 +1708,6 @@ console.log((example as any).tableName); // 'comprehensive_items'
         if "ComprehensiveExample" in call[0][1]["qualified_name"]
     ]
 
-    assert len(comprehensive_class) >= 1, (
-        f"Expected ComprehensiveExample class, found {len(comprehensive_class)}"
-    )
+    assert (
+        len(comprehensive_class) >= 1
+    ), f"Expected ComprehensiveExample class, found {len(comprehensive_class)}"

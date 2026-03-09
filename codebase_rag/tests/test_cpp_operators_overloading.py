@@ -292,9 +292,9 @@ void demonstrateArithmeticOperators() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 2, (
-        f"Expected at least 2 arithmetic operator classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 2
+    ), f"Expected at least 2 arithmetic operator classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_comparison_operators(
@@ -581,9 +581,9 @@ void demonstrateComparisonOperators() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 2, (
-        f"Expected at least 2 comparison operator classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 2
+    ), f"Expected at least 2 comparison operator classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_stream_function_call_operators(
@@ -848,9 +848,9 @@ void demonstrateStreamAndFunctionOperators() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 3, (
-        f"Expected at least 3 stream/function operator classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 3
+    ), f"Expected at least 3 stream/function operator classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_subscript_increment_operators(
@@ -1250,9 +1250,9 @@ void demonstrateSubscriptAndIncrementOperators() {
     created_classes = get_node_names(mock_ingestor, "Class")
 
     found_classes = [cls for cls in expected_classes if cls in created_classes]
-    assert len(found_classes) >= 2, (
-        f"Expected at least 2 subscript/increment operator classes, found {len(found_classes)}: {found_classes}"
-    )
+    assert (
+        len(found_classes) >= 2
+    ), f"Expected at least 2 subscript/increment operator classes, found {len(found_classes)}: {found_classes}"
 
 
 def test_cpp_operators_comprehensive(
@@ -1402,8 +1402,8 @@ void demonstrateAllOperators() {
         if "comprehensive_operators" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 5, (
-        f"Expected at least 5 comprehensive operator calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 5
+    ), f"Expected at least 5 comprehensive operator calls, found {len(comprehensive_calls)}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

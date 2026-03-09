@@ -223,9 +223,9 @@ const varResults = varFunctions.map(fn => fn());
     created_functions = get_qualified_names(function_calls)
 
     missing_functions = set(expected_functions) - created_functions
-    assert not missing_functions, (
-        f"Missing expected functions: {sorted(list(missing_functions))}"
-    )
+    assert (
+        not missing_functions
+    ), f"Missing expected functions: {sorted(list(missing_functions))}"
 
     nested_functions = [
         call
@@ -234,9 +234,9 @@ const varResults = varFunctions.map(fn => fn());
         and len(call[0][1]["qualified_name"].split(SEPARATOR_DOT)) > 3
     ]
 
-    assert len(nested_functions) >= 5, (
-        f"Expected at least 5 nested functions from closures, found {len(nested_functions)}"
-    )
+    assert (
+        len(nested_functions) >= 5
+    ), f"Expected at least 5 nested functions from closures, found {len(nested_functions)}"
 
     call_relationships = get_relationships(mock_ingestor, "CALLS")
 
@@ -244,9 +244,9 @@ const varResults = varFunctions.map(fn => fn());
         call for call in call_relationships if "basic_closures" in call.args[0][2]
     ]
 
-    assert len(closure_calls) >= 10, (
-        f"Expected at least 10 function calls in closure code, found {len(closure_calls)}"
-    )
+    assert (
+        len(closure_calls) >= 10
+    ), f"Expected at least 10 function calls in closure code, found {len(closure_calls)}"
 
 
 def test_variable_scoping(
@@ -503,9 +503,9 @@ tryCatchScope();
     found_scoping_functions = [
         func for func in expected_scoping_functions if func in created_functions
     ]
-    assert len(found_scoping_functions) >= 5, (
-        f"Expected at least 5 scoping functions, found {len(found_scoping_functions)}"
-    )
+    assert (
+        len(found_scoping_functions) >= 5
+    ), f"Expected at least 5 scoping functions, found {len(found_scoping_functions)}"
 
     nested_scoping_functions = [
         call
@@ -514,9 +514,9 @@ tryCatchScope();
         and len(call[0][1]["qualified_name"].split(SEPARATOR_DOT)) > 3
     ]
 
-    assert len(nested_scoping_functions) >= 8, (
-        f"Expected at least 8 nested scoping functions, found {len(nested_scoping_functions)}"
-    )
+    assert (
+        len(nested_scoping_functions) >= 8
+    ), f"Expected at least 8 nested scoping functions, found {len(nested_scoping_functions)}"
 
 
 def test_hoisting_behavior(
@@ -779,9 +779,9 @@ const nestedResult = nested();
     found_hoisting_functions = [
         func for func in expected_hoisting_functions if func in created_functions
     ]
-    assert len(found_hoisting_functions) >= 7, (
-        f"Expected at least 7 hoisting functions, found {len(found_hoisting_functions)}"
-    )
+    assert (
+        len(found_hoisting_functions) >= 7
+    ), f"Expected at least 7 hoisting functions, found {len(found_hoisting_functions)}"
 
     class_calls = get_nodes(mock_ingestor, "Class")
 
@@ -791,9 +791,9 @@ const nestedResult = nested();
         if "hoisting_behavior" in call[0][1]["qualified_name"]
     ]
 
-    assert len(hoisting_classes) >= 1, (
-        f"Expected at least 1 class in hoisting behavior tests, found {len(hoisting_classes)}"
-    )
+    assert (
+        len(hoisting_classes) >= 1
+    ), f"Expected at least 1 class in hoisting behavior tests, found {len(hoisting_classes)}"
 
 
 def test_module_patterns_iife(
@@ -1144,9 +1144,9 @@ const allConfig = Config.getAll();
         call for call in call_relationships if "module_patterns" in call.args[0][2]
     ]
 
-    assert len(module_calls) >= 15, (
-        f"Expected at least 15 function calls in module patterns, found {len(module_calls)}"
-    )
+    assert (
+        len(module_calls) >= 15
+    ), f"Expected at least 15 function calls in module patterns, found {len(module_calls)}"
 
     function_calls = get_nodes(mock_ingestor, "Function")
 
@@ -1156,9 +1156,9 @@ const allConfig = Config.getAll();
         if "module_patterns" in call[0][1]["qualified_name"]
     ]
 
-    assert len(module_functions) >= 20, (
-        f"Expected at least 20 functions in module patterns, found {len(module_functions)}"
-    )
+    assert (
+        len(module_functions) >= 20
+    ), f"Expected at least 20 functions in module patterns, found {len(module_functions)}"
 
 
 def test_closures_comprehensive(
@@ -1344,9 +1344,9 @@ const scopeResult = accessScopes();
         if "comprehensive_closures" in call.args[0][2]
     ]
 
-    assert len(comprehensive_calls) >= 8, (
-        f"Expected at least 8 comprehensive closure calls, found {len(comprehensive_calls)}"
-    )
+    assert (
+        len(comprehensive_calls) >= 8
+    ), f"Expected at least 8 comprehensive closure calls, found {len(comprehensive_calls)}"
 
     for relationship in comprehensive_calls:
         assert len(relationship.args) == 3, "Call relationship should have 3 args"
@@ -1355,12 +1355,12 @@ const scopeResult = accessScopes();
         source_module = relationship.args[0][2]
         target_module = relationship.args[2][2]
 
-        assert "comprehensive_closures" in source_module, (
-            f"Source module should contain test file name: {source_module}"
-        )
+        assert (
+            "comprehensive_closures" in source_module
+        ), f"Source module should contain test file name: {source_module}"
 
-        assert isinstance(target_module, str) and target_module, (
-            f"Target should be non-empty string: {target_module}"
-        )
+        assert (
+            isinstance(target_module, str) and target_module
+        ), f"Target should be non-empty string: {target_module}"
 
     assert defines_relationships, "Should still have DEFINES relationships"

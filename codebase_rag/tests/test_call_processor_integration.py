@@ -17,9 +17,11 @@ if TYPE_CHECKING:
 
 
 @pytest.fixture
-def parsers_and_queries() -> tuple[
-    dict[cs.SupportedLanguage, Parser], dict[cs.SupportedLanguage, LanguageQueries]
-]:
+def parsers_and_queries() -> (
+    tuple[
+        dict[cs.SupportedLanguage, Parser], dict[cs.SupportedLanguage, LanguageQueries]
+    ]
+):
     parsers, queries = load_parsers()
     return parsers, queries
 

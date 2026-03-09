@@ -59,9 +59,9 @@ class TestCypherQueryEmbeddingsStructure:
         for line in cs.CYPHER_QUERY_EMBEDDINGS.splitlines():
             stripped = line.strip()
             if "STARTS WITH" in stripped and "$project_name" in stripped:
-                assert "($project_name" in stripped, (
-                    f"$project_name + '.' must be parenthesized in: {stripped!r}"
-                )
+                assert (
+                    "($project_name" in stripped
+                ), f"$project_name + '.' must be parenthesized in: {stripped!r}"
 
 
 class TestGenerateSemanticEmbeddings:
@@ -83,9 +83,9 @@ class TestGenerateSemanticEmbeddings:
 
         params = query_ingestor.fetch_all.call_args[0][1]
         project_name_param = params["project_name"]
-        assert not project_name_param.endswith("."), (
-            f"project_name should not have trailing dot, got: {project_name_param!r}"
-        )
+        assert not project_name_param.endswith(
+            "."
+        ), f"project_name should not have trailing dot, got: {project_name_param!r}"
 
     @_PATCH_DEPS
     @_PATCH_EMBED
