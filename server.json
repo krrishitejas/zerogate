@@ -8,13 +8,13 @@
     "url": "https://github.com/krrishitejas/zerogate",
     "source": "github"
   },
-  "version": "0.0.116",
+  "version": "0.0.117",
   "packages": [
     {
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "zerogate",
-      "version": "0.0.116",
+      "version": "0.0.117",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
