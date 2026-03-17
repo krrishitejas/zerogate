@@ -23,7 +23,7 @@ Whether you’re performing a quick penetration test, a full code‑review engag
 
 ```bash
 # Clone the repo (or use the released package)
-git clone https://github.com/your-org/zerogate.git
+git clone https://github.com/krrishitejas/zerogate.git
 cd zerogate
 
 # Create a virtual environment
