@@ -74,7 +74,7 @@ test = [
     "pytest-asyncio>=1.0.0",
     "pytest-cov>=4.0.0",
     "pytest-xdist>=3.8.0",
-    "testcontainers>=4.9.0",
+    "testcontainers>=4.14.2",
 ]
 
 treesitter-full = [
