@@ -160,7 +160,7 @@ docs = [
     "mkdocs-minify-plugin>=0.8.0",
 ]
 fuzz = [
-    "atheris>=2.3.0",
+    "atheris>=3.0.0",
 ]
 
 [tool.bandit]
